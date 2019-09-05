@@ -1703,7 +1703,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #377893;
+  background: #52ff08;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1885,7 +1885,7 @@ article:last-child .post-eof {
   line-height: 1.8;
 }
 .post-toc .nav .nav-child {
-  display: none;
+  display: block;
 }
 .post-toc .nav .active > .nav-child {
   display: block;
@@ -2654,9 +2654,7 @@ hr {
   background: url("/images/scroll.png");
 }
 .back-to-top > span {
-  position: absolute;
-  top: 775px;
-  left: 42px;
+  display: none;
 }
 .back-to-top.back-to-top-on {
   bottom: unset;
@@ -2664,4 +2662,29 @@ hr {
 }
 .busuanzi-value {
   color: #1890ff;
+}
+.top-scroll-bar {
+  position: fixed;
+  height: 3px;
+  top: 0;
+  left: 0;
+  transition-duration: 0.7s, 0.7s;
+  transiton-property: width, background;
+  z-index: 99999;
+  display: none;
+  background: #1890ff;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #eee;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #ccc;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #f79533;
 }
