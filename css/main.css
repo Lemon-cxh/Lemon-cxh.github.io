@@ -1018,7 +1018,10 @@ pre .javascript .function {
   transition-delay: 0s;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
-  width: initial;
+  width: 24px;
+}
+.back-to-top span {
+  display: none;
 }
 .back-to-top:hover {
   color: #87daff;
@@ -1703,7 +1706,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #9353ff;
+  background: #4e1ad0;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2643,22 +2646,6 @@ hr {
     text-align: center;
     width: auto;
   }
-}
-.back-to-top {
-  left: 60px;
-  width: 70px;
-  height: 900px;
-  top: -900px;
-  bottom: unset;
-  transition: all 0.5s ease-in-out;
-  background: url("/images/scroll.png");
-}
-.back-to-top > span {
-  display: none;
-}
-.back-to-top.back-to-top-on {
-  bottom: unset;
-  top: calc(100vh - 900px - 200px);
 }
 .busuanzi-value {
   color: #1890ff;

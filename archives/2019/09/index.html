@@ -32,7 +32,7 @@
     exturl: false,
     sidebar: {"position":"right","display":"always","offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -325,7 +325,7 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/09/05/docker-deploy-springCloud/" itemprop="url">
+          <a class="post-title-link" href="/docker-deploy-springCloud/" itemprop="url">
             <span itemprop="name">Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令</span>
           </a>
         
@@ -354,7 +354,7 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/09/02/docker-nginx/" itemprop="url">
+          <a class="post-title-link" href="/docker-nginx/" itemprop="url">
             <span itemprop="name">Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替</span>
           </a>
         
@@ -518,11 +518,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Lemon</span>
 </div>
-<!--
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.3.0</div>
--->
 
         
 <div class="busuanzi-count">
@@ -735,6 +730,15 @@ $(document).ready(function () {
 
 
   <script async src="/js/cursor/text.js"></script>
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
 
 
 <script>

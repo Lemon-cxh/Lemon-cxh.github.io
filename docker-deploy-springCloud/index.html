@@ -32,7 +32,7 @@
     exturl: false,
     sidebar: {"position":"right","display":"always","offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
@@ -61,7 +61,7 @@
 <meta name="keywords" content="Docker,SpringCloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令">
-<meta property="og:url" content="https://github.com/Lemon-cxh/Lemon-cxh.github.io/2019/09/05/docker-deploy-springCloud/index.html">
+<meta property="og:url" content="https://github.com/Lemon-cxh/Lemon-cxh.github.io/docker-deploy-springCloud/index.html">
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="Docker 的安装、参数、命令以及部署微服务">
 <meta property="og:locale" content="zh-CN">
@@ -69,7 +69,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令">
 <meta name="twitter:description" content="Docker 的安装、参数、命令以及部署微服务">
-  <link rel="canonical" href="https://github.com/Lemon-cxh/Lemon-cxh.github.io/2019/09/05/docker-deploy-springCloud/">
+  <link rel="canonical" href="https://github.com/Lemon-cxh/Lemon-cxh.github.io/docker-deploy-springCloud/">
 
 
 <script id="page-configurations">
@@ -280,7 +280,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Lemon-cxh/Lemon-cxh.github.io/2019/09/05/docker-deploy-springCloud/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Lemon-cxh/Lemon-cxh.github.io/docker-deploy-springCloud/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lemon">
@@ -338,7 +338,7 @@
           
 
           
-            <span id="/2019/09/05/docker-deploy-springCloud/" class="post-meta-item leancloud_visitors" data-flag-title="Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令" title="阅读次数">
+            <span id="/docker-deploy-springCloud/" class="post-meta-item leancloud_visitors" data-flag-title="Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -356,7 +356,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/09/05/docker-deploy-springCloud/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/05/docker-deploy-springCloud/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/docker-deploy-springCloud/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/docker-deploy-springCloud/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -414,7 +414,7 @@
 </li>
 </ol>
 </li>
-<li><h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><p> 可以参考 <a href="/2019/09/02/docker-nginx/" title="Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替">Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替</a></p>
+<li><h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><p> 可以参考 <a href="/docker-nginx/" title="Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替">Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替</a></p>
 </li>
 <li><h2 id="部署微服务"><a href="#部署微服务" class="headerlink" title="部署微服务"></a>部署微服务</h2><ol>
 <li><h3 id="配置服务器docker可以远程访问"><a href="#配置服务器docker可以远程访问" class="headerlink" title="配置服务器docker可以远程访问"></a>配置服务器docker可以远程访问</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在/usr/lib/systemd/system/docker.service中添加参数</span><br><span class="line">[Service]</span><br><span class="line">ExecStart=</span><br><span class="line">ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock</span><br><span class="line"></span><br><span class="line">//重新读取配置文件、重启服务</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
@@ -716,7 +716,7 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/02/docker-nginx/" rel="next" title="Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替">
+                <a href="/docker-nginx/" rel="next" title="Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替">
                   <i class="fa fa-chevron-left"></i> Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替
                 </a>
               
@@ -884,11 +884,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Lemon</span>
 </div>
-<!--
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.3.0</div>
--->
 
         
 <div class="busuanzi-count">
@@ -1101,6 +1096,15 @@ $(document).ready(function () {
 
 
   <script async src="/js/cursor/text.js"></script>
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
 
 
 <script>
