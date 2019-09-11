@@ -60,14 +60,14 @@
   <meta name="description" content="Docker 的安装、参数、命令以及部署微服务">
 <meta name="keywords" content="Docker,SpringCloud">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令">
+<meta property="og:title" content="Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令">
 <meta property="og:url" content="https://github.com/Lemon-cxh/Lemon-cxh.github.io/docker-deploy-springCloud/index.html">
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="Docker 的安装、参数、命令以及部署微服务">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-05T16:22:40.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令">
+<meta name="twitter:title" content="Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令">
 <meta name="twitter:description" content="Docker 的安装、参数、命令以及部署微服务">
   <link rel="canonical" href="https://github.com/Lemon-cxh/Lemon-cxh.github.io/docker-deploy-springCloud/">
 
@@ -83,7 +83,7 @@
   };
 </script>
 
-  <title>Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令 | 三月柳絮四月雨</title>
+  <title>Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令 | 三月柳絮四月雨</title>
   <meta name="generator" content="Hexo 3.9.0">
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146884962-1"></script>
@@ -292,7 +292,7 @@
       <meta itemprop="name" content="三月柳絮四月雨">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令
+        <h1 class="post-title" itemprop="name headline">Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令
 
           
         </h1>
@@ -338,7 +338,7 @@
           
 
           
-            <span id="/docker-deploy-springCloud/" class="post-meta-item leancloud_visitors" data-flag-title="Docker 部署微服务(Cloud-Admin)以及 Docker 参数、命令" title="阅读次数">
+            <span id="/docker-deploy-springCloud/" class="post-meta-item leancloud_visitors" data-flag-title="Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -394,44 +394,44 @@
 
       
         <ol>
-<li><h2 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h2><ol>
-<li><h3 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-selinux \</span><br><span class="line">                docker-engine-selinux \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure>
+<li><h2 id="Docker 的安装"><a href="#Docker 的安装" class="headerlink" title="Docker 的安装"></a>Docker 的安装</h2><ol>
+<li><h3 id="卸载旧版本"><a href="# 卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-selinux \</span><br><span class="line">                docker-engine-selinux \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="使用yum安装"><a href="#使用yum安装" class="headerlink" title="使用yum安装"></a>使用yum安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//安装依赖包</span><br><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">        device-mapper-persistent-data \</span><br><span class="line">        lvm2</span><br><span class="line">// 添加国内 yum 软件源</span><br><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">//更新 yum 软件源缓存，并安装 docker-ce。</span><br><span class="line">sudo yum makecache fast</span><br><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure>
+<li><h3 id="使用 yum 安装"><a href="# 使用 yum 安装" class="headerlink" title="使用 yum 安装"></a>使用 yum 安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 安装依赖包</span><br><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">        device-mapper-persistent-data \</span><br><span class="line">        lvm2</span><br><span class="line">// 添加国内 yum 软件源</span><br><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">// 更新 yum 软件源缓存，并安装 docker-ce。</span><br><span class="line">sudo yum makecache fast</span><br><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="设置开机自启和自动服务"><a href="#设置开机自启和自动服务" class="headerlink" title="设置开机自启和自动服务"></a>设置开机自启和自动服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+<li><h3 id="设置开机自启和自动服务"><a href="# 设置开机自启和自动服务" class="headerlink" title="设置开机自启和自动服务"></a>设置开机自启和自动服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="建立docker用户组"><a href="#建立docker用户组" class="headerlink" title="建立docker用户组"></a>建立docker用户组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd docker</span><br><span class="line">//将当前用户加入docker组</span><br><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><h2 id="安装consul、redis、rabbitmq、mysql"><a href="#安装consul、redis、rabbitmq、mysql" class="headerlink" title="安装consul、redis、rabbitmq、mysql"></a>安装consul、redis、rabbitmq、mysql</h2><ol>
-<li><h3 id="新建docker网络"><a href="#新建docker网络" class="headerlink" title="新建docker网络"></a>新建docker网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge spring-net</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="获取镜像"><a href="#获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull consul</span><br><span class="line">docker pull redis</span><br><span class="line">docker pull rabbitmq:management</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//consul</span><br><span class="line">docker run -d -p 8500:8500 --name consul --network spring-net consul agent -server -bootstrap-expect=1 -client 0.0.0.0 -ui</span><br><span class="line"></span><br><span class="line">//-bootstrap-expect:指定期望的server节点的数量，并当server节点可用的时候，自动进行bootstrapping</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//rabbitmq</span><br><span class="line">docker run -d --name rabbitmq --network spring-net -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672  rabbitmq:management</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//redis  需要先配置好/etc/redis.conf</span><br><span class="line">//https://raw.githubusercontent.com/antirez/redis/4.0/redis.conf</span><br><span class="line">docker run -p 6379:6379 --network spring-net -v /etc/redis/redis.conf:/etc/redis/redis.conf -v /opt/docker/redis:/data  --name redis -d redis redis-server /etc/redis/redis.conf --appendonly yes</span><br><span class="line"></span><br><span class="line">//redis-server --appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置</span><br><span class="line"></span><br><span class="line">//mysql</span><br><span class="line">docker run -d -p 3306:3306 --name mysql --network spring-net -v /etc/mysql/my.cnf:/etc/my.cnf -v /var/<span class="built_in">log</span>/mysql:/var/<span class="built_in">log</span>/mysql -v /var/lib/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=ZXWL@1702b mysql:5.7.26</span><br></pre></td></tr></table></figure>
+<li><h3 id="建立 docker 用户组"><a href="# 建立 docker 用户组" class="headerlink" title="建立 docker 用户组"></a>建立 docker 用户组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd docker</span><br><span class="line">// 将当前用户加入 docker 组</span><br><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
-<li><h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><p> 可以参考 <a href="/docker-nginx/" title="Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替">Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替</a></p>
+<li><h2 id="安装 consul、redis、rabbitmq、mysql"><a href="# 安装 consul、redis、rabbitmq、mysql" class="headerlink" title="安装 consul、redis、rabbitmq、mysql"></a>安装 consul、redis、rabbitmq、mysql</h2><ol>
+<li><h3 id="新建 docker 网络"><a href="# 新建 docker 网络" class="headerlink" title="新建 docker 网络"></a>新建 docker 网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge spring-net</span><br></pre></td></tr></table></figure>
 </li>
-<li><h2 id="部署微服务"><a href="#部署微服务" class="headerlink" title="部署微服务"></a>部署微服务</h2><ol>
-<li><h3 id="配置服务器docker可以远程访问"><a href="#配置服务器docker可以远程访问" class="headerlink" title="配置服务器docker可以远程访问"></a>配置服务器docker可以远程访问</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在/usr/lib/systemd/system/docker.service中添加参数</span><br><span class="line">[Service]</span><br><span class="line">ExecStart=</span><br><span class="line">ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock</span><br><span class="line"></span><br><span class="line">//重新读取配置文件、重启服务</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<li><h3 id="获取镜像"><a href="# 获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull consul</span><br><span class="line">docker pull redis</span><br><span class="line">docker pull rabbitmq:management</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="pom配置"><a href="#pom配置" class="headerlink" title="pom配置"></a>pom配置</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>ace-gateway<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">dockerHost</span>&gt;</span>http://你的服务器地址:2375<span class="tag">&lt;/<span class="name">dockerHost</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>src/main/docker<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="application配置"><a href="#application配置" class="headerlink" title="application配置"></a>application配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis:</span><br><span class="line">    host: <span class="variable">$&#123;REDIS_HOST:localhost&#125;</span></span><br><span class="line">rabbitmq:</span><br><span class="line">    host: <span class="variable">$&#123;RABBIT_MQ_HOST:localhost&#125;</span></span><br><span class="line">consul:</span><br><span class="line">    host: <span class="variable">$&#123;CONSUL_HOST:localhost&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="Dockerfile配置"><a href="#Dockerfile配置" class="headerlink" title="Dockerfile配置"></a>Dockerfile配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FROM anapsix/alpine-java:8_server-jre_unlimited</span><br><span class="line">VOLUME /tmp</span><br><span class="line">ADD ace-gateway.jar app.jar</span><br><span class="line">ENV REDIS_HOST=redis</span><br><span class="line">ENV RABBIT_MQ_HOST=rabbitmq</span><br><span class="line">ENV CONSUL_HOST=consul</span><br><span class="line">RUN bash -c <span class="string">'touch /app.jar'</span> \</span><br><span class="line">    &amp;&amp; ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; <span class="built_in">echo</span> <span class="string">'Asia/Shanghai'</span> &gt;/etc/timezone</span><br><span class="line">ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-Djava.security.egd=file:/dev/./urandom"</span>,<span class="string">"-Dfile.encoding=utf-8"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8765:8765 --network spring-net --name geteway iot-gateway</span><br></pre></td></tr></table></figure>
+<li><h3 id="运行镜像"><a href="# 运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//consul</span><br><span class="line">docker run -d -p 8500:8500 --name consul --network spring-net consul agent -server -bootstrap-expect=1 -client 0.0.0.0 -ui</span><br><span class="line"></span><br><span class="line">//-bootstrap-expect: 指定期望的 server 节点的数量，并当 server 节点可用的时候，自动进行 bootstrapping</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//rabbitmq</span><br><span class="line">docker run -d --name rabbitmq --network spring-net -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672  rabbitmq:management</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//redis  需要先配置好 /etc/redis.conf</span><br><span class="line">//https://raw.githubusercontent.com/antirez/redis/4.0/redis.conf</span><br><span class="line">docker run -p 6379:6379 --network spring-net -v /etc/redis/redis.conf:/etc/redis/redis.conf -v /opt/docker/redis:/data  --name redis -d redis redis-server /etc/redis/redis.conf --appendonly yes</span><br><span class="line"></span><br><span class="line">//redis-server --appendonly yes : 在容器执行 redis-server 启动命令，并打开 redis 持久化配置</span><br><span class="line"></span><br><span class="line">//mysql</span><br><span class="line">docker run -d -p 3306:3306 --name mysql --network spring-net -v /etc/mysql/my.cnf:/etc/my.cnf -v /var/<span class="built_in">log</span>/mysql:/var/<span class="built_in">log</span>/mysql -v /var/lib/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=ZXWL@1702b mysql:5.7.26</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
-<li><h2 id="防火墙开启端口"><a href="#防火墙开启端口" class="headerlink" title="防火墙开启端口"></a>防火墙开启端口</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//查看已开放端口</span><br><span class="line">firewall-cmd --list-ports</span><br><span class="line">//添加端口 consul:8500 rabbitmq后台管理界面:15672</span><br><span class="line">firewall-cmd --zone=public --add-port=8500/tcp --permanent</span><br><span class="line">//修改配置文件后 使用命令重新加载</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">//重启防火墙</span><br><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
+<li><h2 id="安装 nginx"><a href="# 安装 nginx" class="headerlink" title="安装 nginx"></a>安装 nginx</h2><p> 可以参考 <a href="/docker-nginx/" title="Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替">Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替</a></p>
 </li>
-<li><h2 id="Docker参数-命令"><a href="#Docker参数-命令" class="headerlink" title="Docker参数/命令"></a>Docker参数/命令</h2></li>
+<li><h2 id="部署微服务"><a href="# 部署微服务" class="headerlink" title="部署微服务"></a>部署微服务</h2><ol>
+<li><h3 id="配置服务器 docker 可以远程访问"><a href="# 配置服务器 docker 可以远程访问" class="headerlink" title="配置服务器 docker 可以远程访问"></a>配置服务器 docker 可以远程访问</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 在 /usr/lib/systemd/system/docker.service 中添加参数</span><br><span class="line">[Service]</span><br><span class="line">ExecStart=</span><br><span class="line">ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock</span><br><span class="line"></span><br><span class="line">// 重新读取配置文件、重启服务</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="pom 配置"><a href="#pom 配置" class="headerlink" title="pom 配置"></a>pom 配置</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>ace-gateway<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">dockerHost</span>&gt;</span>http:// 你的服务器地址:2375<span class="tag">&lt;/<span class="name">dockerHost</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>src/main/docker<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="application 配置"><a href="#application 配置" class="headerlink" title="application 配置"></a>application 配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis:</span><br><span class="line">    host: <span class="variable">$&#123;REDIS_HOST:localhost&#125;</span></span><br><span class="line">rabbitmq:</span><br><span class="line">    host: <span class="variable">$&#123;RABBIT_MQ_HOST:localhost&#125;</span></span><br><span class="line">consul:</span><br><span class="line">    host: <span class="variable">$&#123;CONSUL_HOST:localhost&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="Dockerfile 配置"><a href="#Dockerfile 配置" class="headerlink" title="Dockerfile 配置"></a>Dockerfile 配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FROM anapsix/alpine-java:8_server-jre_unlimited</span><br><span class="line">VOLUME /tmp</span><br><span class="line">ADD ace-gateway.jar app.jar</span><br><span class="line">ENV REDIS_HOST=redis</span><br><span class="line">ENV RABBIT_MQ_HOST=rabbitmq</span><br><span class="line">ENV CONSUL_HOST=consul</span><br><span class="line">RUN bash -c <span class="string">'touch /app.jar'</span> \</span><br><span class="line">    &amp;&amp; ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; <span class="built_in">echo</span> <span class="string">'Asia/Shanghai'</span> &gt;/etc/timezone</span><br><span class="line">ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-Djava.security.egd=file:/dev/./urandom"</span>,<span class="string">"-Dfile.encoding=utf-8"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="运行服务"><a href="# 运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8765:8765 --network spring-net --name geteway iot-gateway</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><h2 id="防火墙开启端口"><a href="# 防火墙开启端口" class="headerlink" title="防火墙开启端口"></a>防火墙开启端口</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 查看已开放端口</span><br><span class="line">firewall-cmd --list-ports</span><br><span class="line">// 添加端口 consul:8500 rabbitmq 后台管理界面:15672</span><br><span class="line">firewall-cmd --zone=public --add-port=8500/tcp --permanent</span><br><span class="line">// 修改配置文件后 使用命令重新加载</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">// 重启防火墙</span><br><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
+</li>
+<li><h2 id="Docker 参数 - 命令"><a href="#Docker 参数 - 命令" class="headerlink" title="Docker 参数 / 命令"></a>Docker 参数 / 命令</h2></li>
 </ol><a id="more"></a>
 <table>
 <thead>
@@ -442,15 +442,15 @@
 </thead>
 <tbody><tr>
 <td>-d, –detach=false</td>
-<td>指定容器运行于前台还是后台，默认为false</td>
+<td>指定容器运行于前台还是后台，默认为 false</td>
 </tr>
 <tr>
 <td>-i, –interactive=false</td>
-<td>打开STDIN，用于控制台交互</td>
+<td>打开 STDIN，用于控制台交互</td>
 </tr>
 <tr>
 <td>-t, –tty=false</td>
-<td>分配tty设备，该可以支持终端登录，默认为false</td>
+<td>分配 tty 设备，该可以支持终端登录，默认为 false</td>
 </tr>
 <tr>
 <td>-u, –user=””</td>
@@ -458,7 +458,7 @@
 </tr>
 <tr>
 <td>-a, –attach=[]</td>
-<td>登录容器（必须是以docker run -d启动的容器）</td>
+<td>登录容器（必须是以 docker run -d 启动的容器）</td>
 </tr>
 <tr>
 <td>-w, –workdir=””</td>
@@ -466,7 +466,7 @@
 </tr>
 <tr>
 <td>-c, –cpu-shares=0</td>
-<td>设置容器CPU权重，在CPU共享场景使用</td>
+<td>设置容器 CPU 权重，在 CPU 共享场景使用</td>
 </tr>
 <tr>
 <td>-e, –env=[]</td>
@@ -474,11 +474,11 @@
 </tr>
 <tr>
 <td>-m, –memory=”300M”</td>
-<td>设置容器内存上限300M(只设置-m不设置–memory-swap，则–memory-swap为-m两倍)</td>
+<td>设置容器内存上限 300M(只设置 -m 不设置–memory-swap，则–memory-swap 为 -m 两倍)</td>
 </tr>
 <tr>
 <td>–memory-swap=1</td>
-<td>要和-m连用，设置内存+swap的使用限额。，值为-1表示不受限</td>
+<td>要和 -m 连用，设置内存 +swap 的使用限额。，值为 -1 表示不受限</td>
 </tr>
 <tr>
 <td>-P, –publish-all=false</td>
@@ -510,11 +510,11 @@
 </tr>
 <tr>
 <td>–cidfile=””</td>
-<td>运行容器后，在指定文件中写入容器PID值，一种典型的监控系统用法</td>
+<td>运行容器后，在指定文件中写入容器 PID 值，一种典型的监控系统用法</td>
 </tr>
 <tr>
 <td>–cpuset=””</td>
-<td>设置容器可以使用哪些CPU，此参数可以用来容器独占CPU</td>
+<td>设置容器可以使用哪些 CPU，此参数可以用来容器独占 CPU</td>
 </tr>
 <tr>
 <td>–device=[]</td>
@@ -522,15 +522,15 @@
 </tr>
 <tr>
 <td>–dns=[]</td>
-<td>指定容器的dns服务器</td>
+<td>指定容器的 dns 服务器</td>
 </tr>
 <tr>
 <td>–dns-search=[]</td>
-<td>指定容器的dns搜索域名，写入到容器的/etc/resolv.conf文件</td>
+<td>指定容器的 dns 搜索域名，写入到容器的 /etc/resolv.conf 文件</td>
 </tr>
 <tr>
 <td>–entrypoint=””</td>
-<td>覆盖image的入口点</td>
+<td>覆盖 image 的入口点</td>
 </tr>
 <tr>
 <td>–env-file=[]</td>
@@ -542,23 +542,23 @@
 </tr>
 <tr>
 <td>–link=[]</td>
-<td>指定容器间的关联，使用其他容器的IP、env等信息</td>
+<td>指定容器间的关联，使用其他容器的 IP、env 等信息</td>
 </tr>
 <tr>
 <td>–lxc-conf=[]</td>
-<td>指定容器的配置文件，只有在指定–exec-driver=lxc时使用</td>
+<td>指定容器的配置文件，只有在指定–exec-driver=lxc 时使用</td>
 </tr>
 <tr>
 <td>–name=””</td>
-<td>指定容器名字，后续可以通过名字进行容器管理，links特性需要使用名字</td>
+<td>指定容器名字，后续可以通过名字进行容器管理，links 特性需要使用名字</td>
 </tr>
 <tr>
 <td>–net=”bridge”</td>
-<td>容器网络设置<br>bridge 使用docker daemon指定的网桥<br> host //容器使用主机的网络<br> container:NAME_or_ID &gt;//使用其他容器的网路，共享IP和PORT等网络资源<br> none 容器使用自己的网络（类似–net=bridge），但是不进行配置</td>
+<td>容器网络设置<br>bridge 使用 docker daemon 指定的网桥<br> host // 容器使用主机的网络<br> container:NAME_or_ID &gt;// 使用其他容器的网路，共享 IP 和 PORT 等网络资源<br> none 容器使用自己的网络（类似–net=bridge），但是不进行配置</td>
 </tr>
 <tr>
 <td>–privileged=false</td>
-<td>指定容器是否为特权容器，特权容器拥有所有的capabilities</td>
+<td>指定容器是否为特权容器，特权容器拥有所有的 capabilities</td>
 </tr>
 <tr>
 <td>–restart=”no”</td>
@@ -566,15 +566,15 @@
 </tr>
 <tr>
 <td>–rm=false</td>
-<td>指定容器停止后自动删除容器(不支持以docker run -d启动的容器)</td>
+<td>指定容器停止后自动删除容器(不支持以 docker run -d 启动的容器)</td>
 </tr>
 <tr>
 <td>–sig-proxy=true</td>
-<td>设置由代理接受并处理信号，但是SIGCHLD、SIGSTOP和SIGKILL不能被代理</td>
+<td>设置由代理接受并处理信号，但是 SIGCHLD、SIGSTOP 和 SIGKILL 不能被代理</td>
 </tr>
 <tr>
 <td>–log-opt max-size=10m –log-opt max-file=1</td>
-<td>限制生成的json.log单个文件大小和保留文件个数<br>或者配置 Dockerd 的配置：编辑/etc/docker/daemon.json<br>添加{ “log-opts”: {“max-size”:”10m”, “max-file”:”3”} }<br>加载配置文件:systemctl daemon-reload重启:systemctl restart docker</td>
+<td>限制生成的 json.log 单个文件大小和保留文件个数 <br> 或者配置 Dockerd 的配置：编辑 /etc/docker/daemon.json<br>添加 {“log-opts”: {“max-size”:”10m”, “max-file”:”3”} }<br> 加载配置文件:systemctl daemon-reload 重启:systemctl restart docker</td>
 </tr>
 </tbody></table>
 <table>
@@ -594,7 +594,7 @@
 </tr>
 <tr>
 <td>docker cp</td>
-<td>在容器和本地文件系统之间复制文件/文件夹</td>
+<td>在容器和本地文件系统之间复制文件 / 文件夹</td>
 </tr>
 <tr>
 <td>docker create</td>
@@ -610,7 +610,7 @@
 </tr>
 <tr>
 <td>docker export</td>
-<td>将容器的文件系统导出为tar存档</td>
+<td>将容器的文件系统导出为 tar 存档</td>
 </tr>
 <tr>
 <td>docker inspect</td>
@@ -650,7 +650,7 @@
 </tr>
 <tr>
 <td>docker rm</td>
-<td>删除(移除)一个或多个容器<br>-v ：同时移除数据卷</td>
+<td>删除 (移除) 一个或多个容器<br>-v ：同时移除数据卷</td>
 </tr>
 <tr>
 <td>docker run</td>
@@ -682,7 +682,7 @@
 </tr>
 <tr>
 <td>docker image prune</td>
-<td>清除REPOSITORY和TAG为<none>的镜像</none></td>
+<td>清除 REPOSITORY 和 TAG 为 <none> 的镜像</none></td>
 </tr>
 <tr>
 <td>docker volume prune</td>
@@ -776,7 +776,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker的安装"><span class="nav-number">1.</span> <span class="nav-text">Docker的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载旧版本"><span class="nav-number">1.1.</span> <span class="nav-text">卸载旧版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用yum安装"><span class="nav-number">1.2.</span> <span class="nav-text">使用yum安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置开机自启和自动服务"><span class="nav-number">1.3.</span> <span class="nav-text">设置开机自启和自动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立docker用户组"><span class="nav-number">1.4.</span> <span class="nav-text">建立docker用户组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装consul、redis、rabbitmq、mysql"><span class="nav-number">2.</span> <span class="nav-text">安装consul、redis、rabbitmq、mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建docker网络"><span class="nav-number">2.1.</span> <span class="nav-text">新建docker网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取镜像"><span class="nav-number">2.2.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像"><span class="nav-number">2.3.</span> <span class="nav-text">运行镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装nginx"><span class="nav-number">3.</span> <span class="nav-text">安装nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署微服务"><span class="nav-number">4.</span> <span class="nav-text">部署微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置服务器docker可以远程访问"><span class="nav-number">4.1.</span> <span class="nav-text">配置服务器docker可以远程访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pom配置"><span class="nav-number">4.2.</span> <span class="nav-text">pom配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application配置"><span class="nav-number">4.3.</span> <span class="nav-text">application配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile配置"><span class="nav-number">4.4.</span> <span class="nav-text">Dockerfile配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行服务"><span class="nav-number">4.5.</span> <span class="nav-text">运行服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防火墙开启端口"><span class="nav-number">5.</span> <span class="nav-text">防火墙开启端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker参数-命令"><span class="nav-number">6.</span> <span class="nav-text">Docker参数/命令</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker 的安装"><span class="nav-number">1.</span> <span class="nav-text">Docker 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载旧版本"><span class="nav-number">1.1.</span> <span class="nav-text">卸载旧版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用 yum 安装"><span class="nav-number">1.2.</span> <span class="nav-text">使用 yum 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置开机自启和自动服务"><span class="nav-number">1.3.</span> <span class="nav-text">设置开机自启和自动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立 docker 用户组"><span class="nav-number">1.4.</span> <span class="nav-text">建立 docker 用户组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 consul、redis、rabbitmq、mysql"><span class="nav-number">2.</span> <span class="nav-text">安装 consul、redis、rabbitmq、mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建 docker 网络"><span class="nav-number">2.1.</span> <span class="nav-text">新建 docker 网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取镜像"><span class="nav-number">2.2.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像"><span class="nav-number">2.3.</span> <span class="nav-text">运行镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 nginx"><span class="nav-number">3.</span> <span class="nav-text">安装 nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署微服务"><span class="nav-number">4.</span> <span class="nav-text">部署微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置服务器 docker 可以远程访问"><span class="nav-number">4.1.</span> <span class="nav-text">配置服务器 docker 可以远程访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pom 配置"><span class="nav-number">4.2.</span> <span class="nav-text">pom 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application 配置"><span class="nav-number">4.3.</span> <span class="nav-text">application 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile 配置"><span class="nav-number">4.4.</span> <span class="nav-text">Dockerfile 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行服务"><span class="nav-number">4.5.</span> <span class="nav-text">运行服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防火墙开启端口"><span class="nav-number">5.</span> <span class="nav-text">防火墙开启端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker 参数 - 命令"><span class="nav-number">6.</span> <span class="nav-text">Docker 参数 / 命令</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -811,6 +811,8 @@
         
           
         
+          
+        
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span>
         </a>
@@ -825,6 +827,8 @@
           
         
         
+        
+          
         
           
         
