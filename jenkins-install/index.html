@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="使用Docker运行Jenkins,结合Gogs完成Java和Vue项目的自动化部署">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-05T09:02:58.394Z">
+<meta property="og:updated_time" content="2019-10-11T09:31:15.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins + Gogs 自动化部署">
 <meta name="twitter:description" content="使用Docker运行Jenkins,结合Gogs完成Java和Vue项目的自动化部署">
@@ -319,7 +319,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-05 17:02:58" itemprop="dateModified" datetime="2019-10-05T17:02:58+08:00">2019-10-05</time>
+                <time title="修改时间：2019-10-11 17:31:15" itemprop="dateModified" datetime="2019-10-11T17:31:15+08:00">2019-10-11</time>
               </span>
             
           
@@ -455,10 +455,10 @@ docker rm 容器名;docker run ******</code>。</p>
 </ul>
 </li>
 <li><p>构建 <br> 添加<code> 执行 shell</code>，命令中输入</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass</span><br><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br><span class="line">npm run build</span><br><span class="line">tar -zcf dist.tar.gz *</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass</span><br><span class="line">npm install --registry=https://registry.npm.taobao.org</span><br><span class="line">npm run build</span><br><span class="line"><span class="built_in">cd</span> dist</span><br><span class="line">tar -zcf ../dist.tar.gz *</span><br></pre></td></tr></table></figure>
 
 <p> 添加 <code>Send files or execute commands over SSH</code>，<code>Name</code> 处选择 1.2.2 配置中配置好的 ssh，<code>Source files</code>处输入 <code>dist.tar.gz</code>，<code>Remote directory</code> 处输入上传的目录，如果 1.2.2 中有配置 <code>Remote Directory</code> 则会在此目录下。<code>Exec command</code>处输入</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf /**/dist.tar.gz</span><br><span class="line">rm -rf /**/dist.tar.gz</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /**/dist/*</span><br><span class="line">tar -zxf /**/dist.tar.gz -C /**/dist</span><br><span class="line">rm -rf /**/dist.tar.gz</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
