@@ -7,5 +7,6 @@
 {"title":"[转]Mybatis 拦截器之数据加密解密","url":"/mybatis-interceptor/"},
 {"title":"MySQL 主从同步","url":"/mysql-master-slave-sync/"},
 {"title":"MySQL 注意事项","url":"/mysql-precautions/"},
+{"title":"SpringBoot 字符串参数去除头尾空格","url":"/spring-boot-string-parameter-trim/"},
 {"title":"[转]Spring Cloud Gateway 全局异常处理","url":"/spring-cloud-gateway-exception-handler/"},
 ]
