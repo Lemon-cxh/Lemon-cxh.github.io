@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="Docker 的安装、参数、命令以及部署微服务">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-04T01:47:39.844Z">
+<meta property="og:updated_time" content="2020-03-23T06:07:30.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令">
 <meta name="twitter:description" content="Docker 的安装、参数、命令以及部署微服务">
@@ -285,7 +285,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="三月柳絮四月雨">
-      <meta itemprop="description" content="不妨不妨，来日方长">
+      <meta itemprop="description" content="人生初见，春和景明">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -320,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-04 09:47:39" itemprop="dateModified" datetime="2019-12-04T09:47:39+08:00">2019-12-04</time>
+                <time title="修改时间：2020-03-23 14:07:30" itemprop="dateModified" datetime="2020-03-23T14:07:30+08:00">2020-03-23</time>
               </span>
             
           
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>6.4k</span>
+              <span>6.7k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -414,7 +414,42 @@
 </li>
 <li><h3 id="获取镜像"><a href="# 获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull consul</span><br><span class="line">docker pull redis</span><br><span class="line">docker pull rabbitmq:management</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="运行镜像"><a href="# 运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//consul</span><br><span class="line">docker run -d -p 8500:8500 --name consul --network spring-net consul agent -server -bootstrap-expect=1 -client 0.0.0.0 -ui</span><br><span class="line"></span><br><span class="line">//-bootstrap-expect: 指定期望的 server 节点的数量，并当 server 节点可用的时候，自动进行 bootstrapping</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//rabbitmq</span><br><span class="line">docker run -d --name rabbitmq --network spring-net -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672  rabbitmq:management</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//redis  需要先配置好 /etc/redis.conf</span><br><span class="line">//https://raw.githubusercontent.com/antirez/redis/4.0/redis.conf</span><br><span class="line">docker run -p 6379:6379 --network spring-net -v /etc/redis/redis.conf:/etc/redis/redis.conf -v /opt/docker/redis:/data  --name redis -d redis redis-server /etc/redis/redis.conf --appendonly yes</span><br><span class="line"></span><br><span class="line">//redis-server --appendonly yes : 在容器执行 redis-server 启动命令，并打开 redis 持久化配置</span><br><span class="line"></span><br><span class="line">//mysql</span><br><span class="line">docker run -d -p 3306:3306 --name mysql --network spring-net -v /etc/mysql/my.cnf:/etc/my.cnf -v /var/<span class="built_in">log</span>/mysql:/var/<span class="built_in">log</span>/mysql -v /var/lib/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=ZXWL@1702b mysql:5.7.26</span><br></pre></td></tr></table></figure>
+<li><h3 id="运行镜像"><a href="# 运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><ol>
+<li><p>Consul</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8500:8500 --name consul --network spring-net consul agent -server -bootstrap-expect=1 -client 0.0.0.0 -ui</span><br></pre></td></tr></table></figure>
+
+<p> <code>-bootstrap-expect</code>: 指定期望的 server 节点的数量，并当 server 节点可用的时候，自动进行 bootstrapping</p>
+</li>
+<li><p>RabbitMQ</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name rabbitmq --network spring-net -e RABBITMQ_DEFAULT_USER=username -e RABBITMQ_DEFAULT_PASS=password -p 15672:15672 -p 5672:5672  rabbitmq:management</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Redis</p>
+<p> 需要先配置好 /etc/redis.conf, 可下载 <a href="http://download.redis.io/redis-stable/redis.conf" target="_blank" rel="noopener"> 官方配置</a>。</p>
+<p> 密码配置:<code>requirepass password</code></p>
+<p> 远程访问注释 <code>bind 127.0.0.1</code> 即可</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --network spring-net -v /etc/redis/redis.conf:/etc/redis/redis.conf -v /opt/docker/redis:/data  --name redis -d redis redis-server /etc/redis/redis.conf --appendonly yes</span><br></pre></td></tr></table></figure>
+
+<p> <code>redis-server --appendonly yes</code>: 在容器执行 redis-server 启动命令，并打开 redis 持久化配置</p>
+</li>
+<li><p>MySQL</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3306:3306 --name mysql --network spring-net -v /etc/mysql/my.cnf:/etc/my.cnf -v /var/<span class="built_in">log</span>/mysql:/var/<span class="built_in">log</span>/mysql -v /var/lib/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password mysql:5.7.26</span><br></pre></td></tr></table></figure>
+
+<p> 进入 MySQL 容器</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql bash</span><br></pre></td></tr></table></figure>
+
+<p> 登录 MySQL</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p> 创建远程连接账号</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER <span class="string">'username'</span>@<span class="string">'%'</span> IDENTIFIED BY <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
+
+<p> 授予权限：privileges 为 ALL，则授予所有权限，可参考 <a href="https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html" target="_blank" rel="noopener"> 官方文档</a></p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT privileges  ON databasename.* TO <span class="string">'username'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
+
+<p> 刷新授权</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 </li>
 </ol>
 </li>
@@ -429,7 +464,7 @@
 </li>
 <li><h3 id="Dockerfile 配置"><a href="#Dockerfile 配置" class="headerlink" title="Dockerfile 配置"></a>Dockerfile 配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FROM anapsix/alpine-java:8_server-jre_unlimited</span><br><span class="line">VOLUME /tmp</span><br><span class="line">ADD ace-gateway.jar app.jar</span><br><span class="line">ENV REDIS_HOST=redis</span><br><span class="line">ENV RABBIT_MQ_HOST=rabbitmq</span><br><span class="line">ENV CONSUL_HOST=consul</span><br><span class="line">RUN bash -c <span class="string">'touch /app.jar'</span> \</span><br><span class="line">    &amp;&amp; ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span><br><span class="line">    &amp;&amp; <span class="built_in">echo</span> <span class="string">'Asia/Shanghai'</span> &gt;/etc/timezone</span><br><span class="line">ENTRYPOINT [<span class="string">"java"</span>,<span class="string">"-Djava.security.egd=file:/dev/./urandom"</span>,<span class="string">"-Dfile.encoding=utf-8"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>]</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="运行服务"><a href="# 运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8765:8765 --network spring-net --name geteway iot-gateway</span><br></pre></td></tr></table></figure>
+<li><h3 id="运行服务"><a href="# 运行服务" class="headerlink" title="运行服务"></a>运行服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name geteway -p 8765:8765 --network spring-net -v /var/<span class="built_in">log</span>/gateway:/var/<span class="built_in">log</span>/gateway iot-gateway</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -795,14 +830,14 @@
       src="/images/avatar.jpg"
       alt="三月柳絮四月雨">
   <p class="site-author-name" itemprop="name">三月柳絮四月雨</p>
-  <div class="site-description" itemprop="description">不妨不妨，来日方长</div>
+  <div class="site-description" itemprop="description">人生初见，春和景明</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -833,7 +868,9 @@
         
           
         
-        <span class="site-state-item-count">7</span>
+          
+        
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -868,7 +905,9 @@
         
           
         
-        <span class="site-state-item-count">9</span>
+          
+        
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -900,18 +939,6 @@
   </div>
 
 
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
-      友情链接
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="http://www.yinwang.org" title="http://www.yinwang.org" rel="noopener" target="_blank">yinwang</a>
-        </li>
-      
-    </ul>
-  </div>
 
       </div>
 
