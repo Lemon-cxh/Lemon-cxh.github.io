@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>事务配置 @Transactional</title>
+      <link href="/transactional/"/>
+      <url>/transactional/</url>
+      
+        <content type="html"><![CDATA[<ol><li><p>@Transactional 的配置 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public @interface Transactional &#123;</span><br><span class="line">    // 通过 bean name 指定事务管理器 </span><br><span class="line">    @AliasFor(&quot;transactionManager&quot;)</span><br><span class="line">    String value() default &quot;&quot;;</span><br><span class="line"></span><br><span class="line">    // 同 value 属性 </span><br><span class="line">    @AliasFor(&quot;value&quot;)</span><br><span class="line">    String transactionManager() default &quot;&quot;;</span><br><span class="line"></span><br><span class="line">    // 指定传播行为 </span><br><span class="line">    Propagation propagation() default Propagation.REQUIRED;</span><br><span class="line"></span><br><span class="line">    // 指定隔离级别 </span><br><span class="line">    Isolation isolation() default Isolation.DEFAULT;</span><br><span class="line"></span><br><span class="line">    // 指定超时时间 (单位秒)</span><br><span class="line">    int timeout() default -1;</span><br><span class="line"></span><br><span class="line">    // 是否只读事务 </span><br><span class="line">    boolean readOnly() default false;</span><br><span class="line"></span><br><span class="line">    // 方法在发生指定异常时回滚，默认是所有异常都回滚 </span><br><span class="line">    Class&lt;? extends Throwable&gt;[] rollbackFor() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    // 方法在发生指定异常名称时回滚，默认是所有异常都回滚 </span><br><span class="line">    String[] rollbackForClassName() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    // 方法在发生指定异常时不回滚，默认是所有异常都回滚 </span><br><span class="line">    Class&lt;? extends Throwable&gt;[] noRollbackFor() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    // 方法在发生指定异常名称时不回滚，默认是所有异常都回滚 </span><br><span class="line">    String[] noRollbackForClassName() default &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol><a id="more"></a><ol start="2"><li><p>Isolation 隔离级别 </p><ul><li><code>DEFAULT</code>——数据库默认隔离级别，MySQL 是可重复读，Oracle 是已提交读 </li><li><code>READ_UNCOMMITTED</code>——未提交读：事务读取其他事务未提交的数据 </li><li><code>READ_COMMITTED</code>——已提交读：事务读取最新的其他事务已提交的数据 </li><li><code>REPEATABLE_READ</code>——可重复读：事务读取该事务开始的时间点的其他事务已提交的数据 </li><li><code>SERIALIZABLE</code>——可序列化：所有事务只能一个接一个串行执行，不能并发 </li></ul><hr><p> 可能发生的问题：</p><ul><li><p><code> 脏读 </code>——事务 T1 读取了已被事务 T2 更新但还没有提交的数据，若 T2 回滚，T1 读取到的就是无效内容 </p></li><li><p><code> 不可重复读 </code>——事务 T1 读取一个数据两次，在第一次和第二次之间，T2 更新了该数据，导致 T1 第二次读取到的数据不同 </p></li><li><p><code> 幻读 </code>——事务 T1 读取若干行数据两次，在第一次和第二次之间，T2 新增或删除该数据集，导致 T1 第二次读取到的数据条数不同 </p><blockquote><p> 幻读与不可重复读之间的区别是幻读强调的是新增或删除，而不可重复读强调的是修改。</p></blockquote></li></ul><hr><table><thead><tr><th align="center"> 类型 </th><th align="center"> 脏读 </th><th align="center"> 不可重复读 </th><th align="center"> 幻读 </th></tr></thead><tbody><tr><td align="center"> 未提交读 </td><td align="center">√</td><td align="center">√</td><td align="center">√</td></tr><tr><td align="center"> 已提交读 </td><td align="center">×</td><td align="center">√</td><td align="center">√</td></tr><tr><td align="center"> 可重复读 </td><td align="center">×</td><td align="center">×</td><td align="center">√</td></tr><tr><td align="center"> 可序列化 </td><td align="center">×</td><td align="center">×</td><td align="center">×</td></tr></tbody></table></li><li><p>Propagation 传播行为 </p><ul><li><strong><em><code>REQUIRED</code></em></strong>——默认传播行为，需要事务，如果当前存在事务，就沿用当前事务，否则新建一个事务运行子方法 </li><li><code>SUPPORTS</code>——支持事务，如果当前存在事务，就沿用当前事务，如果不存在，则继续采用无事务的方式运行子方法 </li><li><code>MANDATORY</code>——必须使用事务，如果当前没有事务，则会抛出异常，如果存在当前事务 就沿用当前事务 </li><li><strong><em><code>REQUIRES_NEW</code></em></strong>——无论当前事务是否存在，都会创建新事务运行方法 </li><li><code>NOT_SUPPORTED</code>——不支持事务，当前存在事务时，将挂起事务，运行方法 </li><li><code>NEVER</code>——不支持事务，如果当前方法存在事务，则抛出异常，否则继续使用无事务机制运行 </li><li><strong><em><code>NESTED</code></em></strong>——在当前方法调用子方法时，如果子方法发生异常，只因滚子方法执行过的 SQL，而不回滚当前方法的事务 </li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> SpringBoot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBoot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>常用软件工具</title>
       <link href="/tool/"/>
       <url>/tool/</url>
