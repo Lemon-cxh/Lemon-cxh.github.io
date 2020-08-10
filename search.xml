@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Spring Cloud 版本升级为 Greenwich，Feign 遇到的问题</title>
+      <link href="/feign/"/>
+      <url>/feign/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Feign 来调用 Get 请求, 参数为 POJO 类时需要添加 <code>@SpringQueryMap</code> 注解，因此 Spring Cloud 版本从 Finchley 升级到 Greenwich</p></blockquote><ol><li><h3 id="服务启动失败，报错已经定义了具有该名称的 Bean"><a href="# 服务启动失败，报错已经定义了具有该名称的 Bean" class="headerlink" title="服务启动失败，报错已经定义了具有该名称的 Bean"></a>服务启动失败，报错已经定义了具有该名称的 Bean</h3><h4 id="错误信息如下"><a href="# 错误信息如下" class="headerlink" title="错误信息如下"></a>错误信息如下</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The bean &apos;FeignClientSpecification&apos; could not be registered. A bean with that name has already been defined and overriding is disabled.</span><br></pre></td></tr></table></figure><h4 id="解决办法"><a href="# 解决办法" class="headerlink" title="解决办法"></a>解决办法 </h4><p> 在<code>@FeignClient</code> 注解上添加 <code>contextId</code> 属性，配置了 contextId 就会用 contextId，如果没有配置就会去 value 然后是 name 最后是 serviceId。默认都没有配置，当出现一个服务有多个 Feign Client 的时候就会报错了</p><h4 id="参考"><a href="# 参考" class="headerlink" title="参考"></a>参考</h4><ul><li><a href="https://juejin.im/post/5e13e8116fb9a0481e2796a3#heading-5" target="_blank" rel="noopener">那天晚上和 @FeignClient 注解的深度交流</a></li></ul></li><li><h3 id="没有 POJO 类的父类的属性"><a href="# 没有 POJO 类的父类的属性" class="headerlink" title="没有 POJO 类的父类的属性"></a>没有 POJO 类的父类的属性 </h3><h4 id="解决办法 -1"><a href="# 解决办法 -1" class="headerlink" title="解决办法"></a> 解决办法</h4><p> 添加如下配置</p> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> Feign.<span class="function">Builder <span class="title">feignBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Feign.builder()</span><br><span class="line">            .queryMapEncoder(<span class="keyword">new</span> BeanQueryMapEncoder())</span><br><span class="line">            .retryer(Retryer.NEVER_RETRY);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="参考 -1"><a href="# 参考 -1" class="headerlink" title="参考"></a>参考</h4><ul><li><a href="https://blog.csdn.net/li295214001/article/details/90410945" target="_blank" rel="noopener">Feign 发送 get 请求使用对象传参问题，@SpringQueryMap 解析传参对象父类属性解决方案</a></li></ul></li><li><h3 id="开发时查看 Feign 请求日志"><a href="# 开发时查看 Feign 请求日志" class="headerlink" title="开发时查看 Feign 请求日志"></a>开发时查看 Feign 请求日志</h3><p> application 配置文件</p> <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">logging:</span></span><br><span class="line"><span class="attr">    level:</span></span><br><span class="line"><span class="attr">        root:</span> <span class="string">DEBUG</span></span><br><span class="line"><span class="attr">feign:</span></span><br><span class="line"><span class="attr">    client:</span></span><br><span class="line"><span class="attr">        config:</span></span><br><span class="line"><span class="attr">            default:</span></span><br><span class="line"><span class="attr">                loggerLevel:</span> <span class="string">basic</span></span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Spring Cloud Feign </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux 常用命令</title>
       <link href="/linux-common-commands/"/>
       <url>/linux-common-commands/</url>
@@ -33,7 +52,7 @@
       <link href="/problems-encountered/"/>
       <url>/problems-encountered/</url>
       
-        <content type="html"><![CDATA[<ol><li><h5 id="Spring-Cloud-Gateway"><a href="#Spring-Cloud-Gateway" class="headerlink" title="Spring Cloud Gateway"></a>Spring Cloud Gateway</h5><ol><li><h6 id="Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”"><a href="#Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”" class="headerlink" title="Invalid character ‘[‘ for QUERY_PARAM in “match[]”"></a>Invalid character ‘[‘ for QUERY_PARAM in “match[]”</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: Invalid character &apos;[&apos; for QUERY_PARAM in &quot;match[]&quot;</span><br></pre></td></tr></table></figure><p> Spring Cloud Gateway 与 Webflux 的兼容性的问题，项目的 Gateway 版本 2.0.0.RELEASE，去除 <code>spring-boot-starter-webflux</code> 依赖解决可以升级 Gateway 版本。<a href="https://github.com/spring-cloud/spring-cloud-gateway/issues/462" target="_blank" rel="noopener">issues</a></p></li><li><h6 id="unexpected-message-type-DefaultHttpRequest"><a href="#unexpected-message-type-DefaultHttpRequest" class="headerlink" title="unexpected message type: DefaultHttpRequest"></a>unexpected message type: DefaultHttpRequest</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io.netty.handler.codec.EncoderException: java.lang.IllegalStateException: unexpected message type: DefaultHttpRequest</span><br></pre></td></tr></table></figure><p> Spring Cloud Gateway 以及 Spring Boot 版本 2.0.1.RELEASE 更新为 2.0.4.RELEASE。<a href="https://github.com/reactor/reactor-netty/issues/177" target="_blank" rel="noopener">issues</a></p></li></ol></li></ol>]]></content>
+        <content type="html"><![CDATA[<ol><li><h5 id="Spring-Cloud-Gateway"><a href="#Spring-Cloud-Gateway" class="headerlink" title="Spring Cloud Gateway"></a>Spring Cloud Gateway</h5><ol><li><h6 id="Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”"><a href="#Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”" class="headerlink" title="Invalid character ‘[‘ for QUERY_PARAM in “match[]”"></a>Invalid character ‘[‘ for QUERY_PARAM in “match[]”</h6> <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: Invalid character <span class="string">'['</span> <span class="keyword">for</span> QUERY_PARAM in <span class="string">"match[]"</span></span><br></pre></td></tr></table></figure><p> Spring Cloud Gateway 与 Webflux 的兼容性的问题，项目的 Gateway 版本 2.0.0.RELEASE，去除 <code>spring-boot-starter-webflux</code> 依赖解决可以升级 Gateway 版本。<a href="https://github.com/spring-cloud/spring-cloud-gateway/issues/462" target="_blank" rel="noopener">issues</a></p></li><li><h6 id="unexpected-message-type-DefaultHttpRequest"><a href="#unexpected-message-type-DefaultHttpRequest" class="headerlink" title="unexpected message type: DefaultHttpRequest"></a>unexpected message type: DefaultHttpRequest</h6> <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io.netty.handler.codec.EncoderException: java.lang.IllegalStateException: unexpected message <span class="built_in">type</span>: DefaultHttpRequest</span><br></pre></td></tr></table></figure><p> Spring Cloud Gateway 以及 Spring Boot 版本 2.0.1.RELEASE 更新为 2.0.4.RELEASE。<a href="https://github.com/reactor/reactor-netty/issues/177" target="_blank" rel="noopener">issues</a></p></li></ol></li></ol>]]></content>
       
       
       
@@ -166,9 +185,9 @@
       
         <tags>
             
-            <tag> Spring Cloud </tag>
-            
             <tag> Swagger </tag>
+            
+            <tag> Spring Cloud </tag>
             
         </tags>
       
