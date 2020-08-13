@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://Lemon-cxh.github.io/rabbitmq-delay-queued/</loc>
+    
+    <lastmod>2020-08-13T02:58:07.554Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://Lemon-cxh.github.io/nginx-config/</loc>
     
     <lastmod>2020-08-10T02:35:12.496Z</lastmod>

@@ -58,18 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="人生初见，春和景明">
-<meta name="keywords" content="博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="三月柳絮四月雨">
-<meta property="og:url" content="https://Lemon-cxh.github.io/tags/kaptcha/index.html">
+  <meta name="description" content="RabbitMQ的延迟队列实现">
+<meta name="keywords" content="RabbitMQ,Spring Boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ 延迟队列">
+<meta property="og:url" content="https://Lemon-cxh.github.io/rabbitmq-delay-queued/index.html">
 <meta property="og:site_name" content="三月柳絮四月雨">
-<meta property="og:description" content="人生初见，春和景明">
+<meta property="og:description" content="RabbitMQ的延迟队列实现">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-08-13T02:58:07.554Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三月柳絮四月雨">
-<meta name="twitter:description" content="人生初见，春和景明">
-  <link rel="canonical" href="https://Lemon-cxh.github.io/tags/kaptcha/">
+<meta name="twitter:title" content="RabbitMQ 延迟队列">
+<meta name="twitter:description" content="RabbitMQ的延迟队列实现">
+  <link rel="canonical" href="https://Lemon-cxh.github.io/rabbitmq-delay-queued/">
 
 
 <script id="page-configurations">
@@ -77,13 +78,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: kaptcha | 三月柳絮四月雨</title>
+  <title>RabbitMQ 延迟队列 | 三月柳絮四月雨</title>
   <meta name="generator" content="Hexo 3.9.0">
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146884962-1"></script>
@@ -236,27 +237,6 @@
 
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 </nav>
   <div class="site-search">
     <div class="popup search-popup">
@@ -295,64 +275,178 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block tag">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">kaptcha<small>标签</small>
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://Lemon-cxh.github.io/rabbitmq-delay-queued/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三月柳絮四月雨">
+      <meta itemprop="description" content="人生初见，春和景明">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三月柳絮四月雨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">RabbitMQ 延迟队列
+
+          
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-08-12 17:47:29" itemprop="dateCreated datePublished" datetime="2020-08-12T17:47:29+08:00">2020-08-12</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-13 10:58:07" itemprop="dateModified" datetime="2020-08-13T10:58:07+08:00">2020-08-13</time>
+              </span>
+            
+          
+
+          
+            <span id="/rabbitmq-delay-queued/" class="post-meta-item leancloud_visitors" data-flag-title="RabbitMQ 延迟队列" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/rabbitmq-delay-queued/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/rabbitmq-delay-queued/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>2.4k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>4 分钟</span>
+            </span>
+          
+            <div class="post-description">RabbitMQ的延迟队列实现</div>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+        <blockquote class="blockquote-center">
+          <p id="hitokoto"></p>
+        </blockquote>
+        <ul>
+<li><h4 id="1-RabbitMQ 配置"><a href="#1-RabbitMQ 配置" class="headerlink" title="1. RabbitMQ 配置"></a>1. RabbitMQ 配置 </h4>  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">rabbitmq:</span></span><br><span class="line"><span class="attr">    host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">    port:</span> <span class="number">5672</span></span><br><span class="line"><span class="attr">    username:</span> <span class="string">admin</span></span><br><span class="line"><span class="attr">    password:</span> <span class="string">admin</span></span><br><span class="line"><span class="attr">    listener:</span></span><br><span class="line"><span class="attr">    simple:</span></span><br><span class="line"><span class="attr">        prefetch:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        acknowledge-mode:</span> <span class="string">manual</span></span><br><span class="line"><span class="attr">    direct:</span></span><br><span class="line"><span class="attr">        prefetch:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">        acknowledge-mode:</span> <span class="string">manual</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="2- 延迟队列"><a href="#2- 延迟队列" class="headerlink" title="2. 延迟队列"></a>2. 延迟队列 </h4>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明死信 Exchange</span></span><br><span class="line"><span class="meta">@Bean</span>(RabbitConstant.DEAD_LETTER_EXCHANGE)</span><br><span class="line"><span class="function"><span class="keyword">public</span> DirectExchange <span class="title">deadLetterExchange</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (DirectExchange) ExchangeBuilder.directExchange(RabbitConstant.DEAD_LETTER_EXCHANGE).durable(<span class="keyword">true</span>).build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明延时队列 延时 5s</span></span><br><span class="line"><span class="meta">@Bean</span>(RabbitConstant.OPEN_SERVICE_EVENT_DEAD_LETTER_QUEUE)</span><br><span class="line"><span class="keyword">public</span> org.springframework.amqp.core.<span class="function">Queue <span class="title">deadLetterQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> QueueBuilder.durable(RabbitConstant.OPEN_SERVICE_EVENT_DEAD_LETTER_QUEUE)</span><br><span class="line">            .withArgument(<span class="string">"x-dead-letter-exchange"</span>, RabbitConstant.OPEN_SERVICE_EXCHANGE)</span><br><span class="line">            .withArgument(<span class="string">"x-dead-letter-routing-key"</span>, RabbitConstant.OPEN_SERVICE_EVENT_KEY)</span><br><span class="line">            .withArgument(<span class="string">"x-message-ttl"</span>, <span class="number">5000L</span>)</span><br><span class="line">            .build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明延时队列绑定关系 </span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Binding <span class="title">businessBindingA</span><span class="params">(@Qualifier(RabbitConstant.OPEN_SERVICE_EVENT_DEAD_LETTER_QUEUE)</span>Queue queue,</span></span><br><span class="line"><span class="function">                                @<span class="title">Qualifier</span><span class="params">(RabbitConstant.DEAD_LETTER_EXCHANGE)</span> DirectExchange directExchange)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> BindingBuilder.bind(queue).to(directExchange).with(RabbitConstant.OPEN_SERVICE_EVENT_KEY);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明死信队列 用于接收延时处理的消息 </span></span><br><span class="line"><span class="meta">@RabbitListener</span>(bindings = <span class="meta">@QueueBinding</span>(value = <span class="meta">@Queue</span>(RabbitConstant.OPEN_SERVICE_EVENT_QUEUE),</span><br><span class="line">    exchange = <span class="meta">@Exchange</span>(RabbitConstant.OPEN_SERVICE_EXCHANGE),</span><br><span class="line">    key = RabbitConstant.OPEN_SERVICE_EVENT_KEY))</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(Message message, Channel channel)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    MessageDTO&lt;Entity&gt; messageDTO = JSON.parseObject(message.getBody(),</span><br><span class="line">            <span class="keyword">new</span> TypeReference&lt;MessageDTO&lt;Entity&gt;&gt;() &#123;</span><br><span class="line">            &#125;.getType());</span><br><span class="line">    log.info(JSON.toJSONString(messageDTO));</span><br><span class="line">    channel.basicAck(message.getMessageProperties().getDeliveryTag(), <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="3- 发送延迟消息"><a href="#3- 发送延迟消息" class="headerlink" title="3. 发送延迟消息"></a>3. 发送延迟消息 </h4>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MessageDTO&lt;Entity&gt; messageDTO = MessageDTO.&lt;Entity&gt;builder()</span><br><span class="line">                .type(RabbitTypeConstant.OPEN_INSERT)</span><br><span class="line">                .data(data)</span><br><span class="line">                .build();</span><br><span class="line">rabbitTemplate.convertAndSend(RabbitConstant.DEAD_LETTER_EXCHANGE,</span><br><span class="line">                RabbitConstant.OPEN_SERVICE_EVENT_KEY,</span><br><span class="line">                MessageBuilder.withBody(JSON.toJSONBytes(messageDTO)).build());</span><br></pre></td></tr></table></figure></li>
+</ul>
 
-  
-  
+    </div>
 
-  
     
-    <div class="collection-year">
-      <h2 class="collection-header">2019</h2>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
+    
+    
         
-          <a class="post-title-link" href="/kaptcha/" itemprop="url">
-            <span itemprop="name">SpringBoot 使用 kaptcha 生成验证码</span>
-          </a>
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/RabbitMQ/" rel="tag"><i class="fa fa-tag"></i> RabbitMQ</a>
+            
+              <a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a>
+            
+          </div>
         
-      </h3>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-24T15:44:58+08:00"
-              content="2019-12-24">
-          12-24
-        </time>
-      </div>
+        
 
-    </header>
-  </article>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/feign/" rel="next" title="Spring Cloud 版本升级为 Greenwich，Feign 遇到的问题">
+                  <i class="fa fa-chevron-left"></i> Spring Cloud 版本升级为 Greenwich，Feign 遇到的问题
+                </a>
+              
+            </div>
 
+            <span class="post-nav-divider"></span>
 
-
-    </div>
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
           
+    
+    <div class="comments" id="comments"></div>
+  
 
         </div>
           
@@ -367,6 +461,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -379,6 +478,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-RabbitMQ 配置"><span class="nav-number">1.</span> <span class="nav-text">1. RabbitMQ 配置 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2- 延迟队列"><span class="nav-number">2.</span> <span class="nav-text">2. 延迟队列 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3- 发送延迟消息"><span class="nav-number">3.</span> <span class="nav-text">3. 发送延迟消息 </span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
