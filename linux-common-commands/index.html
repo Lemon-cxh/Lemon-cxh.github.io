@@ -58,18 +58,18 @@
   };
 </script>
 
-  <meta name="description" content="Linux的一些常用命令">
+  <meta name="description" content="运维时Linux，MySQL的一些常用命令">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux 常用命令">
+<meta property="og:title" content="运维常用命令">
 <meta property="og:url" content="https://Lemon-cxh.github.io/linux-common-commands/index.html">
 <meta property="og:site_name" content="三月柳絮四月雨">
-<meta property="og:description" content="Linux的一些常用命令">
+<meta property="og:description" content="运维时Linux，MySQL的一些常用命令">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-03T09:17:14.469Z">
+<meta property="og:updated_time" content="2020-08-24T02:36:00.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux 常用命令">
-<meta name="twitter:description" content="Linux的一些常用命令">
+<meta name="twitter:title" content="运维常用命令">
+<meta name="twitter:description" content="运维时Linux，MySQL的一些常用命令">
   <link rel="canonical" href="https://Lemon-cxh.github.io/linux-common-commands/">
 
 
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title>Linux 常用命令 | 三月柳絮四月雨</title>
+  <title>运维常用命令 | 三月柳絮四月雨</title>
   <meta name="generator" content="Hexo 3.9.0">
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146884962-1"></script>
@@ -293,7 +293,7 @@
       <meta itemprop="name" content="三月柳絮四月雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">Linux 常用命令
+        <h2 class="post-title" itemprop="name headline">运维常用命令
 
           
         </h2>
@@ -309,11 +309,19 @@
                 
               
 
-              <time title="创建时间：2020-06-03 15:54:31 / 修改时间：17:17:14" itemprop="dateCreated datePublished" datetime="2020-06-03T15:54:31+08:00">2020-06-03</time>
+              <time title="创建时间：2020-06-03 15:54:31" itemprop="dateCreated datePublished" datetime="2020-06-03T15:54:31+08:00">2020-06-03</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-24 10:36:00" itemprop="dateModified" datetime="2020-08-24T10:36:00+08:00">2020-08-24</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -331,7 +339,7 @@
           
 
           
-            <span id="/linux-common-commands/" class="post-meta-item leancloud_visitors" data-flag-title="Linux 常用命令" title="阅读次数">
+            <span id="/linux-common-commands/" class="post-meta-item leancloud_visitors" data-flag-title="运维常用命令" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -361,7 +369,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>368</span>
+              <span>559</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -374,7 +382,7 @@
               <span>1 分钟</span>
             </span>
           
-            <div class="post-description">Linux的一些常用命令</div>
+            <div class="post-description">运维时Linux，MySQL的一些常用命令</div>
           
 
         </div>
@@ -390,7 +398,7 @@
           <p id="hitokoto"></p>
         </blockquote>
         <ol>
-<li><h5 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h5><ul>
+<li><h4 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h4><ul>
 <li><p> 查看 </p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
 </li>
@@ -405,14 +413,26 @@
 </li>
 </ul>
 </li>
-<li><h5 id="system"><a href="#system" class="headerlink" title="system"></a>system</h5><ul>
+<li><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><ul>
 <li><p> 设置时区 </p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl <span class="built_in">set</span>-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
 </li>
 <li><p> 显示指定目录所占用空间大小 </p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -ah --max-depth=1 /var</span><br></pre></td></tr></table></figure>
 </li>
-<li></li>
+</ul>
+</li>
+<li><h4 id="运维"><a href="# 运维" class="headerlink" title="运维"></a> 运维 </h4><ul>
+<li><p> 查看网络系统状态信息 </p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 CLOSE_WAIT 的总数 </span></span><br><span class="line">netstat -antp|grep CLOSE_WAIT|wc -l</span><br><span class="line"><span class="comment"># 查看 CLOSE_WAIT 的信息 </span></span><br><span class="line">netstat -antp|grep CLOSE_WAIT</span><br></pre></td></tr></table></figure>
+</li>
+<li><p> 根据 PID 查询具体的应用程序 </p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ax|grep 20712</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ul>
+<li> 显示用户正在运行的线程  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show full processlist;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
@@ -505,7 +525,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#firewall"><span class="nav-number">1.</span> <span class="nav-text">firewall</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#system"><span class="nav-number">2.</span> <span class="nav-text">system</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#firewall"><span class="nav-number">1.</span> <span class="nav-text">firewall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#system"><span class="nav-number">2.</span> <span class="nav-text">system</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运维"><span class="nav-number">3.</span> <span class="nav-text"> 运维 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL"><span class="nav-number">4.</span> <span class="nav-text">MySQL</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
