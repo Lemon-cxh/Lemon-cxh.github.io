@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="运维时Linux，MySQL的一些常用命令">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-09T03:12:54.263Z">
+<meta property="og:updated_time" content="2020-09-27T07:19:02.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维常用命令">
 <meta name="twitter:description" content="运维时Linux，MySQL的一些常用命令">
@@ -320,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 11:12:54" itemprop="dateModified" datetime="2020-09-09T11:12:54+08:00">2020-09-09</time>
+                <time title="修改时间：2020-09-27 15:19:02" itemprop="dateModified" datetime="2020-09-27T15:19:02+08:00">2020-09-27</time>
               </span>
             
           
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>657</span>
+              <span>725</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -435,7 +435,12 @@
 </ul>
 </li>
 <li><h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><ul>
-<li> 显示用户正在运行的线程  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show full processlist;</span><br></pre></td></tr></table></figure></li>
+<li> 显示用户正在运行的线程  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show full processlist;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h4 id="Reids"><a href="#Reids" class="headerlink" title="Reids"></a>Reids</h4><ul>
+<li> 批量删除  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -a 密码 keys <span class="string">"KEY:*"</span> | xargs redis-cli -a 密码 del</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
@@ -528,7 +533,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#firewall"><span class="nav-number">1.</span> <span class="nav-text">firewall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#system"><span class="nav-number">2.</span> <span class="nav-text">system</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运维"><span class="nav-number">3.</span> <span class="nav-text"> 运维 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL"><span class="nav-number">4.</span> <span class="nav-text">MySQL</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#firewall"><span class="nav-number">1.</span> <span class="nav-text">firewall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#system"><span class="nav-number">2.</span> <span class="nav-text">system</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运维"><span class="nav-number">3.</span> <span class="nav-text"> 运维 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL"><span class="nav-number">4.</span> <span class="nav-text">MySQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reids"><span class="nav-number">5.</span> <span class="nav-text">Reids</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
