@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="开发过程中遇到的问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-11T07:22:09.014Z">
+<meta property="og:updated_time" content="2020-09-28T07:10:17.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="遇到的问题">
 <meta name="twitter:description" content="开发过程中遇到的问题">
@@ -320,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-11 15:22:09" itemprop="dateModified" datetime="2020-09-11T15:22:09+08:00">2020-09-11</time>
+                <time title="修改时间：2020-09-28 15:10:17" itemprop="dateModified" datetime="2020-09-28T15:10:17+08:00">2020-09-28</time>
               </span>
             
           
@@ -356,7 +356,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.7k</span>
+              <span>2.3k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -366,7 +366,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
           
             <div class="post-description">开发过程中遇到的问题</div>
@@ -394,6 +394,9 @@
 
 <p> Spring Cloud Gateway 以及 Spring Boot 版本 2.0.1.RELEASE 更新为 2.0.4.RELEASE。<a href="https://github.com/reactor/reactor-netty/issues/177" target="_blank" rel="noopener">issues</a></p>
 </li>
+</ol>
+</li>
+<li><h5 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h5><ol>
 <li><h6 id="upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream"><a href="#upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream" class="headerlink" title="upstream sent no valid HTTP/1.0 header while reading response header from upstream"></a>upstream sent no valid HTTP/1.0 header while reading response header from upstream</h6><p> Nginx 报错，然后设置了 Nginx 和业务服务配置</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">proxy_http_version 1.1;</span><br><span class="line">proxy_cache_bypass      $http_upgrade;</span><br><span class="line"></span><br><span class="line">proxy_set_header Upgrade                $http_upgrade;</span><br><span class="line">proxy_set_header Connection &quot;&quot;;</span><br><span class="line">proxy_set_header Host                   $host;</span><br><span class="line">proxy_set_header X-Real-IP              $remote_addr;</span><br><span class="line">proxy_set_header X-Forwarded-For        $proxy_add_x_forwarded_for;</span><br><span class="line">proxy_set_header X-Forwarded-Proto      $scheme;</span><br><span class="line">proxy_set_header X-Forwarded-Host       $host;</span><br><span class="line">proxy_set_header X-Forwarded-Port       $server_port;</span><br></pre></td></tr></table></figure>
 
@@ -404,11 +407,19 @@
 </ol>
 </li>
 </ol><a id="more"></a>
-<pre><code>然后依旧报错，此时把停止运行服务再次请求，然而正常访问，说明 Spring Gateway 和 Nginx 之间没有问题，便排查业务服务。
-在 `HandlerInterceptorAdapter` 处理拦截器种发现了这么一段代码 `response.sendError`。
-此方法使用指定的状态码发送一个错误响应至客户端。服务器默认会创建一个 HTML 格式的服务错误页面作为响应结果，其中包含参数 msg 指定的文本信息，这个 HTML 页面的内容类型为 `text/html`，保留 cookies 和其他未修改的响应头信息。
-最后去掉此行代码，替换为抛出全局异常，得以解决。
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    ***</span><br><span class="line">    response.sendError(***);</span><br><span class="line">    ***</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
+<pre><code>    然后依旧报错，此时把停止运行服务再次请求，然而正常访问，说明 Spring Gateway 和 Nginx 之间没有问题，便排查业务服务。
+    在 `HandlerInterceptorAdapter` 处理拦截器种发现了这么一段代码 `response.sendError`。
+    此方法使用指定的状态码发送一个错误响应至客户端。服务器默认会创建一个 HTML 格式的服务错误页面作为响应结果，其中包含参数 msg 指定的文本信息，这个 HTML 页面的内容类型为 `text/html`，保留 cookies 和其他未修改的响应头信息。
+    最后去掉此行代码，替换为抛出全局异常，得以解决。
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    ***</span><br><span class="line">    response.sendError(***);</span><br><span class="line">    ***</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+2. ###### upstream server temporarily disabled while reading response header from upstream
+
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream zxjl &#123;</span><br><span class="line">    least_conn;</span><br><span class="line">    server 192.168.1.1:8765 max_fails=3 fail_timeout=30s;</span><br><span class="line">    server 192.168.1.2:8765 max_fails=3 fail_timeout=30s;</span><br><span class="line">    keepalive 256;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+3. ###### upstream timed out (110: Connection timed out) while reading response header from upstream
+
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy_read_timeout 240;</span><br><span class="line">proxy_send_timeout 240;</span><br><span class="line">proxy_buffer_size 128k;</span><br><span class="line">proxy_buffers 8 256k;</span><br><span class="line">proxy_busy_buffers_size 256k;</span><br><span class="line">proxy_temp_file_write_size 256k;</span><br><span class="line">proxy_next_upstream error timeout invalid_header http_503;</span><br></pre></td></tr></table></figure></code></pre>
     </div>
 
     
@@ -497,7 +508,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Cloud-Gateway"><span class="nav-number">1.</span> <span class="nav-text">Spring Cloud Gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”"><span class="nav-number">1.1.</span> <span class="nav-text">Invalid character ‘[‘ for QUERY_PARAM in “match[]”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#unexpected-message-type-DefaultHttpRequest"><span class="nav-number">1.2.</span> <span class="nav-text">unexpected message type: DefaultHttpRequest</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream"><span class="nav-number">1.3.</span> <span class="nav-text">upstream sent no valid HTTP/1.0 header while reading response header from upstream</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Cloud-Gateway"><span class="nav-number">1.</span> <span class="nav-text">Spring Cloud Gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”"><span class="nav-number">1.1.</span> <span class="nav-text">Invalid character ‘[‘ for QUERY_PARAM in “match[]”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#unexpected-message-type-DefaultHttpRequest"><span class="nav-number">1.2.</span> <span class="nav-text">unexpected message type: DefaultHttpRequest</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nginx"><span class="nav-number">2.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream"><span class="nav-number">2.1.</span> <span class="nav-text">upstream sent no valid HTTP/1.0 header while reading response header from upstream</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -515,7 +526,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
