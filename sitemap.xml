@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://Lemon-cxh.github.io/jenkins-install/</loc>
+    
+    <lastmod>2020-11-05T09:31:39.826Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://Lemon-cxh.github.io/tool/</loc>
+    
+    <lastmod>2020-11-03T01:09:19.192Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://Lemon-cxh.github.io/problems-encountered/</loc>
     
     <lastmod>2020-10-28T09:31:42.502Z</lastmod>
@@ -75,20 +89,6 @@
     <loc>https://Lemon-cxh.github.io/rabbitmq-delay-queued/</loc>
     
     <lastmod>2020-08-13T06:07:29.559Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://Lemon-cxh.github.io/tool/</loc>
-    
-    <lastmod>2020-07-01T05:57:33.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://Lemon-cxh.github.io/jenkins-install/</loc>
-    
-    <lastmod>2020-06-11T01:32:50.577Z</lastmod>
     
   </url>
   
