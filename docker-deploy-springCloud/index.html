@@ -58,18 +58,18 @@
   };
 </script>
 
-  <meta name="description" content="Docker 的安装、参数、命令以及consul、nacos、redis、rabbitmq、mysql、mogodb的安装和部署微服务">
+  <meta name="description" content="Docker 的安装、参数、命令，私有仓库的搭建以及consul、nacos、redis、rabbitmq、mysql、mogodb的安装和部署">
 <meta name="keywords" content="Docker,Spring Cloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令">
 <meta property="og:url" content="https://Lemon-cxh.github.io/docker-deploy-springCloud/index.html">
 <meta property="og:site_name" content="三月柳絮四月雨">
-<meta property="og:description" content="Docker 的安装、参数、命令以及consul、nacos、redis、rabbitmq、mysql、mogodb的安装和部署微服务">
+<meta property="og:description" content="Docker 的安装、参数、命令，私有仓库的搭建以及consul、nacos、redis、rabbitmq、mysql、mogodb的安装和部署">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-27T07:16:24.364Z">
+<meta property="og:updated_time" content="2020-11-13T09:01:59.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令">
-<meta name="twitter:description" content="Docker 的安装、参数、命令以及consul、nacos、redis、rabbitmq、mysql、mogodb的安装和部署微服务">
+<meta name="twitter:description" content="Docker 的安装、参数、命令，私有仓库的搭建以及consul、nacos、redis、rabbitmq、mysql、mogodb的安装和部署">
   <link rel="canonical" href="https://Lemon-cxh.github.io/docker-deploy-springCloud/">
 
 
@@ -320,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 15:16:24" itemprop="dateModified" datetime="2020-09-27T15:16:24+08:00">2020-09-27</time>
+                <time title="修改时间：2020-11-13 17:01:59" itemprop="dateModified" datetime="2020-11-13T17:01:59+08:00">2020-11-13</time>
               </span>
             
           
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>8.3k</span>
+              <span>11k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -379,10 +379,10 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>15 分钟</span>
+              <span>19 分钟</span>
             </span>
           
-            <div class="post-description">Docker 的安装、参数、命令以及consul、nacos、redis、rabbitmq、mysql、mogodb的安装和部署微服务</div>
+            <div class="post-description">Docker 的安装、参数、命令，私有仓库的搭建以及consul、nacos、redis、rabbitmq、mysql、mogodb的安装和部署</div>
           
 
         </div>
@@ -409,12 +409,41 @@
 </li>
 </ol>
 </li>
+<li><h2 id="私有仓库的搭建"><a href="# 私有仓库的搭建" class="headerlink" title="私有仓库的搭建"></a>私有仓库的搭建</h2><ol>
+<li><h3 id="创建私有仓库的用户名和密码"><a href="# 创建私有仓库的用户名和密码" class="headerlink" title="创建私有仓库的用户名和密码"></a>创建私有仓库的用户名和密码 </h3><p> 将<code>username</code> 和<code>password</code>换成自己的用户名密码</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/docker/auth</span><br><span class="line">docker run --rm  --entrypoint htpasswd httpd:alpine -Bbn username password &gt; /etc/docker/auth/auth.htpasswd</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="运行镜像"><a href="# 运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -t --name registry -p 5000:5000 \</span><br><span class="line">-v /opt/data/registry:/var/lib/registry \</span><br><span class="line">-v /etc/docker/auth:/auth \</span><br><span class="line">-v /certs:/certs:ro \</span><br><span class="line">-e REGISTRY_STORAGE_DELETE_ENABLED=<span class="literal">true</span> \</span><br><span class="line">-e <span class="string">"REGISTRY_AUTH=htpasswd"</span> \</span><br><span class="line">-e <span class="string">"REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"</span> \</span><br><span class="line">-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/auth.htpasswd \</span><br><span class="line">-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \</span><br><span class="line">-e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \</span><br><span class="line">registry</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="推送镜像到仓库"><a href="# 推送镜像到仓库" class="headerlink" title="推送镜像到仓库"></a>推送镜像到仓库</h3><ol>
+<li><p>为镜像打标签</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker tag 镜像 ID/ 名称 远程仓库地址 / 仓库名 / 镜像名</span><br><span class="line">docker tag 63c7588bf5a1 test.com:5000/development/gateway</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>推送至远程仓库</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push test.com:5000/development/gateway</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>docker-maven-plugin</code></p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">serverId</span>&gt;</span>test.com<span class="tag">&lt;/<span class="name">serverId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dockerHost</span>&gt;</span>http://***:2375<span class="tag">&lt;/<span class="name">dockerHost</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>test.com:5000/development/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">imageTags</span>&gt;</span>latest<span class="tag">&lt;/<span class="name">imageTags</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span>src/main/docker<span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">forceTags</span>&gt;</span>true<span class="tag">&lt;/<span class="name">forceTags</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pushImageTag</span>&gt;</span>true<span class="tag">&lt;/<span class="name">pushImageTag</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pushImage</span>&gt;</span>true<span class="tag">&lt;/<span class="name">pushImage</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rm</span>&gt;</span>true<span class="tag">&lt;/<span class="name">rm</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 修改 Maven 的配置 (settings.xml)，其中<code>&lt;id&gt;</code> 和<code>&lt;serverId&gt;</code>对应，<code>username</code>和 <code>password</code> 为私有仓库账号密码。</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>test.com<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">username</span>&gt;</span>username<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">password</span>&gt;</span>password<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">email</span>&gt;</span>test@test.com<span class="tag">&lt;/<span class="name">email</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><h3 id="仓库 API"><a href="# 仓库 API" class="headerlink" title="仓库 API"></a>仓库<a href="https://docs.docker.com/registry/spec/api" target="_blank" rel="noopener">API</a></h3><ul>
+<li>列出存储库<br>  <a href="https://test.com:5000/v2/_catalog" target="_blank" rel="noopener">https://test.com:5000/v2/_catalog</a></li>
+<li>列出镜像标记<br>  <a href="https://test.com:5000/v2/\" target="_blank" rel="noopener">https://test.com:5000/v2/\</a>&lt;name&gt;/tags/list</li>
+<li>获取<br>  <a href="https://test:5000/v2/\" target="_blank" rel="noopener">https://test:5000/v2/\</a>&lt;name&gt;/manifests/&lt;tags&gt;</li>
+</ul>
+</li>
+</ol>
+</li>
 <li><h2 id="安装 consul、nacos、redis、rabbitmq、mysql、mogodb"><a href="# 安装 consul、nacos、redis、rabbitmq、mysql、mogodb" class="headerlink" title="安装 consul、nacos、redis、rabbitmq、mysql、mogodb"></a>安装 consul、nacos、redis、rabbitmq、mysql、mogodb</h2><ol>
 <li><h3 id="新建 docker 网络"><a href="# 新建 docker 网络" class="headerlink" title="新建 docker 网络"></a>新建 docker 网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge spring-net</span><br></pre></td></tr></table></figure>
 </li>
 <li><h3 id="获取镜像"><a href="# 获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull consul</span><br><span class="line">docker pull nacos/nacos-server:1.1.4</span><br><span class="line">docker pull redis</span><br><span class="line">docker pull rabbitmq:management</span><br></pre></td></tr></table></figure>
 </li>
-<li><h3 id="运行镜像"><a href="# 运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h3><ol>
+<li><h3 id="运行镜像 -1"><a href="# 运行镜像 -1" class="headerlink" title="运行镜像"></a>运行镜像</h3><ol>
 <li><p>Consul</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8500:8500 --name consul --network spring-net consul agent -server -bootstrap-expect=1 -client 0.0.0.0 -ui</span><br></pre></td></tr></table></figure>
 
@@ -848,7 +877,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker 的安装"><span class="nav-number">1.</span> <span class="nav-text">Docker 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载旧版本"><span class="nav-number">1.1.</span> <span class="nav-text">卸载旧版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用 yum 安装"><span class="nav-number">1.2.</span> <span class="nav-text">使用 yum 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置开机自启和自动服务"><span class="nav-number">1.3.</span> <span class="nav-text">设置开机自启和自动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立 docker 用户组"><span class="nav-number">1.4.</span> <span class="nav-text">建立 docker 用户组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 consul、nacos、redis、rabbitmq、mysql、mogodb"><span class="nav-number">2.</span> <span class="nav-text">安装 consul、nacos、redis、rabbitmq、mysql、mogodb</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建 docker 网络"><span class="nav-number">2.1.</span> <span class="nav-text">新建 docker 网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取镜像"><span class="nav-number">2.2.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像"><span class="nav-number">2.3.</span> <span class="nav-text">运行镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 nginx"><span class="nav-number">3.</span> <span class="nav-text">安装 nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署微服务"><span class="nav-number">4.</span> <span class="nav-text">部署微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置服务器 docker 可以远程访问"><span class="nav-number">4.1.</span> <span class="nav-text">配置服务器 docker 可以远程访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pom 配置"><span class="nav-number">4.2.</span> <span class="nav-text">pom 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application 配置"><span class="nav-number">4.3.</span> <span class="nav-text">application 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile 配置"><span class="nav-number">4.4.</span> <span class="nav-text">Dockerfile 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行服务"><span class="nav-number">4.5.</span> <span class="nav-text">运行服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防火墙开启端口"><span class="nav-number">5.</span> <span class="nav-text">防火墙开启端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker 参数 - 命令"><span class="nav-number">6.</span> <span class="nav-text">Docker 参数 / 命令</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker 的安装"><span class="nav-number">1.</span> <span class="nav-text">Docker 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载旧版本"><span class="nav-number">1.1.</span> <span class="nav-text">卸载旧版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用 yum 安装"><span class="nav-number">1.2.</span> <span class="nav-text">使用 yum 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置开机自启和自动服务"><span class="nav-number">1.3.</span> <span class="nav-text">设置开机自启和自动服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立 docker 用户组"><span class="nav-number">1.4.</span> <span class="nav-text">建立 docker 用户组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#私有仓库的搭建"><span class="nav-number">2.</span> <span class="nav-text">私有仓库的搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建私有仓库的用户名和密码"><span class="nav-number">2.1.</span> <span class="nav-text">创建私有仓库的用户名和密码 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像"><span class="nav-number">2.2.</span> <span class="nav-text">运行镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推送镜像到仓库"><span class="nav-number">2.3.</span> <span class="nav-text">推送镜像到仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库 API"><span class="nav-number">2.4.</span> <span class="nav-text">仓库API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 consul、nacos、redis、rabbitmq、mysql、mogodb"><span class="nav-number">3.</span> <span class="nav-text">安装 consul、nacos、redis、rabbitmq、mysql、mogodb</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建 docker 网络"><span class="nav-number">3.1.</span> <span class="nav-text">新建 docker 网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取镜像"><span class="nav-number">3.2.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行镜像 -1"><span class="nav-number">3.3.</span> <span class="nav-text">运行镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 nginx"><span class="nav-number">4.</span> <span class="nav-text">安装 nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署微服务"><span class="nav-number">5.</span> <span class="nav-text">部署微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置服务器 docker 可以远程访问"><span class="nav-number">5.1.</span> <span class="nav-text">配置服务器 docker 可以远程访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pom 配置"><span class="nav-number">5.2.</span> <span class="nav-text">pom 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application 配置"><span class="nav-number">5.3.</span> <span class="nav-text">application 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile 配置"><span class="nav-number">5.4.</span> <span class="nav-text">Dockerfile 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行服务"><span class="nav-number">5.5.</span> <span class="nav-text">运行服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防火墙开启端口"><span class="nav-number">6.</span> <span class="nav-text">防火墙开启端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker 参数 - 命令"><span class="nav-number">7.</span> <span class="nav-text">Docker 参数 / 命令</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
