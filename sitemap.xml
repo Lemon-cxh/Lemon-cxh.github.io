@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://Lemon-cxh.github.io/mysql-precautions/</loc>
+    
+    <lastmod>2020-11-17T09:53:05.309Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://Lemon-cxh.github.io/docker-deploy-springCloud/</loc>
     
     <lastmod>2020-11-13T09:01:59.080Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>https://Lemon-cxh.github.io/rabbitmq-delay-queued/</loc>
     
     <lastmod>2020-08-13T06:07:29.559Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://Lemon-cxh.github.io/mysql-precautions/</loc>
-    
-    <lastmod>2020-05-11T09:11:29.817Z</lastmod>
     
   </url>
   

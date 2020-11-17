@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="SQL语句的注意事项">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-11T09:11:29.817Z">
+<meta property="og:updated_time" content="2020-11-17T09:53:05.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 注意事项">
 <meta name="twitter:description" content="SQL语句的注意事项">
@@ -320,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-11 17:11:29" itemprop="dateModified" datetime="2020-05-11T17:11:29+08:00">2020-05-11</time>
+                <time title="修改时间：2020-11-17 17:53:05" itemprop="dateModified" datetime="2020-11-17T17:53:05+08:00">2020-11-17</time>
               </span>
             
           
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>459</span>
+              <span>1.6k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -379,7 +379,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
           
             <div class="post-description">SQL语句的注意事项</div>
@@ -397,26 +397,124 @@
         <blockquote class="blockquote-center">
           <p id="hitokoto"></p>
         </blockquote>
-        <ol>
+        <h4 id="数据模型与索引设计"><a href="# 数据模型与索引设计" class="headerlink" title="数据模型与索引设计"></a>数据模型与索引设计</h4><ol>
+<li><h5 id="字符集"><a href="# 字符集" class="headerlink" title="字符集"></a>字符集</h5><p> 一般使用<code>utf8</code>，需要使用表情时使用<code>utf8mb4</code>。排序规则一般使用<code>utf8_general_ci</code>。<br> 排序规则：</p>
+<ul>
+<li><code>_cs</code>：区分大小写</li>
+<li><code>_ci</code>：不区分大小写</li>
+<li><code>_bin</code>：以二进制数据存储，且区分大小写</li>
+</ul>
+</li>
+<li><h5 id="索引"><a href="# 索引" class="headerlink" title="索引"></a>索引</h5><ol>
+<li><p>最左前缀匹配原则</p>
+<blockquote>
+<p>联合索引可以用于包含索引中所有列的查询条件的语句, 或者包含索引中的前 N 列</p>
+</blockquote>
+</li>
+<li><p>覆盖索引</p>
+<blockquote>
+<p>从非聚簇索引中就能查到的记录，而不需要查询聚簇索引中的记录，避免了回表的产生减少了树的搜索次数，显著提升性能。</p>
+</blockquote>
+<ul>
+<li>聚簇索引：按创建索引时指定的列的顺序物理地排列表内容</li>
+<li>非聚簇索引：由索引键和指定数据块的标记组成</li>
+</ul>
+</li>
+<li><p>索引列设置为 NOT NULL, 否则会全表扫描</p>
+</li>
+</ol>
+</li>
+</ol><a id="more"></a>
+<h4 id="查询数据"><a href="# 查询数据" class="headerlink" title="查询数据"></a>查询数据</h4><ol>
+<li><h5 id="过滤与查找数据"><a href="# 过滤与查找数据" class="headerlink" title="过滤与查找数据"></a>过滤与查找数据</h5><ol>
+<li><p>查找不匹配或缺失的记录</p>
+<blockquote>
+<p>在子查询返回结果集大的时候使用 <code>EXISTS</code> 通常比 <code>IN</code> 更快，另一种是 <code>LEFT JOIN</code> 结合<code>WHERE</code>。</p>
+</blockquote>
+<ul>
+<li><code>EXISTS</code>：数据库引擎在找到第一行会停止运行子查询</li>
+<li><code>IN</code>：数据库引擎会检索所有行</li>
+</ul>
+</li>
+<li><p>按时间范围正确地过滤日期和时间</p>
+<ol>
+<li>不要依赖隐式日期转换，使用显式转换函数 <code>CONVERT()</code> 来处理日期字符。</li>
+<li>不要将函数应用于日期和时间列，否则查询不能使用索引。</li>
+<li>舍入误差可能导致日期和时间值不正确。使用 <code>&gt;=</code> 和<code>&lt;</code>代替<code>BETWEEN</code>。可以使用<code>DATEADD()</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>3. 书写可参数化搜索的查询以确保引擎使用索引
+
+    1. 使用 `=`、`&gt;`、`&lt;`、`&gt;=`、`&lt;=`、`BETWEEN`、`ISNULL`、`LIKE`(不包括前导通配符)。
+    2. 不要再 `WHERE` 子句中的一个或多个字段上使用函数。
+    3. 不要对 `WHERE` 子句中的字段进行算术运算。</code></pre><ol start="2">
+<li><h5 id="聚合"><a href="# 聚合" class="headerlink" title="聚合"></a>聚合</h5><ol>
+<li><p>理解 GROUP BY 工作原理</p>
+<ol>
+<li><code>FROM</code>子句生成数据集</li>
+<li><code>WHERE</code>子句过滤由 <code>FROM</code> 子句生成的数据集</li>
+<li><code>GROUP BY</code>子句聚合由 <code>WHERE</code> 子句过滤的数据集</li>
+<li><code>HAVING</code>子句过滤由 <code>GROUP BY</code> 子句聚合的数据集</li>
+<li><code>SELECT</code>子句转换过滤的聚合数据集</li>
+<li><code>ORDER BY</code>子句对变换后的数据集进行排序</li>
+</ol>
+</li>
+<li><p>使用 OUTER JOIN 时避免获取错误的 COUNT()</p>
+<blockquote>
+<p>数据库版本没有 <code>RANK()</code> 函数时，可以使用 <code>COUNT()</code> 子查询来实现。</p>
+</blockquote>
+<ol>
+<li><p>使用 <code>COUNT(*)</code> 来统计所有记录的总数，也包括空值的记录。</p>
+</li>
+<li><p>使用 <code>COUNT()</code> 仅统计列值不为 NULL 的记录的总数。</p>
+</li>
+<li><p>有时一个子查询甚至一个关联子查询也会比 <code>GROUP BY</code> 更有效率。</p>
+<blockquote>
+<p>关联子查询: 子查询中的部分条件依赖于外部查询中正在处理的当前记录值。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>避免使用 GROUP BY 来查找最大或最小值</p>
+<blockquote>
+<p>使用 <code>LEFT JOIN</code> 自身以及 <code>WHERE</code> 来查询，<code>ON</code>子句的列添加索引</p>
+</blockquote>
+</li>
+<li><p>GROUP_COUNT()中也可以使用 ORDER BY</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>注意：</p>
+<ol>
 <li><p>Limit 偏移量大时可以先单独查询 Id 再关联，或者记录上次查询的最大 Id。</p>
 </li>
-<li><p> 对于 MAX() 和 MIN() 函数可以考虑使用 ORDER BY 和 LIMIT 1 代替。</p>
+<li><p>对于 MAX()和 MIN()函数可以考虑使用 ORDER BY 和 LIMIT 1 代替。</p>
 </li>
-<li><p> 确保 GROUP BY 和 ORDER BY 只涉及一个表中的字段，这样才可能使用索引。</p>
+<li><p>确保 GROUP BY 和 ORDER BY 只涉及一个表中的字段，这样才可能使用索引。</p>
 </li>
 <li><p>GROUP BY 会自动按照分组的字段升序排序，可直接使用 DESC 和 ASC 排序，使用 ORDER BY NULL 不进行排序。</p>
 </li>
 <li><p>GROUP BY * WITH ROLLP 得到每个分组以及每个分组汇总级别的值。</p>
 </li>
-<li><p> 一旦使用 DISTINCT 和 GROUP BY 需要产生临时表。</p>
+<li><p>一旦使用 DISTINCT 和 GROUP BY 需要产生临时表。</p>
 </li>
-<li><p> 如果无需去重请使用 UNOIN ALL，UNION 如果需要排序只需要在最后一条语句上使用 ORDER BY。</p>
+<li><p>复杂的 <code>OR</code> 条件可以使用多条 <code>SELECT</code> 语句和连接它们的 <code>UNION</code> 语句。</p>
 </li>
-<li><p> 你的 SELECT 语句中有一系列复杂的 OR 条件么？通过使用多条 SELECT 语句和连接它们的 UNION 语句，能看到极大的性能改进。</p>
+<li><p>如果无需去重请使用 <code>UNOIN ALL</code>，<code>UNION</code> 如果需要排序只需要在最后一条语句上使用<code>ORDER BY</code>。</p>
 </li>
-<li><p> 如果数据检索是最重要的，则你可以通过在 INSERT 和 INTO 之间添加关键字 LOW_PRIORITY，指示 MySQL 降低 INSERT 语句的优先级，如 <code>INSERT LOW_PRIORITY INTO</code>。</p>
+<li><p>如果数据检索是最重要的，则你可以通过在 INSERT 和 INTO 之间添加关键字 LOW_PRIORITY，指示 MySQL 降低 INSERT 语句的优先级，如<code>INSERT LOW_PRIORITY INTO</code>。</p>
 </li>
 </ol>
+<hr>
+<p>参考：</p>
+<ul>
+<li>Effective SQL 编写高质量 SQL 语句的 61 个有效方法</li>
+<li>Java 工程师修炼之道</li>
+</ul>
 
     </div>
 
@@ -506,6 +604,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据模型与索引设计"><span class="nav-number">1.</span> <span class="nav-text">数据模型与索引设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符集"><span class="nav-number">1.1.</span> <span class="nav-text">字符集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#索引"><span class="nav-number">1.2.</span> <span class="nav-text">索引</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询数据"><span class="nav-number">2.</span> <span class="nav-text">查询数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#过滤与查找数据"><span class="nav-number">2.1.</span> <span class="nav-text">过滤与查找数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#聚合"><span class="nav-number">2.2.</span> <span class="nav-text">聚合</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
