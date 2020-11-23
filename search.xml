@@ -22,8 +22,6 @@
             
             <tag> Java </tag>
             
-            <tag> [object Object] </tag>
-            
         </tags>
       
     </entry>
@@ -48,8 +46,6 @@
         <tags>
             
             <tag> Java </tag>
-            
-            <tag> [object Object] </tag>
             
         </tags>
       
@@ -314,9 +310,9 @@
       
         <tags>
             
-            <tag> kaptcha </tag>
-            
             <tag> Spring Boot </tag>
+            
+            <tag> kaptcha </tag>
             
         </tags>
       

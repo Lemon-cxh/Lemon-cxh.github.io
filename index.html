@@ -308,7 +308,7 @@
                 
               
 
-              <time title="创建时间：2020-11-23 11:34:41 / 修改时间：16:28:29" itemprop="dateCreated datePublished" datetime="2020-11-23T11:34:41+08:00">2020-11-23</time>
+              <time title="创建时间：2020-11-23 11:34:41 / 修改时间：16:51:30" itemprop="dateCreated datePublished" datetime="2020-11-23T11:34:41+08:00">2020-11-23</time>
             </span>
           
             
@@ -383,37 +383,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="并发包锁"><a href="# 并发包锁" class="headerlink" title="并发包锁"></a>并发包锁</h4><ol>
-<li><h5 id="synchronized 同步锁"><a href="#synchronized 同步锁" class="headerlink" title="synchronized 同步锁"></a>synchronized 同步锁 </h5><p> <code>synchronized</code> 同步锁 (隐式锁、独占排他锁) 问题：</p>
-<ol>
-<li><p>不能控制阻塞，不能灵活控制锁的释放，使用 <code>synchronized</code> 同步锁, 线程会在三种情况下释放锁:</p>
-<ol>
-<li>线程执行完同步代码块 / 方法，释放锁</li>
-<li>线程执行时发生异常，此时 JVM 会让线程自动释放锁</li>
-<li>在同步代码块 / 方法中，锁对象执行了 <code>wait()</code> 方法，线程释放锁</li>
-</ol>
-</li>
-<li><p>在读多写少的场景中，效率低下。当多个线程都只进行读操作时，所有线程都只能同步进行，只能有一个读线程可以进行操作，其他线程只能被阻塞而无法进行操作</p>
-</li>
-</ol>
-</li>
-<li><h5 id="ReentrantLock 重入锁 - 独占锁"><a href="#ReentrantLock 重入锁 - 独占锁" class="headerlink" title="ReentrantLock 重入锁(独占锁)"></a>ReentrantLock 重入锁(独占锁)</h5><blockquote>
-<p>java.util.concurrent 包下有重入锁 <code>ReentrantLock</code> 和读写锁<code>ReentrantReadWriteLock</code>、<code>StampedLock</code>(Java8 新的读写锁)</p>
-</blockquote>
-<p> 重入锁的底层实现使用<code>AbstractQueuedSynchronizer</code>。</p>
-<ul>
-<li><p>公平锁：多个线程按照申请锁的顺序，先来后到的原则获得锁。</p>
-</li>
-<li><p>非公平锁：多个线程可能并不是按照申请锁的顺序，允许新线程插队</p>
-<p>一般情况下，使用公平锁在多线程访问时，在线程的调度上面的开销比较大，所以总体吞吐量会比较低。</p>
-</li>
-</ul>
-</li>
-</ol>
+          Java并发包、阻塞队列、线程池
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/java-util-concurrent/#more" rel="contents">
+              <a class="btn" href="/java-util-concurrent/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -471,7 +445,7 @@
                 
               
 
-              <time title="创建时间：2020-11-23 10:18:47 / 修改时间：11:36:44" itemprop="dateCreated datePublished" datetime="2020-11-23T10:18:47+08:00">2020-11-23</time>
+              <time title="创建时间：2020-11-23 10:18:47 / 修改时间：16:51:29" itemprop="dateCreated datePublished" datetime="2020-11-23T10:18:47+08:00">2020-11-23</time>
             </span>
           
             
@@ -546,27 +520,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><ol>
-<li><h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><p> JDK1.8 中 HashMap 由数组、链表 / 红黑树组成。当节点数大于 8 时转换成红黑树，节点数小于 6 时转换成链表。<br> 红黑树的红黑规则：</p>
-<ol>
-<li><p>每个节点不是红就是黑。</p>
-</li>
-<li><p>根节点总是黑色的。</p>
-</li>
-<li><p>如果节点为红色，则它的子节点必须时黑色的，反之则不一定。</p>
-</li>
-<li><p>从根节点到叶节点或空子节点的每条路径必须包含相同数目的黑色节点。</p>
-<blockquote>
-<p>注意：新插入的节点总是红色的，违背规则 3 的可能性比 4 小。可以通过改变节点颜色、左旋和右旋来修正。</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
+          Java集合框架，Map、List
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/java-util-collection/#more" rel="contents">
+              <a class="btn" href="/java-util-collection/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1848,9 +1806,7 @@
         
           
         
-          
-        
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
