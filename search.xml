@@ -120,9 +120,9 @@
       
         <tags>
             
-            <tag> Spring Boot </tag>
-            
             <tag> RabbitMQ </tag>
+            
+            <tag> Spring Boot </tag>
             
         </tags>
       
