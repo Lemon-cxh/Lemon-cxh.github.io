@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://Lemon-cxh.github.io/mysql-master-slave-sync/</loc>
+    
+    <lastmod>2020-11-24T02:58:40.399Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://Lemon-cxh.github.io/feign/</loc>
     
     <lastmod>2020-11-23T08:53:53.144Z</lastmod>
@@ -117,13 +124,6 @@
     <loc>https://Lemon-cxh.github.io/rabbitmq-delay-queued/</loc>
     
     <lastmod>2020-08-13T06:07:29.559Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://Lemon-cxh.github.io/mysql-master-slave-sync/</loc>
-    
-    <lastmod>2020-05-11T09:11:12.599Z</lastmod>
     
   </url>
   
