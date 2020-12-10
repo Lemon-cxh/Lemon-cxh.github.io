@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>设计原则</title>
+      <link href="/design-principle/"/>
+      <url>/design-principle/</url>
+      
+        <content type="html"><![CDATA[<h4 id="SOLID 设计原则"><a href="#SOLID 设计原则" class="headerlink" title="SOLID 设计原则"></a>SOLID 设计原则</h4><blockquote><p>开闭原则和里氏替换原则是设计目标；单一职责原则、接口分割原则和依赖倒置原则是设计方法。</p></blockquote><ul><li><h5 id="Single-Responsibility-Principle-SRP- 单一职责原则"><a href="#Single-Responsibility-Principle-SRP- 单一职责原则" class="headerlink" title="Single Responsibility Principle(SRP): 单一职责原则"></a>Single Responsibility Principle(SRP): 单一职责原则</h5><blockquote><p>SRP 要求每个软件模块职责要单一，衡量标准是模块是否只有一个被修改的原因。职责越单一，被修改的原因就越少，模块的内聚性 (Cohesion) 就越高，被复用的可能性就越大，也更容易被理解。</p></blockquote></li><li><h5 id="Open-Close-Principle-OCP- 开闭原则"><a href="#Open-Close-Principle-OCP- 开闭原则" class="headerlink" title="Open Close Principle(OCP): 开闭原则"></a>Open Close Principle(OCP): 开闭原则</h5><blockquote><p>软件实体应该对扩展开放，对修改关闭。</p></blockquote><p>  设计模式中例如：</p><ul><li><code>装饰者模式 </code> 可以在不改变被装饰对象的情况下，通过包装 (Wrap) 一个新类来扩展功能。</li><li><code>策略模式 </code> 通过制定一个策略接口，让不同的策略实现成为可能。</li><li><code>适配器模式 </code> 在不改变原有类的基础上，让其适配 (Adapt) 新的功能。</li><li><code>观察者模式 </code> 可以灵活地添加或删除观察者 (Listener) 来扩展系统的功能。</li></ul></li></ul><a id="more"></a><ul><li><h5 id="Liskov-Substitution-Principle-LSP- 里氏替换原则"><a href="#Liskov-Substitution-Principle-LSP- 里氏替换原则" class="headerlink" title="Liskov Substitution Principle(LSP): 里氏替换原则"></a>Liskov Substitution Principle(LSP): 里氏替换原则</h5><blockquote><p>程序中的父类型都应该可以正确地被子类型替换。</p></blockquote><p>  根据 LSP 的定义，如果在程序中出现使用 instanceof、强制类型转换或者函数覆盖，很可能意味着是对 LSP 的破坏。</p></li><li><h5 id="Interface-Segregation-Principle-ISP- 接口隔离原则"><a href="#Interface-Segregation-Principle-ISP- 接口隔离原则" class="headerlink" title="Interface Segregation Principle(ISP): 接口隔离原则"></a>Interface Segregation Principle(ISP): 接口隔离原则</h5><blockquote><p>接口隔离原则认为不能强迫用户去依赖那些他们不使用的接口。换句话说，使用多个专门的接口比使用单一的总接口要好。<br>满足 ISP 之后，最大的好处是可以将外部依赖减到最少。你只需要依赖你需要的东西，这样可以降低模块之间的耦合(Couple)。</p></blockquote></li><li><h5 id="Dependency-Inversion-Principle-DIP- 依赖倒置原则"><a href="#Dependency-Inversion-Principle-DIP- 依赖倒置原则" class="headerlink" title="Dependency Inversion Principle(DIP): 依赖倒置原则"></a>Dependency Inversion Principle(DIP): 依赖倒置原则</h5><blockquote><p>依赖倒置，就是要反转依赖的方向，让原来紧耦合的依赖关系得以解耦，这样依赖方和被依赖方都有更高得灵活度。<br>DIP 要求高层模块不应该依赖于低层模块，二者都应该依赖于抽象。抽象不应该依赖细节，细节应该依赖抽象。</p></blockquote></li></ul><h4 id="其他原则"><a href="# 其他原则" class="headerlink" title="其他原则"></a>其他原则</h4><ul><li><h5 id="DRY"><a href="#DRY" class="headerlink" title="DRY"></a>DRY</h5><blockquote><p>DRY(Don`t Repeat Yourself)原则特指在程序设计和计算中避免重复代码，因为这样会降低代码得灵活性和简洁性，并且可能导致代码之间的矛盾。</p></blockquote></li><li><h5 id="YAGNI"><a href="#YAGNI" class="headerlink" title="YAGNI"></a>YAGNI</h5><blockquote><p>YAGNI(You Ain`t Gonna Need It)是正对大设计提出来的，是”极限编程”提倡的原则，是指你自以为有用的功能，实际上都是用不到的。因此，除了核心的功能之外，其他的功能一概不要提前设计。</p></blockquote></li><li><h5 id="Rule-of-Three"><a href="#Rule-of-Three" class="headerlink" title="Rule of Three"></a>Rule of Three</h5><blockquote><p>Rule of Three 也被称为”三次原则”, 是指当某个功能第三次出现时，就有必要进行”抽象化”了。</p></blockquote></li><li><h5 id="KISS"><a href="#KISS" class="headerlink" title="KISS"></a>KISS</h5><blockquote><p>KISS(Keep It Simple and Stupid)好的目标不是越复杂越好，反而时越简洁越好。</p></blockquote></li><li><h5 id="POLA"><a href="#POLA" class="headerlink" title="POLA"></a>POLA</h5><blockquote><p>POLA(Principle of least astonishment)是最小惊奇原则，写代码不是写侦探小说，要的是简单易懂，而不是时不时冒出个”Surprise”。</p></blockquote></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Note </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Note </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java 并发包</title>
       <link href="/java-util-concurrent/"/>
       <url>/java-util-concurrent/</url>
@@ -120,9 +145,9 @@
       
         <tags>
             
-            <tag> RabbitMQ </tag>
-            
             <tag> Spring Boot </tag>
+            
+            <tag> RabbitMQ </tag>
             
         </tags>
       
