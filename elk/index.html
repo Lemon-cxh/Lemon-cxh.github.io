@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="baidu-site-verification" content="qtx7WGWpqa"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="SpringBoot集成ELK和RabbitMQ完成日志收集">
+<meta name="keywords" content="Spring Boot,Elasticsearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK 日志收集系统">
+<meta property="og:url" content="https://Lemon-cxh.github.io/elk/index.html">
+<meta property="og:site_name" content="三月柳絮四月雨">
+<meta property="og:description" content="SpringBoot集成ELK和RabbitMQ完成日志收集">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-01-20T09:25:03.942Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ELK 日志收集系统">
+<meta name="twitter:description" content="SpringBoot集成ELK和RabbitMQ完成日志收集">
+  <link rel="canonical" href="https://Lemon-cxh.github.io/elk/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ELK 日志收集系统 | 三月柳絮四月雨</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146884962-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-146884962-1');
+    }
+  </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cb71578f80ccca55cfe9c0888415feb7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="top-scroll-bar"></div>
+
+<div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">三月柳絮四月雨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+    
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://Lemon-cxh.github.io/elk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三月柳絮四月雨">
+      <meta itemprop="description" content="要做一个不动声色的大人了<br/>不准情绪化<br/>不准偷偷想念<br/>不准回头看">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三月柳絮四月雨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">ELK 日志收集系统
+
+          
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2021-01-20 17:25:03" itemprop="dateCreated datePublished" datetime="2021-01-20T17:25:03+08:00">2021-01-20</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/elk/" class="post-meta-item leancloud_visitors" data-flag-title="ELK 日志收集系统" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/elk/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/elk/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>11k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>19 分钟</span>
+            </span>
+          
+            <div class="post-description">SpringBoot集成ELK和RabbitMQ完成日志收集</div>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote class="blockquote-center">
+          <p id="hitokoto"></p>
+        </blockquote>
+        <h4 id="安装 Elasticsearch"><a href="# 安装 Elasticsearch" class="headerlink" title="安装 Elasticsearch"></a>安装 Elasticsearch</h4><ol>
+<li><h5 id="修改 Linux 内核配置"><a href="# 修改 Linux 内核配置" class="headerlink" title="修改 Linux 内核配置"></a>修改 Linux 内核配置</h5> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+
+<p> 添加参数</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.max_map_count = 262144</span><br></pre></td></tr></table></figure>
+
+<p> 使配置生效</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="配置 Elasticsearch"><a href="# 配置 Elasticsearch" class="headerlink" title="配置 Elasticsearch"></a>配置 Elasticsearch</h5><p>拉取镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull elasticsearch:7.10.1</span><br></pre></td></tr></table></figure>
+
+<p>启动服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -it --name elasticsearch --rm -p 9200:9200 -p 9300:9300 -e <span class="string">"discovery.type=single-node"</span> elasticsearch:7.10.1</span><br></pre></td></tr></table></figure>
+
+<p>进入容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it elasticsearch bash</span><br></pre></td></tr></table></figure>
+
+<p>生成节点证书</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建目录存放证书</span></span><br><span class="line">mkdir config/certs</span><br><span class="line"><span class="comment"># 为群集创建证书</span></span><br><span class="line">./bin/elasticsearch-certutil ca</span><br><span class="line"><span class="comment"># 输入所需的输出文件</span></span><br><span class="line">config/certs/elastic-stack-ca.p12</span><br><span class="line"><span class="comment"># 群集中的每个节点生成证书和私钥</span></span><br><span class="line">./bin/elasticsearch-certutil cert --ca config/certs/elastic-stack-ca.p12</span><br><span class="line"><span class="comment"># 输入所需的输出文件</span></span><br><span class="line">config/certs/elastic-certificates.p12</span><br></pre></td></tr></table></figure>
+
+<p>拷贝配置文件并停止容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker cp elasticsearch:/usr/share/elasticsearch/config /usr/share/elasticsearch;</span><br><span class="line">docker stop elasticsearch</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>vi</code>/usr/share/elasticsearch/config/jvm.options`</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 内存分配不超过机器的一半 </span><br><span class="line"># 确保堆内存最小值(Xms) 与最大值 (Xmx) 的大小是相同的，防止程序在运行时改变堆内存大小， 这是一个很耗系统资源的过程。</span><br><span class="line">-Xms1g</span><br><span class="line">-Xmx1g</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>/usr/share/elasticsearch/config/elasticsearch.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">cluster.name:</span> <span class="string">"elasticsearch-test"</span></span><br><span class="line"><span class="string">network.host:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line"><span class="string">bootstrap.mlockall:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">xpack.security.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="comment"># 加密集群中节点之间的通讯</span></span><br><span class="line"><span class="string">xpack.security.transport.ssl.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="string">xpack.security.transport.ssl.verification_mode:</span> <span class="string">certificate</span></span><br><span class="line"><span class="string">xpack.security.transport.ssl.keystore.path:</span> <span class="string">certs/elastic-certificates.p12</span></span><br><span class="line"><span class="string">xpack.security.transport.ssl.truststore.path:</span> <span class="string">certs/elastic-certificates.p12</span></span><br></pre></td></tr></table></figure>
+
+<p>创建文件夹用于绑定数据卷</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/share/elasticsearch/data</span><br><span class="line">chmod g+rwx /usr/share/elasticsearch/data</span><br><span class="line">chmod -R 777 /usr/share/elasticsearch/config/certs</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="启动容器修改预置账号的密码"><a href="# 启动容器修改预置账号的密码" class="headerlink" title="启动容器修改预置账号的密码"></a>启动容器修改预置账号的密码</h5> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -it --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e <span class="string">"discovery.type=single-node"</span> -v /usr/share/elasticsearch/data:/usr/share/elasticsearch/data -v /usr/share/elasticsearch/config:/usr/share/elasticsearch/config elasticsearch:7.10.1</span><br></pre></td></tr></table></figure>
+
+<p> 进入容器</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it elasticsearch bash</span><br></pre></td></tr></table></figure>
+
+<p> 修改预置账号的密码</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/elasticsearch-setup-passwords interactive</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>apm_system</code>APM 系统专用账号</p>
+</li>
+<li><p><code>kibana_system</code>仅可用于 kibana 用来连接 elasticsearch 并与之通信, 不能用于 kibana 登录</p>
+</li>
+<li><p><code>kibana</code>Kibana 访问专用账号</p>
+</li>
+<li><p><code>logstash_system</code>Logstash 访问专用账号</p>
+</li>
+<li><p><code>beats_system</code>FileBeat 访问专用账号</p>
+</li>
+<li><p><code>remote_monitoring_user</code>远程监控账号</p>
+</li>
+<li><p><code>elastic</code>超级管理员账号</p>
+<p>如果使用密码保护节点的证书，请将密码添加到密钥存储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password</span><br><span class="line">.bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol><a id="more"></a>
+<h4 id="安装 Kibana"><a href="# 安装 Kibana" class="headerlink" title="安装 Kibana"></a>安装 Kibana</h4><ol>
+<li><h5 id="配置 Kibana"><a href="# 配置 Kibana" class="headerlink" title="配置 Kibana"></a>配置 Kibana</h5><p> 拉取镜像</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull kibana:7.10.1</span><br></pre></td></tr></table></figure>
+
+<p> 启动容器</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -it --name kibana --rm -p 5601:5601 kibana:7.10.1</span><br></pre></td></tr></table></figure>
+
+<p> 拷贝配置文件并停止容器</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker cp kibana:/usr/share/kibana/config /usr/share/kibana;</span><br><span class="line">docker stop kibana</span><br></pre></td></tr></table></figure>
+
+<p> 修改<code>/usr/share/kibana/config/kibana.yml</code></p>
+ <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">server.name:</span> <span class="string">kibana</span></span><br><span class="line"><span class="string">server.host:</span> <span class="string">"0"</span></span><br><span class="line"><span class="string">elasticsearch.hosts:</span> <span class="string">[</span> <span class="string">"http://IP:9200"</span> <span class="string">]</span></span><br><span class="line"><span class="string">elasticsearch.username:</span> <span class="string">"kibana_system"</span></span><br><span class="line"><span class="string">elasticsearch.password:</span> <span class="string">"安装 elasticsearch 时设置的 kibana_system 密码"</span></span><br><span class="line"><span class="string">elasticsearch.ssl.verificationMode:</span> <span class="string">certificate</span></span><br><span class="line"><span class="string">elasticsearch.ssl.truststore.path:</span> <span class="string">/usr/share/elasticsearch/config/certs/elastic-certificates.p12</span></span><br><span class="line"><span class="string">elasticsearch.ssl.truststore.password:</span> <span class="string">""</span></span><br><span class="line"><span class="string">monitoring.ui.container.elasticsearch.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="comment"># 设置为中文</span></span><br><span class="line"><span class="string">i18n.locale:</span> <span class="string">"zh-CN"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="启动容器"><a href="# 启动容器" class="headerlink" title="启动容器"></a>启动容器</h5> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -it --name kibana --net somenetwork -p 5601:5601 -v /usr/share/kibana/config:/usr/share/kibana/config -v /usr/share/elasticsearch/config/certs:/usr/share/elasticsearch/config/certs kibana:7.10.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="后台管理配置 Kibana"><a href="# 后台管理配置 Kibana" class="headerlink" title="后台管理配置 Kibana"></a>后台管理配置 Kibana</h5><ol>
+<li><h6 id="为 Logstash 设置身份验证凭据"><a href="# 为 Logstash 设置身份验证凭据" class="headerlink" title="为 Logstash 设置身份验证凭据"></a>为 Logstash 设置身份验证凭据 </h6><p> 在 Kibana 中的<code> 管理 </code>&gt;<code> 安全 </code>&gt;<code> 角色 </code> 中创建角色</p>
+<p> <a href="logstash_writer.png">logstash_writer</a></p>
+<p> 在 Kibana 中的 <code> 管理 </code>&gt;<code> 安全 </code>&gt;<code> 用户 </code> 中创建 <code>logstash_internal</code> 用户，设置角色为<code>logstash_writer</code>。</p>
+<ol start="2">
+<li><h6 id="配置时间格式"><a href="# 配置时间格式" class="headerlink" title="配置时间格式"></a>配置时间格式 </h6><p> 在 Kibana 中的 <code> 管理 </code>&gt;<code> 高级设置 </code>&gt;<code> 常规 </code>&gt;<code>Date format</code> 和<code>Date with nanoseconds format</code>中配置时间格式为<code>yyyy-MM-DD HH:mm:ss.SSS</code></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="安装 Logstash"><a href="# 安装 Logstash" class="headerlink" title="安装 Logstash"></a>安装 Logstash</h4><ol>
+<li><h5 id="配置 Logstash"><a href="# 配置 Logstash" class="headerlink" title="配置 Logstash"></a>配置 Logstash</h5><p> 拉取镜像</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull elasticsearch:7.10.1</span><br></pre></td></tr></table></figure>
+
+<p> 启动容器</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  通过在名为 LOGSTASH_KEYSTORE_PASS 的环境变量中存储密码来保护对 Logstash 密钥存储的访问</span></span><br><span class="line">docker run -d -it --name logstash --rm -p 5047:5047 -e LOGSTASH_KEYSTORE_PASS= 密码 logstash:7.10.1</span><br></pre></td></tr></table></figure>
+
+<p> 创建密钥库存储密钥</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it logstash bash</span><br><span class="line"><span class="comment"># 创建密钥库</span></span><br><span class="line">./bin/logstash-keystore create</span><br><span class="line"><span class="comment"># 添加键</span></span><br><span class="line">./bin/logstash-keystore add ES_PWD</span><br><span class="line"><span class="comment"># 输入密码为 logstash_internal 用户的密码</span></span><br></pre></td></tr></table></figure>
+
+<p> 拷贝配置文件并停止容器</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker cp logstash:/usr/share/logstash/config /usr/share/logstash;</span><br><span class="line">docker stop logstash;</span><br><span class="line">mkdir /usr/share/logstash/data;</span><br><span class="line">chmod 777 /usr/share/logstash/data</span><br></pre></td></tr></table></figure>
+
+<p> 修改<code>/usr/share/logstash/config/logstash.yml</code></p>
+ <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http.host:</span> <span class="string">"0.0.0.0"</span></span><br><span class="line"><span class="string">xpack.monitoring.elasticsearch.hosts:</span> <span class="string">[</span> <span class="string">"http://ip:9200"</span> <span class="string">]</span></span><br><span class="line"><span class="string">xpack.monitoring.elasticsearch.username:</span> <span class="string">logstash_system</span></span><br><span class="line"><span class="string">xpack.monitoring.elasticsearch.password:</span> <span class="string">logstash_system 的密码</span></span><br></pre></td></tr></table></figure>
+
+<p> 修改<code>/usr/share/logstash/pipeline/logstash.conf</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    rabbitmq &#123;</span><br><span class="line">        durable =&gt; true</span><br><span class="line">        exchange =&gt; &quot;logs&quot;</span><br><span class="line">        exchange_type =&gt; &quot;topic&quot;</span><br><span class="line">        key =&gt; &quot;logstash&quot;</span><br><span class="line">        host =&gt; &quot;IP&quot;</span><br><span class="line">        port =&gt; 5672</span><br><span class="line">        user =&gt; &quot; 用户名 &quot;</span><br><span class="line">        password =&gt; &quot; 密码 &quot;</span><br><span class="line">        # 自定义虚拟网络</span><br><span class="line">        vhost =&gt; logs</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line">    if [message] &#123;</span><br><span class="line">        kv &#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    elasticsearch &#123;</span><br><span class="line">        hosts =&gt; [&quot;http://IP:9200&quot;]</span><br><span class="line">        user =&gt; &quot;logstash_internal&quot;</span><br><span class="line">        password =&gt; &quot;$&#123;ES_PWD&#125;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>自定义虚拟网络 logs<br>创建 logs：rabbitmqctl add_vhosts logs<br>赋予用户权限：rabbitmqctl set_permissions -p logs 用户名 “.*” “.*” “.*”<br>input.rabbitmq 的配置参考 <a href="https://www.elastic.co/guide/en/logstash/current/plugins-inputs-rabbitmq.html#plugins-inputs-rabbitmq-arguments" target="_blank" rel="noopener"> 官方文档</a></p>
+</blockquote>
+</li>
+</ol>
+<ol start="3">
+<li><h5 id="启动容器 -1"><a href="# 启动容器 -1" class="headerlink" title="启动容器"></a>启动容器</h5> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -it --name logstash --net somenetwork -p 5044:5044 -e LOGSTASH_KEYSTORE_PASS= 密码 -v /usr/share/logstash/config:/usr/share/logstash/config -v /usr/share/logstash/pipeline:/usr/share/logstash/pipeline -v /usr/share/logstash/data:/usr/share/logstash/data logstash:7.10.1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="配置 Spring-Boot"><a href="# 配置 Spring-Boot" class="headerlink" title="配置 Spring Boot"></a>配置 Spring Boot</h4><ol>
+<li><h5 id="配置 logback-spring-xml"><a href="# 配置 logback-spring-xml" class="headerlink" title="配置 logback-spring.xml"></a>配置 logback-spring.xml</h5> <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"logstash.address"</span> <span class="attr">source</span>=<span class="string">"logstash.address"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"spring.cloud.nacos.discovery.ip"</span> <span class="attr">source</span>=<span class="string">"spring.cloud.nacos.discovery.ip"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"spring.application.name"</span> <span class="attr">source</span>=<span class="string">"spring.application.name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"logging.level.root"</span> <span class="attr">source</span>=<span class="string">"logging.level.root"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"logging.path"</span> <span class="attr">source</span>=<span class="string">"logging.path"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"mq.host"</span> <span class="attr">source</span>=<span class="string">"spring.rabbitmq.host"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"mq.port"</span> <span class="attr">source</span>=<span class="string">"spring.rabbitmq.port"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"mq.username"</span> <span class="attr">source</span>=<span class="string">"spring.rabbitmq.username"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"mq.password"</span> <span class="attr">source</span>=<span class="string">"spring.rabbitmq.password"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"LOGSTASH"</span> <span class="attr">class</span>=<span class="string">"org.springframework.amqp.rabbit.logback.AmqpAppender"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">layout</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>&lt;![CDATA[&#123;"service":"$&#123;spring.application.name&#125;",</span><br><span class="line">                "serviceIp":"$&#123;spring.cloud.nacos.discovery.ip&#125;",</span><br><span class="line">                "dateTime":"%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125;",</span><br><span class="line">                "level":"%-5level",</span><br><span class="line">                "thread":"%thread",</span><br><span class="line">                "requestId":"%X&#123;requestId&#125;",</span><br><span class="line">                "logger":"%logger&#123;50&#125;",</span><br><span class="line">                "message":"%replace(%msg)&#123;'\"','\\\"'&#125;",</span><br><span class="line">                "stack_trace":"%replace(%exception)&#123;'[\r\t\n]',''&#125;"&#125;]]&gt;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">host</span>&gt;</span>$&#123;mq.host&#125;<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">port</span>&gt;</span>$&#123;mq.port&#125;<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>$&#123;mq.username&#125;<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">password</span>&gt;</span>$&#123;mq.password&#125;<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">applicationId</span>&gt;</span>$&#123;spring.application.name&#125;<span class="tag">&lt;/<span class="name">applicationId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">declareExchange</span>&gt;</span>true<span class="tag">&lt;/<span class="name">declareExchange</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">routingKeyPattern</span>&gt;</span>logstash<span class="tag">&lt;/<span class="name">routingKeyPattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charset</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">charset</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">contentType</span>&gt;</span>application/json<span class="tag">&lt;/<span class="name">contentType</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">virtualHost</span>&gt;</span>logs<span class="tag">&lt;/<span class="name">virtualHost</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"ASYNC_LOGSTASH"</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.classic.AsyncAppender"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">discardingThreshold</span>&gt;</span>0<span class="tag">&lt;/<span class="name">discardingThreshold</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">queueSize</span>&gt;</span>256<span class="tag">&lt;/<span class="name">queueSize</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"LOGSTASH"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"FILE"</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.core.rolling.RollingFileAppender"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">file</span>&gt;</span>$&#123;logging.path&#125;<span class="tag">&lt;/<span class="name">file</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">FileNamePattern</span>&gt;</span>$&#123;logging.path&#125;.%d&#123;yyyy-MM-dd&#125;.%i.gz<span class="tag">&lt;/<span class="name">FileNamePattern</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">MaxHistory</span>&gt;</span>180<span class="tag">&lt;/<span class="name">MaxHistory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">maxFileSize</span>&gt;</span>10MB<span class="tag">&lt;/<span class="name">maxFileSize</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.classic.encoder.PatternLayoutEncoder"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;50&#125; - %msg%n<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">charset</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">charset</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"ASYNC_FILE"</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.classic.AsyncAppender"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">discardingThreshold</span>&gt;</span>0<span class="tag">&lt;/<span class="name">discardingThreshold</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">queueSize</span>&gt;</span>256<span class="tag">&lt;/<span class="name">queueSize</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"FILE"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"CONSOLE"</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.core.ConsoleAppender"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.classic.encoder.PatternLayoutEncoder"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;50&#125; - %msg%n<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">"$&#123;logging.level.root&#125;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"ASYNC_LOGSTASH"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"ASYNC_FILE"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"CONSOLE"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="日志切面"><a href="# 日志切面" class="headerlink" title="日志切面"></a>日志切面</h5></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="meta">@Before</span>(<span class="string">"***"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apiLogDoBefore</span><span class="params">(JoinPoint joinPoint)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 设置 请求 ID</span></span><br><span class="line">        MDC.put(RequestConstants.REQUEST_ID, httpServletRequest.getHeader(RequestConstants.X_REQUEST_ID));</span><br><span class="line">        logger.info(<span class="string">"ip=&#123;&#125; class=&#123;&#125; method=&#123;&#125; params=&#123;&#125;"</span>,</span><br><span class="line">                ClientUtil.getClientIp(httpServletRequest),</span><br><span class="line">                joinPoint.getTarget().getClass().getName(),</span><br><span class="line">                joinPoint.getSignature().getName(),</span><br><span class="line">                JSON.toJSONString(joinPoint.getArgs(), SerializerFeature.UseSingleQuotes));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterReturning</span>(returning = <span class="string">"ret"</span>, value = <span class="string">"***"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAfterReturning</span><span class="params">(Object ret)</span> </span>&#123;</span><br><span class="line">        logger.info(JSON.toJSONString(ret, SerializerFeature.UseSingleQuotes));</span><br><span class="line">        MDCAdapter mdcAdapter =  MDC.getMDCAdapter();</span><br><span class="line">        <span class="keyword">if</span> (Objects.nonNull(mdcAdapter)) &#123;</span><br><span class="line">            mdcAdapter.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Spring-Boot/" rel="tag"><i class="fa fa-tag"></i> Spring Boot</a>
+            
+              <a href="/tags/Elasticsearch/" rel="tag"><i class="fa fa-tag"></i> Elasticsearch</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/spring-validate-requestparam/" rel="next" title="Spring MVC 参数校验">
+                  <i class="fa fa-chevron-left"></i> Spring MVC 参数校验
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装 Elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">安装 Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修改 Linux 内核配置"><span class="nav-number">1.1.</span> <span class="nav-text">修改 Linux 内核配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置 Elasticsearch"><span class="nav-number">1.2.</span> <span class="nav-text">配置 Elasticsearch</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动容器修改预置账号的密码"><span class="nav-number">1.3.</span> <span class="nav-text">启动容器修改预置账号的密码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装 Kibana"><span class="nav-number">2.</span> <span class="nav-text">安装 Kibana</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置 Kibana"><span class="nav-number">2.1.</span> <span class="nav-text">配置 Kibana</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动容器"><span class="nav-number">2.2.</span> <span class="nav-text">启动容器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后台管理配置 Kibana"><span class="nav-number">2.3.</span> <span class="nav-text">后台管理配置 Kibana</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#为 Logstash 设置身份验证凭据"><span class="nav-number">2.3.1.</span> <span class="nav-text">为 Logstash 设置身份验证凭据 </span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#配置时间格式"><span class="nav-number">2.3.2.</span> <span class="nav-text">配置时间格式 </span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装 Logstash"><span class="nav-number">3.</span> <span class="nav-text">安装 Logstash</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置 Logstash"><span class="nav-number">3.1.</span> <span class="nav-text">配置 Logstash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动容器 -1"><span class="nav-number">3.2.</span> <span class="nav-text">启动容器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置 Spring-Boot"><span class="nav-number">4.</span> <span class="nav-text">配置 Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置 logback-spring-xml"><span class="nav-number">4.1.</span> <span class="nav-text">配置 logback-spring.xml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#日志切面"><span class="nav-number">4.2.</span> <span class="nav-text">日志切面</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.jpg"
+      alt="三月柳絮四月雨">
+  <p class="site-author-name" itemprop="name">三月柳絮四月雨</p>
+  <div class="site-description" itemprop="description">要做一个不动声色的大人了<br/>不准情绪化<br/>不准偷偷想念<br/>不准回头看</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Lemon-cxh" title="GitHub &rarr; https://github.com/Lemon-cxh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://blog.csdn.net/qq_34576655" title="CSDN &rarr; https://blog.csdn.net/qq_34576655" rel="noopener" target="_blank"><i class="fa fa-fw fa-pencil-square-o"></i>CSDN</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">三月柳絮四月雨</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      我的第 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 位朋友
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="site-pv">
+      历经 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次回眸才与你相遇
+    </span>
+  
+</div>
+
+
+
+
+
+
+  
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+              leancloudSelector(url).innerText = counter.time + 1;
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz',
+            'X-LC-Key': 'Y32s7s17bsYNYTOuGmBxgqPf',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/muse.js?v=7.3.0"></script>
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+  <script>
+    function timer() {
+      var ages = moment.preciseDiff(moment(),moment(20190902,"YYYYMMDD"));
+      ages = ages.replace(/years?/, "年");
+      ages = ages.replace(/months?/, "月");
+      ages = ages.replace(/days?/, "天");
+      ages = ages.replace(/hours?/, "小时");
+      ages = ages.replace(/minutes?/, "分");
+      ages = ages.replace(/seconds?/, "秒");
+      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+      div.innerHTML = `我已在此等候你 ${ages}`;
+    }
+    var div = document.createElement("div");
+    //插入到copyright之后
+    var copyright = document.querySelector(".copyright");
+    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+    timer();
+    setInterval("timer()",1000)
+  </script>
+
+<script>
+var OriginTitle = document.title;
+document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+        document.title = '|ω・）我藏好了哦~';
+    }
+    else {
+        document.title = OriginTitle;
+    }
+});
+// 顶部阅读进度条
+$(document).ready(function () {
+  $(window).scroll(function(){
+    $(".top-scroll-bar").attr("style", "width: " + ($(this).scrollTop() / ($(document).height() - $(this).height()) * 100) + "%; display: block;");
+  });
+});
+</script>
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+<script>
+NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz',
+    appKey: 'Y32s7s17bsYNYTOuGmBxgqPf',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

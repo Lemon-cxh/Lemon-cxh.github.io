@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="开发过程中遇到的问题,以及处理方式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-24T09:26:08.758Z">
+<meta property="og:updated_time" content="2020-12-25T06:46:59.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="遇到的问题">
 <meta name="twitter:description" content="开发过程中遇到的问题,以及处理方式">
@@ -320,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-24 17:26:08" itemprop="dateModified" datetime="2020-11-24T17:26:08+08:00">2020-11-24</time>
+                <time title="修改时间：2020-12-25 14:46:59" itemprop="dateModified" datetime="2020-12-25T14:46:59+08:00">2020-12-25</time>
               </span>
             
           
@@ -356,7 +356,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.6k</span>
+              <span>2.7k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -412,7 +412,7 @@
 </ol>
 </li>
 </ol><a id="more"></a>
-<pre><code>    然后依旧报错，此时把停止运行服务再次请求，然而正常访问，说明 Spring Gateway 和 Nginx 之间没有问题，便排查业务服务。
+<pre><code>    然后依旧报错，此时把服务停止运行再次请求，然而正常访问，说明 Spring Gateway 和 Nginx 之间没有问题，便排查业务服务。
     在 `HandlerInterceptorAdapter` 处理拦截器种发现了这么一段代码 `response.sendError`。
     此方法使用指定的状态码发送一个错误响应至客户端。服务器默认会创建一个 HTML 格式的服务错误页面作为响应结果，其中包含参数 msg 指定的文本信息，这个 HTML 页面的内容类型为 `text/html`，保留 cookies 和其他未修改的响应头信息。
     最后去掉此行代码，替换为抛出全局异常，得以解决。
@@ -424,7 +424,15 @@
 
 3. ###### upstream timed out (110: Connection timed out) while reading response header from upstream
 
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy_read_timeout 240;</span><br><span class="line">proxy_send_timeout 240;</span><br><span class="line">proxy_buffer_size 128k;</span><br><span class="line">proxy_buffers 8 256k;</span><br><span class="line">proxy_busy_buffers_size 256k;</span><br><span class="line">proxy_temp_file_write_size 256k;</span><br><span class="line">proxy_next_upstream error timeout invalid_header http_503;</span><br></pre></td></tr></table></figure></code></pre>
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy_read_timeout 240;</span><br><span class="line">proxy_send_timeout 240;</span><br><span class="line">proxy_buffer_size 128k;</span><br><span class="line">proxy_buffers 8 256k;</span><br><span class="line">proxy_busy_buffers_size 256k;</span><br><span class="line">proxy_temp_file_write_size 256k;</span><br><span class="line">proxy_next_upstream error timeout invalid_header http_503;</span><br></pre></td></tr></table></figure></code></pre><ol start="4">
+<li><h5 id="服务器"><a href="# 服务器" class="headerlink" title="服务器"></a>服务器</h5><ol>
+<li><h6 id="Error-Network-Error"><a href="#Error-Network-Error" class="headerlink" title="Error: Network Error"></a>Error: Network Error</h6> 请求时不时提示 net:ERR_CONNECTION_TIMED_OUT 以及 Error: Network Error。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># /etc/sysctl.conf</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+
     </div>
 
     
@@ -513,7 +521,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Boot"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#服务启动后即关闭，没有错误日志"><span class="nav-number">1.1.</span> <span class="nav-text">服务启动后即关闭，没有错误日志</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Cloud-Gateway"><span class="nav-number">2.</span> <span class="nav-text">Spring Cloud Gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”"><span class="nav-number">2.1.</span> <span class="nav-text">Invalid character ‘[‘ for QUERY_PARAM in “match[]”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#unexpected-message-type-DefaultHttpRequest"><span class="nav-number">2.2.</span> <span class="nav-text">unexpected message type: DefaultHttpRequest</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nginx"><span class="nav-number">3.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream"><span class="nav-number">3.1.</span> <span class="nav-text">upstream sent no valid HTTP/1.0 header while reading response header from upstream</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Boot"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#服务启动后即关闭，没有错误日志"><span class="nav-number">1.1.</span> <span class="nav-text">服务启动后即关闭，没有错误日志</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Cloud-Gateway"><span class="nav-number">2.</span> <span class="nav-text">Spring Cloud Gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”"><span class="nav-number">2.1.</span> <span class="nav-text">Invalid character ‘[‘ for QUERY_PARAM in “match[]”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#unexpected-message-type-DefaultHttpRequest"><span class="nav-number">2.2.</span> <span class="nav-text">unexpected message type: DefaultHttpRequest</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nginx"><span class="nav-number">3.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream"><span class="nav-number">3.1.</span> <span class="nav-text">upstream sent no valid HTTP/1.0 header while reading response header from upstream</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务器"><span class="nav-number">4.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Error-Network-Error"><span class="nav-number">4.1.</span> <span class="nav-text">Error: Network Error</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -531,7 +539,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -574,7 +582,9 @@
         
           
         
-        <span class="site-state-item-count">12</span>
+          
+        
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -623,7 +633,9 @@
         
           
         
-        <span class="site-state-item-count">16</span>
+          
+        
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -669,7 +681,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>

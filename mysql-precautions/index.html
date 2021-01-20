@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="SQL语句的注意事项">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-22T02:03:44.514Z">
+<meta property="og:updated_time" content="2021-01-16T03:24:56.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 注意事项">
 <meta name="twitter:description" content="SQL语句的注意事项">
@@ -320,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-22 10:03:44" itemprop="dateModified" datetime="2020-12-22T10:03:44+08:00">2020-12-22</time>
+                <time title="修改时间：2021-01-16 11:24:56" itemprop="dateModified" datetime="2021-01-16T11:24:56+08:00">2021-01-16</time>
               </span>
             
           
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.7k</span>
+              <span>2.6k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -438,14 +438,14 @@
 <li>舍入误差可能导致日期和时间值不正确。使用 <code>&gt;=</code> 和<code>&lt;</code>代替<code>BETWEEN</code>。可以使用<code>DATEADD()</code></li>
 </ol>
 </li>
+<li><h6 id="书写可参数化搜索的查询以确保引擎使用索引"><a href="# 书写可参数化搜索的查询以确保引擎使用索引" class="headerlink" title="书写可参数化搜索的查询以确保引擎使用索引"></a>书写可参数化搜索的查询以确保引擎使用索引</h6><ol>
+<li>使用<code>=</code>、<code>&gt;</code>、<code>&lt;</code>、<code>&gt;=</code>、<code>&lt;=</code>、<code>BETWEEN</code>、<code>ISNULL</code>、<code>LIKE</code>(不包括前导通配符)。</li>
+<li>不要再 <code>WHERE</code> 子句中的一个或多个字段上使用函数。</li>
+<li>不要对 <code>WHERE</code> 子句中的字段进行算术运算。</li>
 </ol>
 </li>
 </ol>
-<pre><code>3. ###### 书写可参数化搜索的查询以确保引擎使用索引
-
-    1. 使用 `=`、`&gt;`、`&lt;`、`&gt;=`、`&lt;=`、`BETWEEN`、`ISNULL`、`LIKE`(不包括前导通配符)。
-    2. 不要再 `WHERE` 子句中的一个或多个字段上使用函数。
-    3. 不要对 `WHERE` 子句中的字段进行算术运算。</code></pre><ol start="2">
+</li>
 <li><h5 id="聚合"><a href="# 聚合" class="headerlink" title="聚合"></a>聚合</h5><ol>
 <li><h6 id="理解 GROUP-BY 工作原理"><a href="# 理解 GROUP-BY 工作原理" class="headerlink" title="理解 GROUP BY 工作原理"></a>理解 GROUP BY 工作原理</h6><ol>
 <li><code>FROM</code>子句生成数据集</li>
@@ -646,7 +646,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据模型与索引设计"><span class="nav-number">1.</span> <span class="nav-text">数据模型与索引设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符集"><span class="nav-number">1.1.</span> <span class="nav-text">字符集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#索引"><span class="nav-number">1.2.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#最左前缀匹配原则"><span class="nav-number">1.2.1.</span> <span class="nav-text">最左前缀匹配原则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#覆盖索引"><span class="nav-number">1.2.2.</span> <span class="nav-text">覆盖索引</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#索引列设置为 NOT-NULL- 否则会全表扫描"><span class="nav-number">1.2.3.</span> <span class="nav-text">索引列设置为 NOT NULL, 否则会全表扫描</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询数据"><span class="nav-number">2.</span> <span class="nav-text">查询数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#过滤与查找数据"><span class="nav-number">2.1.</span> <span class="nav-text">过滤与查找数据</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#查找不匹配或缺失的记录"><span class="nav-number">2.1.1.</span> <span class="nav-text">查找不匹配或缺失的记录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#按时间范围正确地过滤日期和时间"><span class="nav-number">2.1.2.</span> <span class="nav-text">按时间范围正确地过滤日期和时间</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#聚合"><span class="nav-number">2.2.</span> <span class="nav-text">聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#理解 GROUP-BY 工作原理"><span class="nav-number">2.2.1.</span> <span class="nav-text">理解 GROUP BY 工作原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用 OUTER-JOIN 时避免获取错误的 COUNT"><span class="nav-number">2.2.2.</span> <span class="nav-text">使用 OUTER JOIN 时避免获取错误的 COUNT()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#避免使用 GROUP-BY 来查找最大或最小值"><span class="nav-number">2.2.3.</span> <span class="nav-text">避免使用 GROUP BY 来查找最大或最小值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#GROUP-COUNT- 中也可以使用 ORDER-BY"><span class="nav-number">2.2.4.</span> <span class="nav-text">GROUP_COUNT()中也可以使用 ORDER BY</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#排序"><span class="nav-number">2.3.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#排序时对 Null 值的处理"><span class="nav-number">2.3.1.</span> <span class="nav-text">排序时对 Null 值的处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#依据条件逻辑动态调整排序项"><span class="nav-number">2.3.2.</span> <span class="nav-text">依据条件逻辑动态调整排序项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Explain-type 字段"><span class="nav-number">3.</span> <span class="nav-text">Explain type 字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据模型与索引设计"><span class="nav-number">1.</span> <span class="nav-text">数据模型与索引设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符集"><span class="nav-number">1.1.</span> <span class="nav-text">字符集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#索引"><span class="nav-number">1.2.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#最左前缀匹配原则"><span class="nav-number">1.2.1.</span> <span class="nav-text">最左前缀匹配原则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#覆盖索引"><span class="nav-number">1.2.2.</span> <span class="nav-text">覆盖索引</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#索引列设置为 NOT-NULL- 否则会全表扫描"><span class="nav-number">1.2.3.</span> <span class="nav-text">索引列设置为 NOT NULL, 否则会全表扫描</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询数据"><span class="nav-number">2.</span> <span class="nav-text">查询数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#过滤与查找数据"><span class="nav-number">2.1.</span> <span class="nav-text">过滤与查找数据</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#查找不匹配或缺失的记录"><span class="nav-number">2.1.1.</span> <span class="nav-text">查找不匹配或缺失的记录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#按时间范围正确地过滤日期和时间"><span class="nav-number">2.1.2.</span> <span class="nav-text">按时间范围正确地过滤日期和时间</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#书写可参数化搜索的查询以确保引擎使用索引"><span class="nav-number">2.1.3.</span> <span class="nav-text">书写可参数化搜索的查询以确保引擎使用索引</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#聚合"><span class="nav-number">2.2.</span> <span class="nav-text">聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#理解 GROUP-BY 工作原理"><span class="nav-number">2.2.1.</span> <span class="nav-text">理解 GROUP BY 工作原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用 OUTER-JOIN 时避免获取错误的 COUNT"><span class="nav-number">2.2.2.</span> <span class="nav-text">使用 OUTER JOIN 时避免获取错误的 COUNT()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#避免使用 GROUP-BY 来查找最大或最小值"><span class="nav-number">2.2.3.</span> <span class="nav-text">避免使用 GROUP BY 来查找最大或最小值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#GROUP-COUNT- 中也可以使用 ORDER-BY"><span class="nav-number">2.2.4.</span> <span class="nav-text">GROUP_COUNT()中也可以使用 ORDER BY</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#排序"><span class="nav-number">2.3.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#排序时对 Null 值的处理"><span class="nav-number">2.3.1.</span> <span class="nav-text">排序时对 Null 值的处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#依据条件逻辑动态调整排序项"><span class="nav-number">2.3.2.</span> <span class="nav-text">依据条件逻辑动态调整排序项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Explain-type 字段"><span class="nav-number">3.</span> <span class="nav-text">Explain type 字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -664,7 +664,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -707,7 +707,9 @@
         
           
         
-        <span class="site-state-item-count">12</span>
+          
+        
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -756,7 +758,9 @@
         
           
         
-        <span class="site-state-item-count">16</span>
+          
+        
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -802,7 +806,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
