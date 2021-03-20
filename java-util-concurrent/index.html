@@ -1,62 +1,24 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="baidu-site-verification" content="qtx7WGWpqa"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.3.0',
-    exturl: false,
-    sidebar: {"position":"right","display":"always","offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":true,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="Java并发包、阻塞队列、线程池">
 <meta name="keywords" content="Java,并发包">
@@ -66,37 +28,35 @@
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="Java并发包、阻塞队列、线程池">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-24T09:23:57.079Z">
+<meta property="og:updated_time" content="2021-02-26T02:10:55.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 并发包">
 <meta name="twitter:description" content="Java并发包、阻塞队列、线程池">
-  <link rel="canonical" href="https://Lemon-cxh.github.io/java-util-concurrent/">
+
+<link rel="canonical" href="https://Lemon-cxh.github.io/java-util-concurrent/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
   <title>Java 并发包 | 三月柳絮四月雨</title>
-  <meta name="generator" content="Hexo 3.9.0">
   
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146884962-1"></script>
-  <script>
-    var host = window.location.hostname;
-    if (host !== "localhost" || !true) {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-146884962-1');
-    }
-  </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146884962-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-146884962-1');
+      }
+    </script>
 
 
   <script>
@@ -108,8 +68,6 @@
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
-
-
 
 
 
@@ -126,7 +84,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -140,125 +97,99 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="top-scroll-bar"></div>
-
-<div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">三月柳絮四月雨</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">三月柳絮四月雨</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-      
-      
-      
-        
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-tags">
-      
-    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-categories">
-      
-    
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-about">
-      
-    
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
       </li>
-    
   </ul>
-
-    
-
 </nav>
-  <div class="site-search">
+
+
+
+  <div class="search-pop-overlay">
     <div class="popup search-popup">
-    <div class="search-header">
+        <div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
   </div>
+</div>
+
+    </div>
+  </div>
+
 </div>
     </header>
 
@@ -269,74 +200,59 @@
   </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
-      <article itemscope itemtype="http://schema.org/Article">
+    
   
   
-  
-  <div class="post-block post">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://Lemon-cxh.github.io/java-util-concurrent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="三月柳絮四月雨">
       <meta itemprop="description" content="要做一个不动声色的大人了<br/>不准情绪化<br/>不准偷偷想念<br/>不准回头看">
-      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="三月柳絮四月雨">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">Java 并发包
-
-          
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Java 并发包
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
               <time title="创建时间：2020-11-23 11:34:41" itemprop="dateCreated datePublished" datetime="2020-11-23T11:34:41+08:00">2020-11-23</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-24 17:23:57" itemprop="dateModified" datetime="2020-11-24T17:23:57+08:00">2020-11-24</time>
+                <time title="修改时间：2021-02-26 10:10:55" itemprop="dateModified" datetime="2021-02-26T10:10:55+08:00">2021-02-26</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
             </span>
-          
 
           
             <span id="/java-util-concurrent/" class="post-meta-item leancloud_visitors" data-flag-title="Java 并发包" title="阅读次数">
@@ -346,44 +262,42 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
             </span>
-          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
   
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
-        
-      
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/java-util-concurrent/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/java-util-concurrent/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/java-util-concurrent/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/java-util-concurrent/" itemprop="commentCount"></span>
+    </a>
   </span>
   
-  
-          <br>
+  <br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
+                <i class="far fa-file-word"></i>
               </span>
-              
                 <span class="post-meta-item-text">本文字数：</span>
-              
-              <span>3k</span>
+              <span>4.5k</span>
             </span>
-          
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
+                <i class="far fa-clock"></i>
               </span>
-              
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span>5 分钟</span>
+              <span>4 分钟</span>
             </span>
-          
             <div class="post-description">Java并发包、阻塞队列、线程池</div>
-          
 
         </div>
       </header>
@@ -394,36 +308,55 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote class="blockquote-center">
-          <p id="hitokoto"></p>
-        </blockquote>
         <h4 id="并发包锁"><a href="# 并发包锁" class="headerlink" title="并发包锁"></a>并发包锁</h4><ol>
-<li><h5 id="synchronized 同步锁"><a href="#synchronized 同步锁" class="headerlink" title="synchronized 同步锁"></a>synchronized 同步锁 </h5><p> <code>synchronized</code> 同步锁 (隐式锁、独占排他锁) 问题：</p>
-<ol>
-<li><p>不能控制阻塞，不能灵活控制锁的释放，使用 <code>synchronized</code> 同步锁, 线程会在三种情况下释放锁:</p>
-<ol>
-<li>线程执行完同步代码块 / 方法，释放锁</li>
-<li>线程执行时发生异常，此时 JVM 会让线程自动释放锁</li>
-<li>在同步代码块 / 方法中，锁对象执行了 <code>wait()</code> 方法，线程释放锁</li>
-</ol>
+<li><h5 id="乐观锁"><a href="# 乐观锁" class="headerlink" title="乐观锁"></a>乐观锁 </h5><p> 乐观锁采用乐观的思想处理数据，在每次读取数据时都认为别人不会修改该数据，所以不会上锁，但在更新时会判断在此期间别人有没有更新该数据，通常采用在写时先读出当前版本号然后加锁的方法。</p>
+<p>Java 中通过 <code>CAS(Compare And Swap, 比较和交换)</code> 操作实现的，CAS 是一种原子更新操作，在对数据操作之前首先会比较当前值跟传入的值是否一样，如果一样则更新，否则不执行更新操作。</p>
 </li>
-<li><p>在读多写少的场景中，效率低下。当多个线程都只进行读操作时，所有线程都只能同步进行，只能有一个读线程可以进行操作，其他线程只能被阻塞而无法进行操作</p>
+<li><h5 id="悲观锁"><a href="# 悲观锁" class="headerlink" title="悲观锁"></a>悲观锁 </h5><p> 悲观锁采用悲观思想处理数据，在每次读取数据时都认为别人会修改数据，所以每次在读写数据时都会上锁，这样别人想读写这个数据时就会阻塞、等待直到拿到锁。</p>
+<p>Java 中基于 <code>AQS(Abstract Queued Synchronized, 抽象的队列同步器)</code> 架构实现。AQS 定义了一套多线程访问共享资源的同步框架，许多同步类的实现都依赖于它，例如常用的 Synchronized、ReentrantLock、Semaphore、CountDownLatch 等。该框架下的锁会尝试以 CAS 乐观锁去获取锁，如果获取不到，则会转为悲观锁(如 RetreenLock)。</p>
 </li>
-</ol>
+<li><h5 id="自旋锁"><a href="# 自旋锁" class="headerlink" title="自旋锁"></a>自旋锁 </h5><p> 自旋锁认为：如果持有锁的线程能在很短的时间内释放锁资源，那么那些等待竞争锁的线程就不需要做内核态和用户态之间的切换进入阻塞、挂起状态，只需等一等(也叫做自旋)，在等待持有锁的线程释放锁后即可立即获取锁，这样就避免了用户线程在内核状态的切换上导致的锁时间消耗。</p>
+<p>线程在自旋时会占用 CPU，在线册灰姑娘长时间自旋获取不到锁时，将会产生 CPU 的浪费，甚至有时线程永远无法获取锁而导致 CPU 资源被永久占用，所以需要设定一个自旋等待的最大时间。在线程执行的时间超过自旋等待的最大时间后，线程会退出自旋模式并释放其持有的锁。</p>
 </li>
-<li><h5 id="ReentrantLock 重入锁 - 独占锁"><a href="#ReentrantLock 重入锁 - 独占锁" class="headerlink" title="ReentrantLock 重入锁(独占锁)"></a>ReentrantLock 重入锁(独占锁)</h5><blockquote>
-<p>java.util.concurrent 包下有重入锁 <code>ReentrantLock</code> 和读写锁<code>ReentrantReadWriteLock</code>、<code>StampedLock</code>(Java8 新的读写锁)</p>
-</blockquote>
-<p> 重入锁的底层实现使用<code>AbstractQueuedSynchronizer</code>。</p>
+<li><h5 id="可重入锁"><a href="# 可重入锁" class="headerlink" title="可重入锁"></a>可重入锁 </h5><p> 可重入锁也叫做递归锁，指在同一线程中，在外层函数获取到该锁之后，内层的递归函数仍然可以继续获取该锁。</p>
+</li>
+<li><h5 id="公平锁与非公平锁"><a href="# 公平锁与非公平锁" class="headerlink" title="公平锁与非公平锁"></a>公平锁与非公平锁</h5><ul>
+<li>公平锁(Fair Lock)：指在分配锁前检查是否有线程在排队等待获取该锁，优先将锁分配给排队时间最长的线程。</li>
+<li>非公平锁(Nonfair Lock)：指在分配锁时不考虑线程等待的情况，直接尝试获取锁，在获取不到锁时再排队到队尾等待。</li>
+</ul>
+</li>
+<li><h5 id="共享锁和独占锁"><a href="# 共享锁和独占锁" class="headerlink" title="共享锁和独占锁"></a>共享锁和独占锁</h5><p>Java 并发包提供的加锁模式分为独占锁和共享锁：</p>
 <ul>
-<li><p>公平锁：多个线程按照申请锁的顺序，先来后到的原则获得锁。</p>
+<li>独占锁：也叫互斥锁，每次只允许一个线程持有该所，ReentrantLock 为独占锁的实现。</li>
+<li>共享锁：允许多个线程同时获取该锁，并发访问共享资。ReentrantReadWriteLock 中的读锁为共享锁的实现。</li>
+</ul>
 </li>
-<li><p>非公平锁：多个线程可能并不是按照申请锁的顺序，允许新线程插队</p>
-<p>一般情况下，使用公平锁在多线程访问时，在线程的调度上面的开销比较大，所以总体吞吐量会比较低。</p>
+<li><h5 id="分段锁"><a href="# 分段锁" class="headerlink" title="分段锁"></a>分段锁 </h5><p> 分段锁是一种思想，用于将数据分段并在每个分段上都单独加锁，把锁进一步细粒度化，以提高并发效率。ConcurrentHashMap 在内部就是使用分段锁实现的。</p>
+</li>
+<li><h5 id="重量级锁、轻量级锁和偏向锁"><a href="# 重量级锁、轻量级锁和偏向锁" class="headerlink" title="重量级锁、轻量级锁和偏向锁"></a>重量级锁、轻量级锁和偏向锁 </h5><p> 锁的状态一共有四种：无锁、偏向锁、轻量级锁和重量级锁。</p>
+<ul>
+<li><p>重量级锁：是基于操作系统的互斥量 (Mutex Lock) 而实现的锁，会导致进程在用户态和内核态之间切换，相对开销较大。</p>
+<p>synchronized 在内部基于监视器锁 (Monitor) 实现，监视器锁基于底层操作系统的 Mutex Lock 实现，因此属于重量级锁。所以 synchronized 的运行效率不高。</p>
+</li>
+<li><p>轻量级锁：相对于重量级锁而言的。轻量级锁的核心设计是在没有多线程竞争的前提下，减少重量级锁的使用以提高系统性能。轻量级锁适用于线程交替执行同步代码块的情况(即互斥操作)，如果同一时刻有多个线程访问同一个锁，则将会导致轻量级锁膨胀为重量级锁。</p>
+</li>
+<li><p>偏向锁：用于在某个线程获取某个锁之后，消除这个线程锁重入的开销，看起来似乎是这个线程得到了该锁的偏向(偏袒)。</p>
+<p>偏向锁的主要目的是在同一个线程多次获取某个锁的情况下尽量减少轻量级锁的执行路径，因为轻量级锁的获取及释放需要多次 CAS 原子操作，而偏向锁只需要在切换 ThreadID 时执行一次 CAS 原子操作，因此可以提高锁的运行效率。</p>
 </li>
 </ul>
 </li>
-</ol><a id="more"></a>
+<li><h5 id="synchronized- 和 -ReentrantLock 不同点"><a href="#synchronized- 和 -ReentrantLock 不同点" class="headerlink" title="synchronized 和 ReentrantLock 不同点"></a>synchronized 和 ReentrantLock 不同点</h5><ul>
+<li>ReentrantLock 显式获取和释放锁；synchronized 隐式获取和释放锁。为了避免程序出现异常而无法正常释放锁，在使用 ReentrantLock 时必须在 finally 控制块中释放锁。</li>
+<li>ReentrantLock 可响应中断、可轮回，为处理锁提供了更多的灵活性。</li>
+<li>ReentrantLock 是 API 级别的，synchronized 是 JVM 级别的。</li>
+<li>ReentrantLock 可以定义公平锁。</li>
+<li>ReentrantLock 通过 Condition 可以绑定多个条件。</li>
+<li>二者底层实现不一样：synchronized 是同步阻塞，采用的是悲观并发策略；Lock 是同步非阻塞，采用的是乐观并发策略。</li>
+<li>可以通过 Lock 知道有么有成功获取锁，而 synchronized 无法做到</li>
+<li>Lock 可以通过分别定义读写锁提高多线程读的效率。</li>
+</ul>
+</li>
+</ol>
 <h4 id="阻塞队列"><a href="# 阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列 </h4><p> 阻塞队列：可阻塞插入和可阻塞移除元素的队列</p>
 <ul>
 <li><p>可阻塞插入：当队列满时，线程向队列插入元素将会被阻塞，直到队列有空闲位置可用。</p>
@@ -536,77 +469,72 @@
     
     
     
-        
-      
 
       <footer class="post-footer">
-          
-            
-          
           <div class="post-tags">
-            
-              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-            
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
-        
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/java-util-collection/" rel="next" title="Java 集合框架">
-                  <i class="fa fa-chevron-left"></i> Java 集合框架
-                </a>
-              
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/design-principle/" rel="prev" title="设计原则">
-                  设计原则 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
         
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/java-util-collection/" rel="prev" title="Java 集合框架">
+      <i class="fa fa-chevron-left"></i> Java 集合框架
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/design-principle/" rel="next" title="设计原则">
+      设计原则 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-  </div>
 
 
           </div>
           
-    
-    <div class="comments" id="comments"></div>
-  
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -619,149 +547,47 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#并发包锁"><span class="nav-number">1.</span> <span class="nav-text">并发包锁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized 同步锁"><span class="nav-number">1.1.</span> <span class="nav-text">synchronized 同步锁 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReentrantLock 重入锁 - 独占锁"><span class="nav-number">1.2.</span> <span class="nav-text">ReentrantLock 重入锁(独占锁)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞队列"><span class="nav-number">2.</span> <span class="nav-text">阻塞队列 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#阻塞队列 -1"><span class="nav-number">2.1.</span> <span class="nav-text">阻塞队列 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayBolckingQueue"><span class="nav-number">2.2.</span> <span class="nav-text">ArrayBolckingQueue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayBolckingQueue-1"><span class="nav-number">2.3.</span> <span class="nav-text">ArrayBolckingQueue</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程池"><span class="nav-number">3.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程创建和销毁步骤："><span class="nav-number">3.1.</span> <span class="nav-text">线程创建和销毁步骤：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程池 ThreadPoolExecutor 参数"><span class="nav-number">3.2.</span> <span class="nav-text">线程池 ThreadPoolExecutor 参数</span></a></li></ol></li></ol></div>
-        
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#并发包锁"><span class="nav-number">1.</span> <span class="nav-text">并发包锁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#乐观锁"><span class="nav-number">1.1.</span> <span class="nav-text">乐观锁 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#悲观锁"><span class="nav-number">1.2.</span> <span class="nav-text">悲观锁 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自旋锁"><span class="nav-number">1.3.</span> <span class="nav-text">自旋锁 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可重入锁"><span class="nav-number">1.4.</span> <span class="nav-text">可重入锁 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#公平锁与非公平锁"><span class="nav-number">1.5.</span> <span class="nav-text">公平锁与非公平锁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#共享锁和独占锁"><span class="nav-number">1.6.</span> <span class="nav-text">共享锁和独占锁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分段锁"><span class="nav-number">1.7.</span> <span class="nav-text">分段锁 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重量级锁、轻量级锁和偏向锁"><span class="nav-number">1.8.</span> <span class="nav-text">重量级锁、轻量级锁和偏向锁 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#synchronized- 和 -ReentrantLock 不同点"><span class="nav-number">1.9.</span> <span class="nav-text">synchronized 和 ReentrantLock 不同点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞队列"><span class="nav-number">2.</span> <span class="nav-text">阻塞队列 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#阻塞队列 -1"><span class="nav-number">2.1.</span> <span class="nav-text">阻塞队列 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayBolckingQueue"><span class="nav-number">2.2.</span> <span class="nav-text">ArrayBolckingQueue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayBolckingQueue-1"><span class="nav-number">2.3.</span> <span class="nav-text">ArrayBolckingQueue</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程池"><span class="nav-number">3.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程创建和销毁步骤："><span class="nav-number">3.1.</span> <span class="nav-text">线程创建和销毁步骤：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程池 ThreadPoolExecutor 参数"><span class="nav-number">3.2.</span> <span class="nav-text">线程池 ThreadPoolExecutor 参数</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.jpg"
-      alt="三月柳絮四月雨">
+    <img class="site-author-image" itemprop="image" alt="三月柳絮四月雨"
+      src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">三月柳絮四月雨</p>
   <div class="site-description" itemprop="description">要做一个不动声色的大人了<br/>不准情绪化<br/>不准偷偷想念<br/>不准回头看</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-categories">
-        
-          
             <a href="/categories/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">13</span>
-        <span class="site-state-item-name">分类</span>
-        </a>
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-          
             <a href="/tags/">
           
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">17</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
-    
   </nav>
+</div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/Lemon-cxh" title="GitHub &rarr; https://github.com/Lemon-cxh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/Lemon-cxh" title="GitHub → https://github.com/Lemon-cxh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
-    
       <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://blog.csdn.net/qq_34576655" title="CSDN &rarr; https://blog.csdn.net/qq_34576655" rel="noopener" target="_blank"><i class="fa fa-fw fa-pencil-square-o"></i>CSDN</a>
+        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https://blog.csdn.net/qq_34576655" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
       </span>
-    
   </div>
 
 
@@ -776,11 +602,17 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love" id="animate">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">三月柳絮四月雨</span>
@@ -789,16 +621,23 @@
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="site-uv">
-      我的第 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 位朋友
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
     </span>
-  
     <span class="post-meta-divider">|</span>
-  
-    <span class="site-pv">
-      历经 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次回眸才与你相遇
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
     </span>
-  
 </div>
 
 
@@ -806,29 +645,28 @@
 
 
 
-  
-  <script>
-  function leancloudSelector(url) {
-    return document.getElementById(url).querySelector('.leancloud-visitors-count');
-  }
-  if (CONFIG.page.isPost) {
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
     function addCount(Counter) {
       var visitors = document.querySelector('.leancloud_visitors');
-      var url = visitors.getAttribute('id').trim();
-      var title = visitors.getAttribute('data-flag-title').trim();
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
 
-      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
         .then(response => response.json())
         .then(({ results }) => {
           if (results.length > 0) {
             var counter = results[0];
-              leancloudSelector(url).innerText = counter.time + 1;
-            
+            leancloudSelector(url).innerText = counter.time + 1;
             Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
-              .then(response => response.json())
               .catch(error => {
-                console.log('Failed to save visitor count', error);
-              })
+                console.error('Failed to save visitor count', error);
+              });
           } else {
               leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
               console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
@@ -836,89 +674,76 @@
           }
         })
         .catch(error => {
-          console.log('LeanCloud Counter Error', error);
+          console.error('LeanCloud Counter Error', error);
         });
     }
-  } else {
+
     function showTime(Counter) {
       var visitors = document.querySelectorAll('.leancloud_visitors');
       var entries = [...visitors].map(element => {
-        return element.getAttribute('id').trim();
+        return decodeURI(element.id);
       });
 
-      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
         .then(response => response.json())
         .then(({ results }) => {
-          if (results.length === 0) {
-            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
-              element.innerText = 0;
-            });
-            return;
-          }
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            leancloudSelector(url).innerText = time;
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = leancloudSelector(url);
-            if (element.innerText == '') {
-              element.innerText = 0;
-            }
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
           }
         })
         .catch(error => {
-          console.log('LeanCloud Counter Error', error);
+          console.error('LeanCloud Counter Error', error);
         });
     }
-  }
 
-  fetch('https://app-router.leancloud.cn/2/route?appId=3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz')
-    .then(response => response.json())
-    .then(({ api_server }) => {
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz","app_key":"Y32s7s17bsYNYTOuGmBxgqPf","server_url":null,"security":true};
+    function fetchData(api_server) {
       var Counter = (method, url, data) => {
-        return fetch(`https://${api_server}/1.1${url}`, {
-          method: method,
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
           headers: {
-            'X-LC-Id': '3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz',
-            'X-LC-Key': 'Y32s7s17bsYNYTOuGmBxgqPf',
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(data)
         });
       };
       if (CONFIG.page.isPost) {
-        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
-        if (localhost.test(document.URL)) return;
+        if (CONFIG.hostname !== location.hostname) return;
         addCount(Counter);
       } else if (document.querySelectorAll('.post-title-link').length >= 1) {
         showTime(Counter);
       }
-    });
-  </script>
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
 
   
-
-
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
-<script src="/js/schemes/muse.js?v=7.3.0"></script>
-
-<script src="/js/next-boot.js?v=7.3.0"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -927,13 +752,7 @@
 
 
 
-
-
-
-
-  <script src="/js/local-search.js?v=7.3.0"></script>
-
-
+  <script src="/js/local-search.js"></script>
 
 
 
@@ -949,85 +768,34 @@
   
 
   
-
-  
-
-  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
-  <script>
-    function timer() {
-      var ages = moment.preciseDiff(moment(),moment(20190902,"YYYYMMDD"));
-      ages = ages.replace(/years?/, "年");
-      ages = ages.replace(/months?/, "月");
-      ages = ages.replace(/days?/, "天");
-      ages = ages.replace(/hours?/, "小时");
-      ages = ages.replace(/minutes?/, "分");
-      ages = ages.replace(/seconds?/, "秒");
-      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
-      div.innerHTML = `我已在此等候你 ${ages}`;
-    }
-    var div = document.createElement("div");
-    //插入到copyright之后
-    var copyright = document.querySelector(".copyright");
-    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
-    timer();
-    setInterval("timer()",1000)
-  </script>
-
-<script>
-var OriginTitle = document.title;
-document.addEventListener('visibilitychange', function () {
-    if (document.hidden) {
-        document.title = '|ω・）我藏好了哦~';
-    }
-    else {
-        document.title = OriginTitle;
-    }
-});
-// 顶部阅读进度条
-$(document).ready(function () {
-  $(window).scroll(function(){
-    $(".top-scroll-bar").attr("style", "width: " + ($(this).scrollTop() / ($(document).height() - $(this).height()) * 100) + "%; display: block;");
-  });
-});
-</script>
-
-
-
-  <script src="/js/activate-power-mode.min.js"></script>
-  <script>
-    POWERMODE.colorful = true;
-    POWERMODE.shake = false;
-    document.body.addEventListener('input', POWERMODE);
-  </script>
 
 
 <script>
-NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: '3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz',
-    appKey: 'Y32s7s17bsYNYTOuGmBxgqPf',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: false,
-    lang: '' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz',
+      appKey     : 'Y32s7s17bsYNYTOuGmBxgqPf',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
 </script>
 
 </body>
