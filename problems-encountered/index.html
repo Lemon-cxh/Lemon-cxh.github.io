@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
@@ -17,23 +17,23 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="开发过程中遇到的问题,以及处理方式">
-<meta name="keywords" content="problems,问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="遇到的问题">
-<meta property="og:url" content="https://Lemon-cxh.github.io/problems-encountered/index.html">
+<meta property="og:url" content="https://lemon-cxh.github.io/problems-encountered/index.html">
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="开发过程中遇到的问题,以及处理方式">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-25T06:46:59.622Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-10T06:14:19.000Z">
+<meta property="article:modified_time" content="2020-12-25T06:46:59.622Z">
+<meta property="article:author" content="三月柳絮四月雨">
+<meta property="article:tag" content="problems">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="遇到的问题">
-<meta name="twitter:description" content="开发过程中遇到的问题,以及处理方式">
 
-<link rel="canonical" href="https://Lemon-cxh.github.io/problems-encountered/">
+<link rel="canonical" href="https://lemon-cxh.github.io/problems-encountered/">
 
 
 <script id="page-configurations">
@@ -198,6 +198,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -212,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://Lemon-cxh.github.io/problems-encountered/">
+    <link itemprop="mainEntityOfPage" href="https://lemon-cxh.github.io/problems-encountered/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -253,13 +254,6 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
             </span>
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -279,7 +273,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -301,48 +295,30 @@
       
         <ol>
 <li><h5 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h5><ol>
-<li><h6 id="服务启动后即关闭，没有错误日志"><a href="# 服务启动后即关闭，没有错误日志" class="headerlink" title="服务启动后即关闭，没有错误日志"></a>服务启动后即关闭，没有错误日志</h6> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        SpringApplication.run(TestBootstrap.class, args);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        log.error(<span class="string">"error"</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li><h6 id="服务启动后即关闭，没有错误日志"><a href="# 服务启动后即关闭，没有错误日志" class="headerlink" title="服务启动后即关闭，没有错误日志"></a>服务启动后即关闭，没有错误日志</h6> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        SpringApplication.run(TestBootstrap.class, args);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        log.error(<span class="string">&quot;error&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><h5 id="Spring-Cloud-Gateway"><a href="#Spring-Cloud-Gateway" class="headerlink" title="Spring Cloud Gateway"></a>Spring Cloud Gateway</h5><ol>
-<li><h6 id="Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”"><a href="#Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”" class="headerlink" title="Invalid character ‘[‘ for QUERY_PARAM in “match[]”"></a>Invalid character ‘[‘ for QUERY_PARAM in “match[]”</h6> <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: Invalid character <span class="string">'['</span> <span class="keyword">for</span> QUERY_PARAM in <span class="string">"match[]"</span></span><br></pre></td></tr></table></figure>
-
-<p> Spring Cloud Gateway 与 Webflux 的兼容性的问题，项目的 Gateway 版本 2.0.0.RELEASE，去除 <code>spring-boot-starter-webflux</code> 依赖解决可以升级 Gateway 版本。<a href="https://github.com/spring-cloud/spring-cloud-gateway/issues/462" target="_blank" rel="noopener">issues</a></p>
+<li><h6 id="Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”"><a href="#Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”" class="headerlink" title="Invalid character ‘[‘ for QUERY_PARAM in “match[]”"></a>Invalid character ‘[‘ for QUERY_PARAM in “match[]”</h6> <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: Invalid character <span class="string">&#x27;[&#x27;</span> <span class="keyword">for</span> QUERY_PARAM in <span class="string">&quot;match[]&quot;</span></span><br></pre></td></tr></table></figure>
+<p> Spring Cloud Gateway 与 Webflux 的兼容性的问题，项目的 Gateway 版本 2.0.0.RELEASE，去除 <code>spring-boot-starter-webflux</code> 依赖解决可以升级 Gateway 版本。<a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-gateway/issues/462">issues</a></p>
 </li>
 <li><h6 id="unexpected-message-type-DefaultHttpRequest"><a href="#unexpected-message-type-DefaultHttpRequest" class="headerlink" title="unexpected message type: DefaultHttpRequest"></a>unexpected message type: DefaultHttpRequest</h6> <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io.netty.handler.codec.EncoderException: java.lang.IllegalStateException: unexpected message <span class="built_in">type</span>: DefaultHttpRequest</span><br></pre></td></tr></table></figure>
-
-<p> Spring Cloud Gateway 以及 Spring Boot 版本 2.0.1.RELEASE 更新为 2.0.4.RELEASE。<a href="https://github.com/reactor/reactor-netty/issues/177" target="_blank" rel="noopener">issues</a></p>
+<p> Spring Cloud Gateway 以及 Spring Boot 版本 2.0.1.RELEASE 更新为 2.0.4.RELEASE。<a target="_blank" rel="noopener" href="https://github.com/reactor/reactor-netty/issues/177">issues</a></p>
 </li>
 </ol>
 </li>
 <li><h5 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h5><ol>
 <li><h6 id="upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream"><a href="#upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream" class="headerlink" title="upstream sent no valid HTTP/1.0 header while reading response header from upstream"></a>upstream sent no valid HTTP/1.0 header while reading response header from upstream</h6><p> Nginx 报错，然后设置了 Nginx 和业务服务配置</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">proxy_http_version 1.1;</span><br><span class="line">proxy_cache_bypass      $http_upgrade;</span><br><span class="line"></span><br><span class="line">proxy_set_header Upgrade                $http_upgrade;</span><br><span class="line">proxy_set_header Connection &quot;&quot;;</span><br><span class="line">proxy_set_header Host                   $host;</span><br><span class="line">proxy_set_header X-Real-IP              $remote_addr;</span><br><span class="line">proxy_set_header X-Forwarded-For        $proxy_add_x_forwarded_for;</span><br><span class="line">proxy_set_header X-Forwarded-Proto      $scheme;</span><br><span class="line">proxy_set_header X-Forwarded-Host       $host;</span><br><span class="line">proxy_set_header X-Forwarded-Port       $server_port;</span><br></pre></td></tr></table></figure>
-
- <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">    use-forward-headers:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    tomcat:</span></span><br><span class="line"><span class="attr">        remote-ip-header:</span> <span class="string">x-forwarded-for</span></span><br><span class="line"><span class="attr">        protocol-header:</span> <span class="string">x-forwarded-proto</span></span><br><span class="line"><span class="attr">        port-header:</span> <span class="string">X-Forwarded-Port</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
+ <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">    <span class="attr">use-forward-headers:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">tomcat:</span></span><br><span class="line">        <span class="attr">remote-ip-header:</span> <span class="string">x-forwarded-for</span></span><br><span class="line">        <span class="attr">protocol-header:</span> <span class="string">x-forwarded-proto</span></span><br><span class="line">        <span class="attr">port-header:</span> <span class="string">X-Forwarded-Port</span></span><br></pre></td></tr></table></figure>
+<p> 然后依旧报错，此时把服务停止运行再次请求，然而正常访问，说明 Spring Gateway 和 Nginx 之间没有问题，便排查业务服务。<br> 在 <code>HandlerInterceptorAdapter</code> 处理拦截器种发现了这么一段代码<code>response.sendError</code>。<br> 此方法使用指定的状态码发送一个错误响应至客户端。服务器默认会创建一个 HTML 格式的服务错误页面作为响应结果，其中包含参数 msg 指定的文本信息，这个 HTML 页面的内容类型为<code>text/html</code>，保留 cookies 和其他未修改的响应头信息。<br> 最后去掉此行代码，替换为抛出全局异常，得以解决。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    ***</span><br><span class="line">    response.sendError(***);</span><br><span class="line">    ***</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h6 id="upstream-server-temporarily-disabled-while-reading-response-header-from-upstream"><a href="#upstream-server-temporarily-disabled-while-reading-response-header-from-upstream" class="headerlink" title="upstream server temporarily disabled while reading response header from upstream"></a>upstream server temporarily disabled while reading response header from upstream</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream zxjl &#123;</span><br><span class="line">    least_conn;</span><br><span class="line">    server 192.168.1.1:8765 max_fails&#x3D;3 fail_timeout&#x3D;30s;</span><br><span class="line">    server 192.168.1.2:8765 max_fails&#x3D;3 fail_timeout&#x3D;30s;</span><br><span class="line">    keepalive 256;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h6 id="upstream-timed-out-110-Connection-timed-out-while-reading-response-header-from-upstream"><a href="#upstream-timed-out-110-Connection-timed-out-while-reading-response-header-from-upstream" class="headerlink" title="upstream timed out (110: Connection timed out) while reading response header from upstream"></a>upstream timed out (110: Connection timed out) while reading response header from upstream</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy_read_timeout 240;</span><br><span class="line">proxy_send_timeout 240;</span><br><span class="line">proxy_buffer_size 128k;</span><br><span class="line">proxy_buffers 8 256k;</span><br><span class="line">proxy_busy_buffers_size 256k;</span><br><span class="line">proxy_temp_file_write_size 256k;</span><br><span class="line">proxy_next_upstream error timeout invalid_header http_503;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
-</ol>
-<pre><code>    然后依旧报错，此时把服务停止运行再次请求，然而正常访问，说明 Spring Gateway 和 Nginx 之间没有问题，便排查业务服务。
-    在 `HandlerInterceptorAdapter` 处理拦截器种发现了这么一段代码 `response.sendError`。
-    此方法使用指定的状态码发送一个错误响应至客户端。服务器默认会创建一个 HTML 格式的服务错误页面作为响应结果，其中包含参数 msg 指定的文本信息，这个 HTML 页面的内容类型为 `text/html`，保留 cookies 和其他未修改的响应头信息。
-    最后去掉此行代码，替换为抛出全局异常，得以解决。
-    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    ***</span><br><span class="line">    response.sendError(***);</span><br><span class="line">    ***</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-2. ###### upstream server temporarily disabled while reading response header from upstream
-
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream zxjl &#123;</span><br><span class="line">    least_conn;</span><br><span class="line">    server 192.168.1.1:8765 max_fails=3 fail_timeout=30s;</span><br><span class="line">    server 192.168.1.2:8765 max_fails=3 fail_timeout=30s;</span><br><span class="line">    keepalive 256;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-3. ###### upstream timed out (110: Connection timed out) while reading response header from upstream
-
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy_read_timeout 240;</span><br><span class="line">proxy_send_timeout 240;</span><br><span class="line">proxy_buffer_size 128k;</span><br><span class="line">proxy_buffers 8 256k;</span><br><span class="line">proxy_busy_buffers_size 256k;</span><br><span class="line">proxy_temp_file_write_size 256k;</span><br><span class="line">proxy_next_upstream error timeout invalid_header http_503;</span><br></pre></td></tr></table></figure></code></pre><ol start="4">
 <li><h5 id="服务器"><a href="# 服务器" class="headerlink" title="服务器"></a>服务器</h5><ol>
-<li><h6 id="Error-Network-Error"><a href="#Error-Network-Error" class="headerlink" title="Error: Network Error"></a>Error: Network Error</h6> 请求时不时提示 net:ERR_CONNECTION_TIMED_OUT 以及 Error: Network Error。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># /etc/sysctl.conf</span><br><span class="line">net.ipv4.tcp_tw_recycle = 0</span><br></pre></td></tr></table></figure>
-
+<li><h6 id="Error-Network-Error"><a href="#Error-Network-Error" class="headerlink" title="Error: Network Error"></a>Error: Network Error</h6> 请求时不时提示 net:ERR_CONNECTION_TIMED_OUT 以及 Error: Network Error。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">net.ipv4.tcp_tw_recycle &#x3D; 0</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -431,7 +407,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Boot"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#服务启动后即关闭，没有错误日志"><span class="nav-number">1.1.</span> <span class="nav-text">服务启动后即关闭，没有错误日志</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Cloud-Gateway"><span class="nav-number">2.</span> <span class="nav-text">Spring Cloud Gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Invalid-character-‘-‘-for-QUERY-PARAM-in-“match-”"><span class="nav-number">2.1.</span> <span class="nav-text">Invalid character ‘[‘ for QUERY_PARAM in “match[]”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#unexpected-message-type-DefaultHttpRequest"><span class="nav-number">2.2.</span> <span class="nav-text">unexpected message type: DefaultHttpRequest</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nginx"><span class="nav-number">3.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream"><span class="nav-number">3.1.</span> <span class="nav-text">upstream sent no valid HTTP/1.0 header while reading response header from upstream</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务器"><span class="nav-number">4.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Error-Network-Error"><span class="nav-number">4.1.</span> <span class="nav-text">Error: Network Error</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Boot"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E5%90%8E%E5%8D%B3%E5%85%B3%E9%97%AD%EF%BC%8C%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97"><span class="nav-number">1.1.</span> <span class="nav-text">服务启动后即关闭，没有错误日志</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Cloud-Gateway"><span class="nav-number">2.</span> <span class="nav-text">Spring Cloud Gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Invalid-character-%E2%80%98-%E2%80%98-for-QUERY-PARAM-in-%E2%80%9Cmatch-%E2%80%9D"><span class="nav-number">2.1.</span> <span class="nav-text">Invalid character ‘[‘ for QUERY_PARAM in “match[]”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#unexpected-message-type-DefaultHttpRequest"><span class="nav-number">2.2.</span> <span class="nav-text">unexpected message type: DefaultHttpRequest</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nginx"><span class="nav-number">3.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#upstream-sent-no-valid-HTTP-1-0-header-while-reading-response-header-from-upstream"><span class="nav-number">3.1.</span> <span class="nav-text">upstream sent no valid HTTP&#x2F;1.0 header while reading response header from upstream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#upstream-server-temporarily-disabled-while-reading-response-header-from-upstream"><span class="nav-number">3.2.</span> <span class="nav-text">upstream server temporarily disabled while reading response header from upstream</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#upstream-timed-out-110-Connection-timed-out-while-reading-response-header-from-upstream"><span class="nav-number">3.3.</span> <span class="nav-text">upstream timed out (110: Connection timed out) while reading response header from upstream</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Error-Network-Error"><span class="nav-number">4.1.</span> <span class="nav-text">Error: Network Error</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -454,23 +430,23 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/Lemon-cxh" title="GitHub → https://github.com/Lemon-cxh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/Lemon-cxh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lemon-cxh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https://blog.csdn.net/qq_34576655" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_34576655" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
       </span>
   </div>
 
@@ -494,7 +470,7 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2019 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -625,9 +601,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -636,7 +620,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

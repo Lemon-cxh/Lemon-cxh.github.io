@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
@@ -17,23 +17,24 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="在Docker中运行Nginx以及使用 Logrotate 进行日志轮替">
-<meta name="keywords" content="Docker,Nginx,Logrotate">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替">
-<meta property="og:url" content="https://Lemon-cxh.github.io/docker-nginx/index.html">
+<meta property="og:url" content="https://lemon-cxh.github.io/docker-nginx/index.html">
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="在Docker中运行Nginx以及使用 Logrotate 进行日志轮替">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-24T09:25:01.987Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-02T06:18:32.000Z">
+<meta property="article:modified_time" content="2020-11-24T09:25:01.987Z">
+<meta property="article:author" content="三月柳絮四月雨">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker 中安装 Nginx 以及使用 Logrotate 进行日志轮替">
-<meta name="twitter:description" content="在Docker中运行Nginx以及使用 Logrotate 进行日志轮替">
 
-<link rel="canonical" href="https://Lemon-cxh.github.io/docker-nginx/">
+<link rel="canonical" href="https://lemon-cxh.github.io/docker-nginx/">
 
 
 <script id="page-configurations">
@@ -198,6 +199,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -212,7 +214,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://Lemon-cxh.github.io/docker-nginx/">
+    <link itemprop="mainEntityOfPage" href="https://lemon-cxh.github.io/docker-nginx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -262,13 +264,6 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
             </span>
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -311,25 +306,17 @@
         <ol>
 <li><h2 id="安装 nginx"><a href="# 安装 nginx" class="headerlink" title="安装 nginx"></a>安装 nginx</h2><p> docker 的安装可以参考 <a href="/docker-deploy-springCloud/" title="Docker 部署微服务(Cloud-Admin) 以及 Docker 参数、命令">Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令</a></p>
 <ol>
-<li><h3 id="获取镜像"><a href="# 获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="运行"><a href="# 运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --rm -p 80:80 --name nginx nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="拷贝配置 - 只保留 nginx-conf 以及 conf-d"><a href="# 拷贝配置 - 只保留 nginx-conf 以及 conf-d" class="headerlink" title="拷贝配置 (只保留 nginx.conf 以及 conf.d)"></a> 拷贝配置(只保留 nginx.conf 以及 conf.d)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp nginx:/etc/nginx /etc/nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="停止容器"><a href="# 停止容器" class="headerlink" title="停止容器"></a>停止容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="修改配置文件 conf-d 下的 defalut-conf"><a href="# 修改配置文件 conf-d 下的 defalut-conf" class="headerlink" title="修改配置文件 conf.d 下的 defalut.conf"></a>修改配置文件 conf.d 下的 defalut.conf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen       80;</span><br><span class="line">	server_name  localhost;</span><br><span class="line">	charset utf-8;</span><br><span class="line">	root /opt/nginx/dist;</span><br><span class="line">	index index.html index.htm;</span><br><span class="line">	location /jwt/ &#123;</span><br><span class="line">		# 转发请求到后端服务网关</span><br><span class="line">		proxy_pass http:// 容器名:8765/jwt/;</span><br><span class="line">	&#125;</span><br><span class="line">	location /api/ &#123;</span><br><span class="line">		proxy_pass http:// 容器名:8765/api/;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="重新运行镜像"><a href="# 重新运行镜像" class="headerlink" title="重新运行镜像"></a>重新运行镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx --network spring-net -p 80:80 -d -v /etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro -v /etc/nginx/conf.d:/etc/nginx/conf.d -v /opt/nginx/dist:/opt/nginx/dist -v /etc/localtime:/etc/localtime:ro -v /var/<span class="built_in">log</span>/nginx:/var/<span class="built_in">log</span>/nginx nginx</span><br><span class="line"><span class="comment"># 上传文件到 liunx：</span></span><br><span class="line">&gt; pscp -r E:\**\dist 用户名 @服务器地址:/opt/nginx</span><br></pre></td></tr></table></figure>
-</li>
+<li><h3 id="获取镜像"><a href="# 获取镜像" class="headerlink" title="获取镜像"></a>获取镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="运行"><a href="# 运行" class="headerlink" title="运行"></a>运行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --rm -p 80:80 --name nginx nginx</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="拷贝配置 - 只保留 nginx-conf 以及 conf-d"><a href="# 拷贝配置 - 只保留 nginx-conf 以及 conf-d" class="headerlink" title="拷贝配置 (只保留 nginx.conf 以及 conf.d)"></a> 拷贝配置(只保留 nginx.conf 以及 conf.d)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp nginx:/etc/nginx /etc/nginx</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="停止容器"><a href="# 停止容器" class="headerlink" title="停止容器"></a>停止容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop nginx</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="修改配置文件 conf-d 下的 defalut-conf"><a href="# 修改配置文件 conf-d 下的 defalut-conf" class="headerlink" title="修改配置文件 conf.d 下的 defalut.conf"></a>修改配置文件 conf.d 下的 defalut.conf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen       80;</span><br><span class="line">	server_name  localhost;</span><br><span class="line">	charset utf-8;</span><br><span class="line">	root &#x2F;opt&#x2F;nginx&#x2F;dist;</span><br><span class="line">	index index.html index.htm;</span><br><span class="line">	location &#x2F;jwt&#x2F; &#123;</span><br><span class="line">		# 转发请求到后端服务网关</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F; 容器名:8765&#x2F;jwt&#x2F;;</span><br><span class="line">	&#125;</span><br><span class="line">	location &#x2F;api&#x2F; &#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F; 容器名:8765&#x2F;api&#x2F;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="重新运行镜像"><a href="# 重新运行镜像" class="headerlink" title="重新运行镜像"></a>重新运行镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx --network spring-net -p 80:80 -d -v /etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro -v /etc/nginx/conf.d:/etc/nginx/conf.d -v /opt/nginx/dist:/opt/nginx/dist -v /etc/localtime:/etc/localtime:ro -v /var/<span class="built_in">log</span>/nginx:/var/<span class="built_in">log</span>/nginx nginx</span><br><span class="line"><span class="comment"># 上传文件到 liunx：</span></span><br><span class="line">&gt; pscp -r E:\**\dist 用户名 @服务器地址:/opt/nginx</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><h2 id="使用 -Logrotate- 进行日志轮替"><a href="# 使用 -Logrotate- 进行日志轮替" class="headerlink" title="使用 Logrotate 进行日志轮替"></a>使用 Logrotate 进行日志轮替</h2><ol>
-<li><h3 id="在宿主机新建脚本 -var-log-nginx-nginx-sh"><a href="# 在宿主机新建脚本 -var-log-nginx-nginx-sh" class="headerlink" title="在宿主机新建脚本 /var/log/nginx/nginx.sh"></a>在宿主机新建脚本<code>/var/log/nginx/nginx.sh</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不是中止 Nginx 的进程，而是传递给它信号重新生成日志</span></span><br><span class="line"><span class="built_in">kill</span> -USR1 $(/bin/cat /var/run/nginx.pid)</span><br></pre></td></tr></table></figure>
-</li>
-<li><h3 id="新建配置文件 vi-etc-logrotate-d-nginx"><a href="# 新建配置文件 vi-etc-logrotate-d-nginx" class="headerlink" title="新建配置文件 vi /etc/logrotate.d/nginx"></a>新建配置文件<code>vi /etc/logrotate.d/nginx</code></h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/var/log/nginx/access.log /var/log/nginx/error.log &#123;</span><br><span class="line">	daily</span><br><span class="line">	rotate 60</span><br><span class="line">	compress</span><br><span class="line">	notifempty</span><br><span class="line">	dateext</span><br><span class="line">	sharedscripts</span><br><span class="line">	postrotate</span><br><span class="line">		# docker 中运行 Nginx，执行第一步的脚本</span><br><span class="line">		docker exec -d nginx /bin/sh /var/log/nginx/nginx.sh</span><br><span class="line">		# 宿主机运行 Nginx</span><br><span class="line">		# /bin/kill -USR1 $(/bin/cat /var/run/nginx.pid)</span><br><span class="line">	endscript</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li><h3 id="在宿主机新建脚本 -var-log-nginx-nginx-sh"><a href="# 在宿主机新建脚本 -var-log-nginx-nginx-sh" class="headerlink" title="在宿主机新建脚本 /var/log/nginx/nginx.sh"></a>在宿主机新建脚本<code>/var/log/nginx/nginx.sh</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不是中止 Nginx 的进程，而是传递给它信号重新生成日志</span></span><br><span class="line"><span class="built_in">kill</span> -USR1 $(/bin/cat /var/run/nginx.pid)</span><br></pre></td></tr></table></figure></li>
+<li><h3 id="新建配置文件 vi-etc-logrotate-d-nginx"><a href="# 新建配置文件 vi-etc-logrotate-d-nginx" class="headerlink" title="新建配置文件 vi /etc/logrotate.d/nginx"></a>新建配置文件<code>vi /etc/logrotate.d/nginx</code></h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/var/log/nginx/access.log /var/log/nginx/error.log &#123;</span><br><span class="line">	daily</span><br><span class="line">	rotate 60</span><br><span class="line">	compress</span><br><span class="line">	notifempty</span><br><span class="line">	dateext</span><br><span class="line">	sharedscripts</span><br><span class="line">	postrotate</span><br><span class="line">		# docker 中运行 Nginx，执行第一步的脚本</span><br><span class="line">		docker exec -d nginx /bin/sh /var/log/nginx/nginx.sh</span><br><span class="line">		# 宿主机运行 Nginx</span><br><span class="line">		# /bin/kill -USR1 $(/bin/cat /var/run/nginx.pid)</span><br><span class="line">	endscript</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><h3 id="Logrotate- 配置文件参数详解"><a href="#Logrotate- 配置文件参数详解" class="headerlink" title="Logrotate 配置文件参数详解"></a>Logrotate 配置文件参数详解</h3><table>
 <thead>
 <tr>
@@ -363,7 +350,7 @@
 </tr>
 <tr>
 <td>mail address</td>
-<td>当进行日志轮替时，输出内容通过邮件发送到指定的邮件地址，如 mail <a href="mailto:test@gmail.com" target="_blank" rel="noopener">test@gmail.com</a></td>
+<td>当进行日志轮替时，输出内容通过邮件发送到指定的邮件地址，如 mail <a href="mailto:&#116;&#101;&#x73;&#x74;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#116;&#101;&#x73;&#x74;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></td>
 </tr>
 <tr>
 <td>missingok</td>
@@ -513,7 +500,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 nginx"><span class="nav-number">1.</span> <span class="nav-text">安装 nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取镜像"><span class="nav-number">1.1.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行"><span class="nav-number">1.2.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝配置 - 只保留 nginx-conf 以及 conf-d"><span class="nav-number">1.3.</span> <span class="nav-text"> 拷贝配置(只保留 nginx.conf 以及 conf.d)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止容器"><span class="nav-number">1.4.</span> <span class="nav-text">停止容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改配置文件 conf-d 下的 defalut-conf"><span class="nav-number">1.5.</span> <span class="nav-text">修改配置文件 conf.d 下的 defalut.conf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新运行镜像"><span class="nav-number">1.6.</span> <span class="nav-text">重新运行镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用 -Logrotate- 进行日志轮替"><span class="nav-number">2.</span> <span class="nav-text">使用 Logrotate 进行日志轮替</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在宿主机新建脚本 -var-log-nginx-nginx-sh"><span class="nav-number">2.1.</span> <span class="nav-text">在宿主机新建脚本/var/log/nginx/nginx.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建配置文件 vi-etc-logrotate-d-nginx"><span class="nav-number">2.2.</span> <span class="nav-text">新建配置文件vi /etc/logrotate.d/nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logrotate- 配置文件参数详解"><span class="nav-number">2.3.</span> <span class="nav-text">Logrotate 配置文件参数详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试是否有效 logrotate-vf-etc-logrotate-d-nginx"><span class="nav-number">2.4.</span> <span class="nav-text">测试是否有效logrotate -vf /etc/logrotate.d/nginx</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%20nginx"><span class="nav-number">1.</span> <span class="nav-text">安装 nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E9%95%9C%E5%83%8F"><span class="nav-number">1.1.</span> <span class="nav-text">获取镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">1.2.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%B7%E8%B4%9D%E9%85%8D%E7%BD%AE%20-%20%E5%8F%AA%E4%BF%9D%E7%95%99%20nginx-conf%20%E4%BB%A5%E5%8F%8A%20conf-d"><span class="nav-number">1.3.</span> <span class="nav-text"> 拷贝配置(只保留 nginx.conf 以及 conf.d)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2%E5%AE%B9%E5%99%A8"><span class="nav-number">1.4.</span> <span class="nav-text">停止容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20conf-d%20%E4%B8%8B%E7%9A%84%20defalut-conf"><span class="nav-number">1.5.</span> <span class="nav-text">修改配置文件 conf.d 下的 defalut.conf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E8%BF%90%E8%A1%8C%E9%95%9C%E5%83%8F"><span class="nav-number">1.6.</span> <span class="nav-text">重新运行镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%20-Logrotate-%20%E8%BF%9B%E8%A1%8C%E6%97%A5%E5%BF%97%E8%BD%AE%E6%9B%BF"><span class="nav-number">2.</span> <span class="nav-text">使用 Logrotate 进行日志轮替</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%96%B0%E5%BB%BA%E8%84%9A%E6%9C%AC%20-var-log-nginx-nginx-sh"><span class="nav-number">2.1.</span> <span class="nav-text">在宿主机新建脚本&#x2F;var&#x2F;log&#x2F;nginx&#x2F;nginx.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%20vi-etc-logrotate-d-nginx"><span class="nav-number">2.2.</span> <span class="nav-text">新建配置文件vi &#x2F;etc&#x2F;logrotate.d&#x2F;nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logrotate-%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.3.</span> <span class="nav-text">Logrotate 配置文件参数详解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%88%20logrotate-vf-etc-logrotate-d-nginx"><span class="nav-number">2.4.</span> <span class="nav-text">测试是否有效logrotate -vf &#x2F;etc&#x2F;logrotate.d&#x2F;nginx</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -536,23 +523,23 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/Lemon-cxh" title="GitHub → https://github.com/Lemon-cxh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/Lemon-cxh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lemon-cxh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https://blog.csdn.net/qq_34576655" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_34576655" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
       </span>
   </div>
 
@@ -576,7 +563,7 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2019 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -707,9 +694,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -718,7 +713,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

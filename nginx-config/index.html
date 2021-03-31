@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
@@ -17,23 +17,23 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Nginx以及Linux配置优化，提升服务器QPS">
-<meta name="keywords" content="Nginx,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx 以及 Linux 配置">
-<meta property="og:url" content="https://Lemon-cxh.github.io/nginx-config/index.html">
+<meta property="og:url" content="https://lemon-cxh.github.io/nginx-config/index.html">
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="Nginx以及Linux配置优化，提升服务器QPS">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-25T02:24:57.763Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-14T06:07:39.000Z">
+<meta property="article:modified_time" content="2020-12-25T02:24:57.763Z">
+<meta property="article:author" content="三月柳絮四月雨">
+<meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nginx 以及 Linux 配置">
-<meta name="twitter:description" content="Nginx以及Linux配置优化，提升服务器QPS">
 
-<link rel="canonical" href="https://Lemon-cxh.github.io/nginx-config/">
+<link rel="canonical" href="https://lemon-cxh.github.io/nginx-config/">
 
 
 <script id="page-configurations">
@@ -198,6 +198,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -212,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://Lemon-cxh.github.io/nginx-config/">
+    <link itemprop="mainEntityOfPage" href="https://lemon-cxh.github.io/nginx-config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -262,13 +263,6 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
             </span>
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -288,14 +282,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>2 分钟</span>
             </span>
             <div class="post-description">Nginx以及Linux配置优化，提升服务器QPS</div>
 
@@ -311,12 +305,10 @@
         <ol>
 <li><h4 id="修改用户进程的文件句柄数"><a href="# 修改用户进程的文件句柄数" class="headerlink" title="修改用户进程的文件句柄数"></a>修改用户进程的文件句柄数 </h4><p> 查看当前配置<code>ulimit -n</code>，默认为<code>1024</code>。修改<code>/etc/security/limits.conf</code> 文件，添加配置</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*	hard	nproc	65535</span><br><span class="line">*	soft	nproc	65535</span><br><span class="line">*	hard	nofile	65535</span><br><span class="line">*	soft	nofile	65535</span><br></pre></td></tr></table></figure>
-
-<p> 完成后再次执行 <code>ulimit -n</code> 查看是否生效了，如果需要设置当前用户 session 立即生效，执行<code>ulimit -n 65535</code></p>
+<p> 完成后再次执行 <code>ulimit -n</code> 查看是否生效了，如果需要设置当前用户 session 立即生效，执行<code> ulimit -n 65535</code></p>
 </li>
 <li><h4 id="Linux-TCP 连接配置"><a href="#Linux-TCP 连接配置" class="headerlink" title="Linux TCP 连接配置"></a>Linux TCP 连接配置 </h4><p> 编辑<code>/etc/sysctl.conf</code> 文件</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">net.core.somaxconn = 65535</span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">net.ipv4.tcp_max_syn_backlog = 1024</span><br><span class="line">net.ipv4.tcp_fin_timeout = 10</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.tcp_keepalive_time = 600</span><br><span class="line">net.ipv4.tcp_keepalive_intvl = 30</span><br><span class="line">net.ipv4.tcp_keepalive_probes = 3</span><br><span class="line">net.ipv4.tcp_max_tw_buckets = 5000</span><br><span class="line">net.ipv4.ip_local_port_range = 4096 65535</span><br></pre></td></tr></table></figure>
-
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">net.core.somaxconn &#x3D; 65535</span><br><span class="line">net.ipv4.tcp_syncookies &#x3D; 1</span><br><span class="line">net.ipv4.tcp_max_syn_backlog &#x3D; 1024</span><br><span class="line">net.ipv4.tcp_fin_timeout &#x3D; 10</span><br><span class="line">net.ipv4.tcp_tw_reuse &#x3D; 1</span><br><span class="line">net.ipv4.tcp_keepalive_time &#x3D; 600</span><br><span class="line">net.ipv4.tcp_keepalive_intvl &#x3D; 30</span><br><span class="line">net.ipv4.tcp_keepalive_probes &#x3D; 3</span><br><span class="line">net.ipv4.tcp_max_tw_buckets &#x3D; 5000</span><br><span class="line">net.ipv4.ip_local_port_range &#x3D; 4096 65535</span><br></pre></td></tr></table></figure>
 <p> 执行 <code>sysctl -p</code> 使修改生效，<code>sysctl -a</code>显示所有的参数信息</p>
 <p> 参数说明：</p>
 <ul>
@@ -334,13 +326,13 @@
 <li><code>net.ipv4.tcp_max_tw_buckets</code>——该参数设置系统的 TIME_WAIT 的数量，如果超过默认值则会被立即清除</li>
 <li><code>net.ipv4.ip_local_port_range</code>——规定了 tcp/udp 可用的本地端口的范围</li>
 <li><code>net.ipv4.tcp_tw_recycle</code>——表示开启 TCP 连接中 TIME-WAIT 的 sockets 快速回收，默认为 0，表示关闭。不建议开启，开启后对于 NAT 网络会导致大量的 TCP 连接建立错误。<blockquote>
-<p>CLOSE_WAIT 过多时应该检查服务 <br><a href="https://zhuanlan.zhihu.com/p/40013724" target="_blank" rel="noopener"> 系统调优你所不知道的 TIME_WAIT 和 CLOSE_WAIT</a></p>
+<p>CLOSE_WAIT 过多时应该检查服务 <br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/40013724"> 系统调优你所不知道的 TIME_WAIT 和 CLOSE_WAIT</a></p>
 </blockquote>
 </li>
 </ul>
 </li>
-<li><h4 id="Nginx 配置"><a href="#Nginx 配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置 </h4><p> 修改<code>nginx.conf</code> 文件，可参考 <a href="https://nginx.org/en/docs/" target="_blank" rel="noopener"> 文档</a></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">worker_processes 8;</span><br><span class="line">worker_rlimit_nofile 65535;</span><br><span class="line"></span><br><span class="line">error_log /var/log/nginx/error.log warn;</span><br><span class="line">pid /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    use epoll;</span><br><span class="line">    multi_accept on;</span><br><span class="line">    worker_connections 65535;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include /etc/nginx/mime.types;</span><br><span class="line">    default_type application/octet-stream;</span><br><span class="line">    log_format main &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                    &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                    &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line"></span><br><span class="line">    access_log /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    charset utf-8;</span><br><span class="line"></span><br><span class="line">    sendfile on;</span><br><span class="line">    tcp_nopush on;</span><br><span class="line">    tcp_nodelay on;</span><br><span class="line"></span><br><span class="line">    server_tokens off;</span><br><span class="line">    log_not_found off;</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line">    client_max_body_size 16M;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout 60;</span><br><span class="line"></span><br><span class="line">    open_file_cache max=1024 inactive=60s;</span><br><span class="line"></span><br><span class="line">    gzip on;</span><br><span class="line">    gzip_min_length 1k;</span><br><span class="line">    gzip_buffers 4 16k;</span><br><span class="line">    gzip_comp_level 2;</span><br><span class="line">    gzip_http_version 1.0;</span><br><span class="line">    gzip_vary on;</span><br><span class="line">    gzip_proxied any;</span><br><span class="line">    gzip_types text/plain text/css text/xml application/json application/javascript application/rss+xml application/atom+xml image/svg+xml;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><h4 id="Nginx 配置"><a href="#Nginx 配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置 </h4><p> 修改<code>nginx.conf</code> 文件，可参考 <a target="_blank" rel="noopener" href="https://nginx.org/en/docs/"> 文档</a></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">worker_processes 8;</span><br><span class="line">worker_rlimit_nofile 65535;</span><br><span class="line"></span><br><span class="line">error_log &#x2F;var&#x2F;log&#x2F;nginx&#x2F;error.log warn;</span><br><span class="line">pid &#x2F;var&#x2F;run&#x2F;nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    use epoll;</span><br><span class="line">    multi_accept on;</span><br><span class="line">    worker_connections 65535;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include &#x2F;etc&#x2F;nginx&#x2F;mime.types;</span><br><span class="line">    default_type application&#x2F;octet-stream;</span><br><span class="line">    log_format main &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;</span><br><span class="line">                    &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span><br><span class="line">                    &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;</span><br><span class="line"></span><br><span class="line">    access_log &#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log  main;</span><br><span class="line"></span><br><span class="line">    charset utf-8;</span><br><span class="line"></span><br><span class="line">    sendfile on;</span><br><span class="line">    tcp_nopush on;</span><br><span class="line">    tcp_nodelay on;</span><br><span class="line"></span><br><span class="line">    server_tokens off;</span><br><span class="line">    log_not_found off;</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line">    client_max_body_size 16M;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout 60;</span><br><span class="line"></span><br><span class="line">    open_file_cache max&#x3D;1024 inactive&#x3D;60s;</span><br><span class="line"></span><br><span class="line">    gzip on;</span><br><span class="line">    gzip_min_length 1k;</span><br><span class="line">    gzip_buffers 4 16k;</span><br><span class="line">    gzip_comp_level 2;</span><br><span class="line">    gzip_http_version 1.0;</span><br><span class="line">    gzip_vary on;</span><br><span class="line">    gzip_proxied any;</span><br><span class="line">    gzip_types text&#x2F;plain text&#x2F;css text&#x2F;xml application&#x2F;json application&#x2F;javascript application&#x2F;rss+xml application&#x2F;atom+xml image&#x2F;svg+xml;</span><br><span class="line"></span><br><span class="line">    include &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;*.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -440,7 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改用户进程的文件句柄数"><span class="nav-number">1.</span> <span class="nav-text">修改用户进程的文件句柄数 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-TCP 连接配置"><span class="nav-number">2.</span> <span class="nav-text">Linux TCP 连接配置 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx 配置"><span class="nav-number">3.</span> <span class="nav-text">Nginx 配置 </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%96%87%E4%BB%B6%E5%8F%A5%E6%9F%84%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">修改用户进程的文件句柄数 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-TCP%20%E8%BF%9E%E6%8E%A5%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">Linux TCP 连接配置 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx%20%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Nginx 配置 </span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -463,23 +455,23 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/Lemon-cxh" title="GitHub → https://github.com/Lemon-cxh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/Lemon-cxh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lemon-cxh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https://blog.csdn.net/qq_34576655" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_34576655" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
       </span>
   </div>
 
@@ -503,7 +495,7 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2019 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -634,9 +626,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -645,7 +645,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

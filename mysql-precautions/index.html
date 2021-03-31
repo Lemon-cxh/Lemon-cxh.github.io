@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
@@ -17,23 +17,23 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="SQL语句的注意事项">
-<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 注意事项">
-<meta property="og:url" content="https://Lemon-cxh.github.io/mysql-precautions/index.html">
+<meta property="og:url" content="https://lemon-cxh.github.io/mysql-precautions/index.html">
 <meta property="og:site_name" content="三月柳絮四月雨">
 <meta property="og:description" content="SQL语句的注意事项">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-02-26T02:10:55.901Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-03T03:03:07.000Z">
+<meta property="article:modified_time" content="2021-02-26T02:10:55.901Z">
+<meta property="article:author" content="三月柳絮四月雨">
+<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL 注意事项">
-<meta name="twitter:description" content="SQL语句的注意事项">
 
-<link rel="canonical" href="https://Lemon-cxh.github.io/mysql-precautions/">
+<link rel="canonical" href="https://lemon-cxh.github.io/mysql-precautions/">
 
 
 <script id="page-configurations">
@@ -198,6 +198,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -212,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://Lemon-cxh.github.io/mysql-precautions/">
+    <link itemprop="mainEntityOfPage" href="https://lemon-cxh.github.io/mysql-precautions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -262,13 +263,6 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span class="leancloud-visitors-count"></span>
             </span>
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
   
   <span class="post-meta-item">
     
@@ -288,14 +282,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.9k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>2 分钟</span>
             </span>
             <div class="post-description">SQL语句的注意事项</div>
 
@@ -388,10 +382,12 @@
 <li><p>有时一个子查询甚至一个关联子查询也会比 <code>GROUP BY</code> 更有效率。</p>
 </li>
 </ol>
+</li>
+</ol>
 <blockquote>
 <p>关联子查询: 子查询中的部分条件依赖于外部查询中正在处理的当前记录值。</p>
 </blockquote>
-</li>
+<ol start="3">
 <li><h6 id="避免使用 GROUP-BY 来查找最大或最小值"><a href="# 避免使用 GROUP-BY 来查找最大或最小值" class="headerlink" title="避免使用 GROUP BY 来查找最大或最小值"></a>避免使用 GROUP BY 来查找最大或最小值</h6><blockquote>
 <p>使用 <code>LEFT JOIN</code> 自身以及 <code>WHERE</code> 来查询，<code>ON</code>子句的列添加索引</p>
 </blockquote>
@@ -401,16 +397,14 @@
 </li>
 <li><h5 id="排序"><a href="# 排序" class="headerlink" title="排序"></a>排序</h5><ol>
 <li><h6 id="排序时对 Null 值的处理"><a href="# 排序时对 Null 值的处理" class="headerlink" title="排序时对 Null 值的处理"></a>排序时对 Null 值的处理</h6><p>  对查询结果进行排序，但该字段可能为 Null，需要将 Null 值排到前面或后面。</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    column1,</span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">ISNULL</span>(column1) <span class="keyword">THEN</span> <span class="number">0</span> <span class="keyword">ELSE</span> <span class="number">1</span> <span class="keyword">END</span> <span class="keyword">AS</span> is_null</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    table1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    is_null, column1</span><br></pre></td></tr></table></figure>
-</li>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    column1,</span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> ISNULL(column1) <span class="keyword">THEN</span> <span class="number">0</span> <span class="keyword">ELSE</span> <span class="number">1</span> <span class="keyword">END</span> <span class="keyword">AS</span> is_null</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    table1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    is_null, column1</span><br></pre></td></tr></table></figure></li>
 <li><h6 id="依据条件逻辑动态调整排序项"><a href="# 依据条件逻辑动态调整排序项" class="headerlink" title="依据条件逻辑动态调整排序项"></a>依据条件逻辑动态调整排序项</h6><p>  按照某个条件逻辑来选择不同的排序列。</p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    column1</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    table1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> column1 = <span class="string">'a'</span> <span class="keyword">THEN</span> column2 <span class="keyword">ELSE</span> column3 <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
-
-</li>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    column1</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    table1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">    <span class="keyword">CASE</span> <span class="keyword">WHEN</span> column1 <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span> <span class="keyword">THEN</span> column2 <span class="keyword">ELSE</span> column3 <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+<h4 id="Explain-type 字段"><a href="#Explain-type 字段" class="headerlink" title="Explain type 字段"></a>Explain type 字段</h4></li>
 </ol>
 </li>
 </ol>
-<h4 id="Explain-type 字段"><a href="#Explain-type 字段" class="headerlink" title="Explain type 字段"></a>Explain type 字段</h4><ul>
+<ul>
 <li><p><code>system</code></p>
 <p>  表只有一行，这是一个<code>const</code> type 的特殊情况</p>
 </li>
@@ -469,7 +463,7 @@
 </li>
 <li><p>如果无需去重请使用 <code>UNOIN ALL</code>，<code>UNION</code> 如果需要排序只需要在最后一条语句上使用<code>ORDER BY</code>。</p>
 </li>
-<li><p>如果数据检索是最重要的，则你可以通过在 INSERT 和 INTO 之间添加关键字 LOW_PRIORITY，指示 MySQL 降低 INSERT 语句的优先级，如<code>INSERT LOW_PRIORITY INTO</code>。</p>
+<li><p> 如果数据检索是最重要的，则你可以通过在 INSERT 和 INTO 之间添加关键字 LOW_PRIORITY，指示 MySQL 降低 INSERT 语句的优先级，如<code>INSERT LOW_PRIORITY INTO</code>。</p>
 </li>
 </ol>
 <hr>
@@ -562,7 +556,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据模型与索引设计"><span class="nav-number">1.</span> <span class="nav-text">数据模型与索引设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符集"><span class="nav-number">1.1.</span> <span class="nav-text">字符集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#索引"><span class="nav-number">1.2.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#最左前缀匹配原则"><span class="nav-number">1.2.1.</span> <span class="nav-text">最左前缀匹配原则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#覆盖索引"><span class="nav-number">1.2.2.</span> <span class="nav-text">覆盖索引</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#索引列设置为 NOT-NULL- 否则会全表扫描"><span class="nav-number">1.2.3.</span> <span class="nav-text">索引列设置为 NOT NULL, 否则会全表扫描</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#索引失效"><span class="nav-number">1.2.4.</span> <span class="nav-text">索引失效</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询数据"><span class="nav-number">2.</span> <span class="nav-text">查询数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#过滤与查找数据"><span class="nav-number">2.1.</span> <span class="nav-text">过滤与查找数据</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#查找不匹配或缺失的记录"><span class="nav-number">2.1.1.</span> <span class="nav-text">查找不匹配或缺失的记录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#按时间范围正确地过滤日期和时间"><span class="nav-number">2.1.2.</span> <span class="nav-text">按时间范围正确地过滤日期和时间</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#书写可参数化搜索的查询以确保引擎使用索引"><span class="nav-number">2.1.3.</span> <span class="nav-text">书写可参数化搜索的查询以确保引擎使用索引</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#聚合"><span class="nav-number">2.2.</span> <span class="nav-text">聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#理解 GROUP-BY 工作原理"><span class="nav-number">2.2.1.</span> <span class="nav-text">理解 GROUP BY 工作原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用 OUTER-JOIN 时避免获取错误的 COUNT"><span class="nav-number">2.2.2.</span> <span class="nav-text">使用 OUTER JOIN 时避免获取错误的 COUNT()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#避免使用 GROUP-BY 来查找最大或最小值"><span class="nav-number">2.2.3.</span> <span class="nav-text">避免使用 GROUP BY 来查找最大或最小值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#GROUP-COUNT- 中也可以使用 ORDER-BY"><span class="nav-number">2.2.4.</span> <span class="nav-text">GROUP_COUNT()中也可以使用 ORDER BY</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#排序"><span class="nav-number">2.3.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#排序时对 Null 值的处理"><span class="nav-number">2.3.1.</span> <span class="nav-text">排序时对 Null 值的处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#依据条件逻辑动态调整排序项"><span class="nav-number">2.3.2.</span> <span class="nav-text">依据条件逻辑动态调整排序项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Explain-type 字段"><span class="nav-number">3.</span> <span class="nav-text">Explain type 字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%B4%A2%E5%BC%95%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text">数据模型与索引设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">1.1.</span> <span class="nav-text">字符集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">1.2.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%80%E5%B7%A6%E5%89%8D%E7%BC%80%E5%8C%B9%E9%85%8D%E5%8E%9F%E5%88%99"><span class="nav-number">1.2.1.</span> <span class="nav-text">最左前缀匹配原则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">覆盖索引</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%88%97%E8%AE%BE%E7%BD%AE%E4%B8%BA%20NOT-NULL-%20%E5%90%A6%E5%88%99%E4%BC%9A%E5%85%A8%E8%A1%A8%E6%89%AB%E6%8F%8F"><span class="nav-number">1.2.3.</span> <span class="nav-text">索引列设置为 NOT NULL, 否则会全表扫描</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88"><span class="nav-number">1.2.4.</span> <span class="nav-text">索引失效</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">查询数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E4%B8%8E%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.</span> <span class="nav-text">过滤与查找数据</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E4%B8%8D%E5%8C%B9%E9%85%8D%E6%88%96%E7%BC%BA%E5%A4%B1%E7%9A%84%E8%AE%B0%E5%BD%95"><span class="nav-number">2.1.1.</span> <span class="nav-text">查找不匹配或缺失的记录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8C%89%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4%E6%AD%A3%E7%A1%AE%E5%9C%B0%E8%BF%87%E6%BB%A4%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="nav-number">2.1.2.</span> <span class="nav-text">按时间范围正确地过滤日期和时间</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B9%A6%E5%86%99%E5%8F%AF%E5%8F%82%E6%95%B0%E5%8C%96%E6%90%9C%E7%B4%A2%E7%9A%84%E6%9F%A5%E8%AF%A2%E4%BB%A5%E7%A1%AE%E4%BF%9D%E5%BC%95%E6%93%8E%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="nav-number">2.1.3.</span> <span class="nav-text">书写可参数化搜索的查询以确保引擎使用索引</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%81%9A%E5%90%88"><span class="nav-number">2.2.</span> <span class="nav-text">聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%20GROUP-BY%20%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.1.</span> <span class="nav-text">理解 GROUP BY 工作原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%20OUTER-JOIN%20%E6%97%B6%E9%81%BF%E5%85%8D%E8%8E%B7%E5%8F%96%E9%94%99%E8%AF%AF%E7%9A%84%20COUNT"><span class="nav-number">2.2.2.</span> <span class="nav-text">使用 OUTER JOIN 时避免获取错误的 COUNT()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8%20GROUP-BY%20%E6%9D%A5%E6%9F%A5%E6%89%BE%E6%9C%80%E5%A4%A7%E6%88%96%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="nav-number">2.2.3.</span> <span class="nav-text">避免使用 GROUP BY 来查找最大或最小值</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#GROUP-COUNT-%20%E4%B8%AD%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%20ORDER-BY"><span class="nav-number">2.2.4.</span> <span class="nav-text">GROUP_COUNT()中也可以使用 ORDER BY</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">2.3.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E6%97%B6%E5%AF%B9%20Null%20%E5%80%BC%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">2.3.1.</span> <span class="nav-text">排序时对 Null 值的处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BE%9D%E6%8D%AE%E6%9D%A1%E4%BB%B6%E9%80%BB%E8%BE%91%E5%8A%A8%E6%80%81%E8%B0%83%E6%95%B4%E6%8E%92%E5%BA%8F%E9%A1%B9"><span class="nav-number">2.3.2.</span> <span class="nav-text">依据条件逻辑动态调整排序项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Explain-type%20%E5%AD%97%E6%AE%B5"><span class="nav-number">3.</span> <span class="nav-text">Explain type 字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -585,23 +579,23 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/Lemon-cxh" title="GitHub → https://github.com/Lemon-cxh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/Lemon-cxh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lemon-cxh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https://blog.csdn.net/qq_34576655" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_34576655" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
       </span>
   </div>
 
@@ -625,7 +619,7 @@
 
 <div class="copyright">
   
-  &copy; 
+  &copy; 2019 – 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -756,9 +750,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -767,7 +769,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 
