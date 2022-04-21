@@ -1,4 +1,5 @@
 [
+{"title":"Docker 运行 Arcsoft 人脸识别服务","url":"/arcsoft/"},
 {"title":"设计模式","url":"/design-pattern/"},
 {"title":"设计原则","url":"/design-principle/"},
 {"title":"Docker 部署微服务 (Cloud-Admin) 以及 Docker 参数、命令","url":"/docker-deploy-springCloud/"},
