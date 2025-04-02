@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><!-- Google tag (gtag.js) begins-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7S9HBBHN5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-T7S9HBBHN5');
+    </script>
+    <!-- Google tag (gtag.js) ends-->
+    <!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="MyBatis一级缓存与二级缓存的介绍，执行流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis 的缓存机制">
+<meta property="og:url" content="https://lemon-cxh.github.io/mybatis-cache/index.html">
+<meta property="og:site_name" content="三月柳絮四月雨">
+<meta property="og:description" content="MyBatis一级缓存与二级缓存的介绍，执行流程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lemon-cxh.github.io/mybatis-cache/L1-flow.png">
+<meta property="og:image" content="https://lemon-cxh.github.io/mybatis-cache/cache-flow.png">
+<meta property="og:image" content="https://lemon-cxh.github.io/mybatis-cache/L2-flow.png">
+<meta property="article:published_time" content="2021-03-13T09:21:04.000Z">
+<meta property="article:modified_time" content="2025-03-15T12:37:20.986Z">
+<meta property="article:author" content="三月柳絮四月雨">
+<meta property="article:tag" content="MyBatis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lemon-cxh.github.io/mybatis-cache/L1-flow.png">
+
+<link rel="canonical" href="https://lemon-cxh.github.io/mybatis-cache/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MyBatis 的缓存机制 | 三月柳絮四月雨</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146884962-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-146884962-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cb71578f80ccca55cfe9c0888415feb7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">三月柳絮四月雨</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-cxh.github.io/mybatis-cache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="三月柳絮四月雨">
+      <meta itemprop="description" content="我年华虚度，空有一身疲惫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三月柳絮四月雨">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MyBatis 的缓存机制
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-13 17:21:04" itemprop="dateCreated datePublished" datetime="2021-03-13T17:21:04+08:00">2021-03-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-15 20:37:20" itemprop="dateModified" datetime="2025-03-15T20:37:20+08:00">2025-03-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MyBatis/" itemprop="url" rel="index"><span itemprop="name">MyBatis</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/mybatis-cache/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/mybatis-cache/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+            <div class="post-description">MyBatis一级缓存与二级缓存的介绍，执行流程</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一级缓存"><a href="# 一级缓存" class="headerlink" title="一级缓存"></a>一级缓存 </h4><h5 id="一级缓存介绍"><a href="# 一级缓存介绍" class="headerlink" title="一级缓存介绍"></a> 一级缓存介绍</h5><p>Mybatis 默认开启一级缓存。一级缓存是 SqlSession 级别的缓存，每个 SqlSession 持有一个 Executor，每个 Executor 中有一个 LocalCache。当发起查询时，MyBatis 根据当前执行的语句生成 MappedStatement，在 Local Cache 进行查询，如果缓存命中的话，直接返回结果给，如果缓存没有命中的话，查询数据库，结果写入 Local Cache，最后返回结果。</p>
+<ul>
+<li>SqlSession： 对外提供了用户和数据库之间交互需要的所有方法，隐藏了底层的细节</li>
+<li>Executor： SqlSession 向用户提供操作数据库的方法，但和数据库操作有关的职责都会委托给 Executor</li>
+<li>Cache： MyBatis 中的 Cache 接口，提供了和缓存相关的最基本的操作</li>
+</ul>
+<p><img src="L1-flow.png" alt="L1-flow"></p>
+<h5 id="一级缓存流程"><a href="# 一级缓存流程" class="headerlink" title="一级缓存流程"></a>一级缓存流程</h5><ol>
+<li><p>首先初始化 SqlSession，在初始化 SqlSesion 时，会创建一个全新的 Executor。</p>
+</li>
+<li><p>SqlSession 创建完毕后，根据 Statment 的不同类型，会进入 SqlSession 的不同方法中，如果是 Select 语句，会执行 SqlSession 的 selectList 方法。SqlSession 把具体的查询职责委托给了 Executor。如果只开启了一级缓存的话，首先会进入 Executor 的 query 方法。</p>
+</li>
+<li><p>Executor 的 query 方法根据 CacheKey 在 LocalCache 的 HashMap 中查询数据。如果查不到的话，就从数据库查，并对 localcache 进行写入。在 query 方法执行的最后，会判断一级缓存级别是否是 STATEMENT 级别，如果是的话，就清空缓存，这也就是 STATEMENT 级别的一级缓存无法共享 LocalCache 的原因。</p>
+<blockquote>
+<p>CacheKey 由 MappedStatement 的 Id、SQL 的 offset、SQL 的 limit、SQL 本身以及 SQL 中的参数构成。如果五个值相同，即可以认为是相同的 SQL。</p>
+</blockquote>
+</li>
+<li><p>SqlSession 的 insert 方法和 delete 方法，都会统一走 update 的流程，update 方法也是委托给了 Executor 执行，每次执行 update 前都会清空 LocalCache。</p>
+</li>
+</ol>
+<p><img src="cache-flow.png" alt="cache-flow"></p>
+<h5 id="一级缓存配置"><a href="# 一级缓存配置" class="headerlink" title="一级缓存配置"></a>一级缓存配置</h5><p>MyBatis 的一级缓存最大范围是 SqlSession 内部，有多个 SqlSession 或者分布式的环境下，数据库写操作会引起脏数据，建议设定缓存级别为 Statement。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">configuration:</span></span><br><span class="line">    <span class="attr">localCacheScope:</span> <span class="string">STATEMENT</span> <span class="string">//</span> <span class="string">默认 SESSION,</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>有多个 SqlSession 或者分布式的环境下，数据库写操作会引起脏数据，建议设定缓存级别为 Statement。</p>
+</blockquote>
+<h4 id="二级缓存"><a href="# 二级缓存" class="headerlink" title="二级缓存"></a>二级缓存 </h4><h5 id="二级缓存介绍"><a href="# 二级缓存介绍" class="headerlink" title="二级缓存介绍"></a> 二级缓存介绍 </h5><p> 一级缓存中，其最大的共享范围就是一个 SqlSession 内部，如果多个 SqlSession 之间需要共享缓存，则需要使用到二级缓存。开启二级缓存后，会使用 CachingExecutor 装饰 Executor，进入一级缓存的查询流程前，先在 CachingExecutor 进行二级缓存的查询。<br><img src="L2-flow.png" alt="L2-flow"></p>
+<h5 id="二级缓存流程"><a href="# 二级缓存流程" class="headerlink" title="二级缓存流程"></a>二级缓存流程 </h5><p> 二级缓存在一级缓存处理前，用 CachingExecutor 装饰了 BaseExecutor 的子类，在委托具体职责给 delegate 之前，实现了二级缓存的查询和写入功能。<br>MyBatis 的 CachingExecutor 持有一个 TransactionalCacheManager(缓存管理器)，TransactionalCacheManager 中持有一个 <code>transactionalCaches</code> 的 Map。<br>这个 Map 保存了 Cache 和用 TransactionalCache 包装后的 Cache 的映射关系。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Cache, TransactionalCache&gt; transactionalCaches = <span class="keyword">new</span> HashMap();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>transactionalCaches 的大小取决于 MappedStatement 的数量。<br>TransactionalCache 中的 <code>clearOnCommit</code> 属性为了避免多线程的脏读现象。<br>TransactionalCache 中的 <code>entriesToAddOnCommit</code> 属性用于暂存数据</p>
+</blockquote>
+<ul>
+<li>修改：会将 TransactionalCache 的 <code>clearOnCommit</code> 属性设置为 true, 并将暂存的数据清空，未清空二级缓存。</li>
+<li>查询：从二级缓存查询数据，最后判断 <code>clearOnCommit</code> 为 true 则直接返回 null。</li>
+<li>commit：<code>clearOnCommit</code>为 true 则清除二级缓存，并将 <code>entriesToAddOnCommit</code> 中的数据存放到二级缓存中。</li>
+</ul>
+<h4 id="二级缓存设置"><a href="# 二级缓存设置" class="headerlink" title="二级缓存设置"></a>二级缓存设置</h4><ul>
+<li>配置文件  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mybatis:</span></span><br><span class="line"><span class="attr">configuration:</span></span><br><span class="line">    <span class="attr">cache-enabled:</span> <span class="literal">true</span> <span class="string">//</span> <span class="string">默认为 true</span></span><br></pre></td></tr></table></figure></li>
+<li>Mapper 文件 <br>  cache 标签用于声明这个 namespace 使用二级缓存, 或者在 Mapper 接口类上添加<code>@CacheNamespace</code> 注解  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cache</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+  cache-ref 代表引用别的命名空间的 Cache 配置，两个命名空间的操作使用的是同一个 Cache，多表查询时使用。或者在 Mapper 接口类上添加 <code>@CacheNamespaceRef(StudentMapper.class)</code> 注解  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cache-ref</span> <span class="attr">namespace</span>=<span class="string">&quot;mapper.StudentMapper&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>SELECT 语句 <br> 最后在 SELECT 标签上添加 <code>useCache=&quot;true&quot;</code> 属性</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/elk/" rel="prev" title="ELK 日志收集系统">
+      <i class="fa fa-chevron-left"></i> ELK 日志收集系统
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/arcsoft/" rel="next" title="Docker 运行 Arcsoft 人脸识别服务">
+      Docker 运行 Arcsoft 人脸识别服务 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="nav-number">1.</span> <span class="nav-text">一级缓存 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text"> 一级缓存介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">一级缓存流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">一级缓存配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="nav-number">2.</span> <span class="nav-text">二级缓存 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text"> 二级缓存介绍 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">二级缓存流程 </span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">二级缓存设置</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="三月柳絮四月雨"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">三月柳絮四月雨</p>
+  <div class="site-description" itemprop="description">我年华虚度，空有一身疲惫</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lemon-cxh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lemon-cxh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_34576655" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">三月柳絮四月雨</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">129k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:57</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz',
+      appKey     : 'Y32s7s17bsYNYTOuGmBxgqPf',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start --><!-- Google tag (gtag.js) begins-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7S9HBBHN5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-T7S9HBBHN5');
+    </script>
+    <!-- Google tag (gtag.js) ends-->
+    <!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lemon-cxh.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="开发过程中遇到的问题,以及处理方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="遇到的问题">
+<meta property="og:url" content="https://lemon-cxh.github.io/problems-encountered/index.html">
+<meta property="og:site_name" content="三月柳絮四月雨">
+<meta property="og:description" content="开发过程中遇到的问题,以及处理方式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lemon-cxh.github.io/problems-encountered/login.png">
+<meta property="article:published_time" content="2020-04-10T06:14:19.000Z">
+<meta property="article:modified_time" content="2025-04-01T08:25:23.103Z">
+<meta property="article:author" content="三月柳絮四月雨">
+<meta property="article:tag" content="problems">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lemon-cxh.github.io/problems-encountered/login.png">
+
+<link rel="canonical" href="https://lemon-cxh.github.io/problems-encountered/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>遇到的问题 | 三月柳絮四月雨</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146884962-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-146884962-1');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cb71578f80ccca55cfe9c0888415feb7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">三月柳絮四月雨</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lemon-cxh.github.io/problems-encountered/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="三月柳絮四月雨">
+      <meta itemprop="description" content="我年华虚度，空有一身疲惫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三月柳絮四月雨">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          遇到的问题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-10 14:14:19" itemprop="dateCreated datePublished" datetime="2020-04-10T14:14:19+08:00">2020-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-01 16:25:23" itemprop="dateModified" datetime="2025-04-01T16:25:23+08:00">2025-04-01</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/problems-encountered/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/problems-encountered/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+            <div class="post-description">开发过程中遇到的问题,以及处理方式</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h5><ol>
+<li><p>服务启动后即关闭，没有错误日志</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        SpringApplication.run(TestBootstrap.class, args);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        log.error(<span class="string">&quot;error&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>服务部署启动</p>
+</li>
+</ol>
+<h5 id="Spring-Cloud-Gateway"><a href="#Spring-Cloud-Gateway" class="headerlink" title="Spring Cloud Gateway"></a>Spring Cloud Gateway</h5><ol>
+<li><p>Invalid character ‘[‘ for QUERY_PARAM in “match[]”</p>
+ <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: Invalid character <span class="string">&#x27;[&#x27;</span> <span class="keyword">for</span> QUERY_PARAM in <span class="string">&quot;match[]&quot;</span></span><br></pre></td></tr></table></figure>
+<p> Spring Cloud Gateway 与 Webflux 的兼容性的问题，项目的 Gateway 版本 2.0.0.RELEASE，去除 <code>spring-boot-starter-webflux</code> 依赖解决可以升级 Gateway 版本。<a href="https://github.com/spring-cloud/spring-cloud-gateway/issues/462">issues</a></p>
+</li>
+<li><p>unexpected message type: DefaultHttpRequest</p>
+ <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io.netty.handler.codec.EncoderException: java.lang.IllegalStateException: unexpected message <span class="built_in">type</span>: DefaultHttpRequest</span><br></pre></td></tr></table></figure>
+<p> Spring Cloud Gateway 以及 Spring Boot 版本 2.0.1.RELEASE 更新为 2.0.4.RELEASE。<a href="https://github.com/reactor/reactor-netty/issues/177">issues</a></p>
+</li>
+</ol>
+<h5 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h5><ol>
+<li>Spring MVC 项目，请求返回 404<br> Spring Boot 使用惯了，接到 Spring MVC 的反而懵了，在 Controller 中定义好了接口，但是访问就 404。<pre><code> 想到 Spring MVC 的 `org.springframework.web.servlet.DispatcherServlet`, 于是在 doDispatch() 方法中加上断点进行调试。发现 this.getHandler() 返回了 Null，即 HandlerMapping 为 Null。因为 Controller 中使用了 @RequestMapping 注解，而且项目是使用 XML 的配置方式，所以需要手动配置 RequestMappingHandlerMapping。(如果 Spring MVC 是旧版本也需要手动配置 HandlerAdapter，即对应的 RequestMappingHandlerAdapter)
+</code></pre>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置 HandlerMapping --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 配置 HandlerAdapter --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="Spring-Cloud"><a href="#Spring-Cloud" class="headerlink" title="Spring Cloud"></a>Spring Cloud</h5><ol>
+<li>配置中心，在项目启动时会从 Nacos 中拉取配置，但是在本地开发时，我们会在本地配置文件中配置一些配置项，此时就需要优先使用本地配置，避免被远程配置覆盖<br> 解决办法： <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要配置在 Nacos 中</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">cloud:</span></span><br><span class="line">        <span class="attr">config:</span></span><br><span class="line">            <span class="attr">override-none:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h5><ol>
+<li><p>upstream sent no valid HTTP/1.0 header while reading response header from upstream</p>
+<p> Nginx 报错，然后设置了 Nginx 和业务服务配置</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">proxy_http_version 1.1;</span><br><span class="line">proxy_cache_bypass      $http_upgrade;</span><br><span class="line"></span><br><span class="line">proxy_set_header Upgrade                $http_upgrade;</span><br><span class="line">proxy_set_header Connection &quot;&quot;;</span><br><span class="line">proxy_set_header Host                   $host;</span><br><span class="line">proxy_set_header X-Real-IP              $remote_addr;</span><br><span class="line">proxy_set_header X-Forwarded-For        $proxy_add_x_forwarded_for;</span><br><span class="line">proxy_set_header X-Forwarded-Proto      $scheme;</span><br><span class="line">proxy_set_header X-Forwarded-Host       $host;</span><br><span class="line">proxy_set_header X-Forwarded-Port       $server_port;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">    <span class="attr">use-forward-headers:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">tomcat:</span></span><br><span class="line">        <span class="attr">remote-ip-header:</span> <span class="string">x-forwarded-for</span></span><br><span class="line">        <span class="attr">protocol-header:</span> <span class="string">x-forwarded-proto</span></span><br><span class="line">        <span class="attr">port-header:</span> <span class="string">X-Forwarded-Port</span></span><br></pre></td></tr></table></figure>
+<p> 然后依旧报错，此时把服务停止运行再次请求，然而正常访问，说明 Spring Gateway 和 Nginx 之间没有问题，便排查业务服务。</p>
+<pre><code> 在 `HandlerInterceptorAdapter` 处理拦截器种发现了这么一段代码 `response.sendError`。
+</code></pre>
+<p> 此方法使用指定的状态码发送一个错误响应至客户端。服务器默认会创建一个 HTML 格式的服务错误页面作为响应结果，其中包含参数 msg 指定的文本信息，这个 HTML 页面的内容类型为<code>text/html</code>，保留 cookies 和其他未修改的响应头信息。</p>
+<pre><code> 最后去掉此行代码，替换为抛出全局异常，得以解决。
+</code></pre>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    ***</span><br><span class="line">    response.sendError(***);</span><br><span class="line">    ***</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>upstream server temporarily disabled while reading response header from upstream</p>
+</li>
+<li><p>no live upstreams while connecting to upstream</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream zxjl &#123;</span><br><span class="line">    least_conn;</span><br><span class="line">    server 192.168.1.1:8765 max_fails&#x3D;3 fail_timeout&#x3D;30s;</span><br><span class="line">    server 192.168.1.2:8765 max_fails&#x3D;3 fail_timeout&#x3D;30s;</span><br><span class="line">    keepalive 256;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>max_fails 默认值为 1, fail_timeout 默认值为 10 秒。</p>
+</blockquote>
+<p> fail 失败会返回:</p>
+<ul>
+<li>upstream timed out (110: Connection timed out) while reading response header from upstream</li>
+<li>connect() failed (111: Connection refused) while connecting to upstream</li>
+</ul>
+</li>
+</ol>
+<h5 id="服务器"><a href="# 服务器" class="headerlink" title="服务器"></a>服务器</h5><ol>
+<li>Error: Network Error<br> 请求时不时提示 net:ERR_CONNECTION_TIMED_OUT 以及 Error: Network Error。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">net.ipv4.tcp_tw_recycle &#x3D; 0</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h5><ol>
+<li><p>Slave_SQL_Running: No</p>
+<p> 因为设置主从同步时忘记排除 mysql 库，导致主从同步故障。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">slave stop;</span><br><span class="line"># 跳过一个复制错误</span><br><span class="line">set GLOBAL SQL_SLAVE_SKIP_COUNTER&#x3D;1;</span><br><span class="line">slave start;</span><br></pre></td></tr></table></figure></li>
+<li><p>通过中间件 ProxySQL 连接数据库时，出现超时错误：<code>9001 - Max connect timeout reached while reaching hostgroup 30 after 10000ms</code></p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 登录 proxysql 管理界面</span></span><br><span class="line">mysql -h 0.0.0.0 -u radmin -P 6032 -p --prompt <span class="string">&#x27;ProxySQL Admin&gt; &#x27;</span></span><br><span class="line"><span class="comment"># 检查节点状态</span></span><br><span class="line">select * from runtime_mysql_servers;</span><br></pre></td></tr></table></figure>
+<p> ProxySQL 输出如下：</p>
+<table>
+<thead>
+<tr>
+<th>hostgroup_id</th>
+<th>hostname</th>
+<th>port</th>
+<th>gtid_port</th>
+<th>status</th>
+<th>weight</th>
+<th>compression</th>
+<th>max_connections</th>
+<th>max_replication_lag</th>
+<th>use_ssl</th>
+<th>max_latency_ms</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>30</td>
+<td>192.168.0.3</td>
+<td>3307</td>
+<td>0</td>
+<td>OFFLINE_HARD</td>
+<td>1</td>
+<td>0</td>
+<td>1000</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重启 MySQL 服务</span></span><br><span class="line">systemctl restart mysqld.service</span><br><span class="line"><span class="comment"># 登录 MySQL, 启动组复制</span></span><br><span class="line">START GROUP_REPLICATION;</span><br><span class="line"><span class="comment"># 检查节点状态</span></span><br><span class="line"> SELECT * FROM performance_schema.replication_group_members;</span><br></pre></td></tr></table></figure></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>组复制异常</p>
+<ol>
+<li><code>[ERROR] Slave SQL for channel &#39;group_replication_applier&#39;: Could not execute Delete_rows event on table ag_admin_v1.t_device_request; Can&#39;t find record in &#39;t_device_request&#39;, Error_code: 1032; handler error HA_ERR_KEY_NOT_FOUND, Error_code: 1032</code></li>
+<li><code>[ERROR] Plugin group_replication reported: &#39;There was an error when connecting to the donor server. Please check that group_replication_recovery channel credentials and all MEMBER_HOST column values of performance_schema.replication_group_members table are correct and DNS resolvable.&#39;</code></li>
+<li><code>[ERROR] Slave I/O for channel &#39;group_replication_recovery&#39;: Got fatal error 1236 from master when reading data from binary log: &#39;The slave is connecting using CHANGE MASTER TO MASTER_AUTO_POSITION = 1, but the master has purged binary logs containing GTIDs that the slave requires. Replicate the missing transactions from elsewhere, or provision a new slave from backup. Consider increasing the master&#39;s binary log expiration period. The GTID sets and the missing purged transactions are too long to print in this message. For more information, please see the master&#39;s error log or the manual for GTID_SUBTRACT.&#39;, Error_code: 1236</code></li>
+<li><code>[ERROR] Plugin group_replication reported: &#39;Maximum number of retries when trying to connect to a donor reached. Aborting group replication recovery.&#39;</code></li>
+<li><code>[ERROR] Plugin group_replication reported: &#39;Fatal error during the Recovery process of Group Replication. The server will leave the group.&#39;</code></li>
+</ol>
+<p> 组复制异常时如果不是由于数据不一致的问题：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 登录 MySQL 后执行</span></span><br><span class="line"><span class="comment"># 如果已自动启动则停止</span></span><br><span class="line">STOP GROUP_REPLICATION;</span><br><span class="line"><span class="comment"># 清除二进制日志和 GTID 信息</span></span><br><span class="line">RESET MASTER;</span><br><span class="line"><span class="comment"># 清除所有复制通道配置</span></span><br><span class="line">RESET SLAVE ALL;</span><br><span class="line"><span class="comment"># 设置恢复通道用户和密码</span></span><br><span class="line">CHANGE MASTER TO MASTER_USER = <span class="string">&#x27;proxysql&#x27;</span>, MASTER_PASSWORD = <span class="string">&#x27;**&#x27;</span> FOR CHANNEL <span class="string">&#x27;group_replication_recovery&#x27;</span>;</span><br><span class="line"><span class="comment"># 使用主库的完整 GTID 集合, 查询主库：SHOW GLOBAL VARIABLES LIKE &#x27;gtid_purged&#x27;;</span></span><br><span class="line">SET @@GLOBAL.gtid_purged = <span class="string">&#x27;103a0db1-c57a-11ec-936b-fa163e32f79d:1,1300ba13-c57a-11ec-8f10-fa163e9e68a7:1-6,3eda6e60-c578-11ec-a506-fa163eec93b8:1-12,bbbbbbbb-bbbb-cccc-dddd-eeeeeeeeeeee:1-79740623&#x27;</span>;</span><br><span class="line"><span class="comment"># 启动组复制</span></span><br><span class="line">START GROUP_REPLICATION;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过 GTID_SUBTRACT 计算缺失的 GTID：</span></span><br><span class="line">SELECT GTID_SUBTRACT(<span class="string">&#x27; 主库_gtid_set&#x27;</span>, <span class="string">&#x27; 从库_gtid_set&#x27;</span>) AS missing_gtids;</span><br></pre></td></tr></table></figure>
+<p> 数据不一致时，因为使用 mysqldump 导入太慢，而且服务器硬盘空间不够，也无法使用 xtrabackup，所以直接将 MySQL 正常库的 /var/lib/mysql 直接拷贝到故障数据库的 /var/lib/mysql</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># 停止故障库 MySQL 服务</span></span><br><span class="line">systemctl stop mysqld.service</span><br><span class="line"><span class="comment"># 在主库传输整个文件夹到故障服务器。-a：归档模式（保留权限、时间戳等）-z：压缩传输</span></span><br><span class="line">rsync -avz --partial --progress / 本地 / 文件夹 user@remote.server.com:/ 目标 / 路径 /</span><br><span class="line"><span class="comment"># 故障服务器删除故障节点的 auto.cnf</span></span><br><span class="line">rm -f /var/lib/mysql/auto.cnf</span><br><span class="line"><span class="comment"># 故障服务器删除组复制元数据文件</span></span><br><span class="line">rm -f /var/lib/mysql/group_replication.*</span><br><span class="line"><span class="comment"># 故障服务器删除中继日志（如有残留）</span></span><br><span class="line">rm -f /var/lib/mysql/relay-log.*</span><br><span class="line"><span class="comment"># 故障服务器启动 MySQL</span></span><br><span class="line">systemctl start mysqld.service</span><br></pre></td></tr></table></figure></li>
+<li><p>MySQL 服务 CPU 占用高</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 显示所有正在运行的线程</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">FULL</span> PROCESSLIST;</span><br><span class="line"></span><br><span class="line"># 按执行时间排序（重点关注 <span class="type">Time</span> 列）</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> information_schema.processlist </span><br><span class="line"><span class="keyword">WHERE</span> COMMAND <span class="operator">!=</span> <span class="string">&#x27;Sleep&#x27;</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="type">TIME</span> <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"># 查询 InnoDB 状态</span><br><span class="line"><span class="keyword">SHOW</span> ENGINE INNODB STATUS; </span><br></pre></td></tr></table></figure>
+<p> 先查询运行的进程，并没有发现耗时的 SQL 语句，所以查询了 InnoDB 的状态，发现有高频读取操作:</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 queries inside InnoDB, 0 queries <span class="keyword">in</span> queue</span><br><span class="line">28 <span class="built_in">read</span> views open inside InnoDB</span><br><span class="line">Process ID=7241, Main thread ID=140240127776512, state: sleeping</span><br><span class="line">Number of rows inserted 30673026, updated 93414, deleted 50400, <span class="built_in">read</span> 50681533524</span><br><span class="line">7.18 inserts/s, 1.37 updates/s, 0.00 deletes/s, 1348292.44 reads/s</span><br></pre></td></tr></table></figure>
+<p> 每秒的读取操作非常高（1348292.44 reads/s），这可能是一个关键点。高读取可能意味着存在大量索引查找或全表扫描，但没有看到耗时的 SQL，可能这些查询执行得很快，但数量极大，导致 CPU 累积使用率高。<br> 所以检查 innodb_buffer_pool_size 是否合理，确保缓冲池足够大（建议为物理内存的 70-80%）。</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;innodb_buffer_pool_size&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p> 返回 <code>innodb_buffer_pool_size</code> 为 ​128MB，而服务器物理内存为 ​16GB。缓冲池过小会导致频繁的磁盘 I/O，数据无法缓存到内存，进而引发 CPU 负载升高，所以调整为物理内存的 ​70%~80%​，修改后 CPU 占用率直接降低。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改 my.cnf 配置文件</span></span><br><span class="line">[mysqld]</span><br><span class="line">innodb_buffer_pool_size = 12G</span><br><span class="line"><span class="comment"># 临时动态调整：</span></span><br><span class="line">SET GLOBAL innodb_buffer_pool_size = 12884901888;</span><br></pre></td></tr></table></figure>
+<p> 还有一些配置暂未修改测试：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ​禁用自适应哈希索引 AHI。（AHI 在高并发下可能导致热点索引争用，禁用后强制走 B+ 树，可能减少锁冲突。）</span></span><br><span class="line">[mysqld]</span><br><span class="line">innodb_adaptive_hash_index = 0</span><br><span class="line"><span class="comment"># 临时动态调整：</span></span><br><span class="line">SET GLOBAL innodb_adaptive_hash_index = OFF;</span><br><span class="line"><span class="comment"># 调整 InnoDB 线程并发，建议值为 CPU 核心数 * 2。（限制并发线程数，减少资源争用。）</span></span><br><span class="line">[mysqld]</span><br><span class="line">innodb_thread_concurrency = 64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p> 由于没有启用慢查询日志，所以可以使用 Performance Schema 监控 高频 SQL，再根据情况对 SQL 检查执行计划</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> performance_schema.events_statements_summary_by_digest <span class="keyword">ORDER</span> <span class="keyword">BY</span> COUNT_STAR <span class="keyword">DESC</span> LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h5><ol>
+<li><p>分布式锁的错误实现<br> 听到同事说到业务加了 Redis 实现的分布式锁，但是没有偶尔没有生效，会重复添加两次数据。查看代码发现大致实现逻辑如下：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Boolean.TRUE.equals(redisTemplate.hasKey(key))) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> BizException(<span class="string">&quot; 请勿重复提交 &quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">redisTemplate.opsForValue().set(key, <span class="string">&quot;1&quot;</span>, <span class="number">3</span>, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+<p> 可以使用 hasKey() 方法来检查 Redis 中是否存在指定的键。但是，在实现分布式锁时，使用 hasKey() 方法并不能保证原子性操作。</p>
+<p> 考虑以下情况：线程 A 和线程 B 同时调用 hasKey() 方法检查 Redis 是否存在锁键。假设两个线程都发现键不存在，然后都尝试设置锁键。这样就会导致多个线程同时获取到了锁，破坏了锁的互斥性。</p>
+<p> 为了保证原子性操作，需要使用 Redis 的原子性指令，如 setIfAbsent() 命令。该命令在键不存在时设置键的值，并且保证了原子性操作</p>
+</li>
+</ol>
+<h5 id="Jackson"><a href="#Jackson" class="headerlink" title="Jackson"></a>Jackson</h5><ol>
+<li>missing type id property ‘@Clazz’ 在接收请求外部接口接收响应值时，报错： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error while extracting response for type [*.**] and content type [application&#x2F;json], feign.InvocationContext.decode(InvocationContext.java)</span><br></pre></td></tr></table></figure>
+ 报错信息在 <code>@RestControllerAdvice</code> 的全局拦截异常中的 <code>@EeceptionHandler(&#123;FeignException.class&#125;)</code> 方法中，于是打断点查看更详细的报错信息，报错为： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not resolve subtype of [simple type, class *.**]: missing type id property &#39;@Clazz&#39;</span><br></pre></td></tr></table></figure>
+ 问题是 Jackson 在反序列化时无法找到所需的类型标识属性。在无法修改外部请求代码的情况下时，只能修改本地代码，去除对应的反序列化配置 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Jackson2ObjectMapperBuilderCustomizer <span class="title">json2ObjectMapperBuilderCustomizer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> builder -&gt; builder.mixIn(IPage.class, IPageMixin.class);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@JsonIgnoreProperties(ignoreUnknown = true)</span></span><br><span class="line"><span class="meta">@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = &quot;@Clazz&quot;)</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IPageMixin</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="hibernate-validator"><a href="#hibernate-validator" class="headerlink" title="hibernate-validator"></a>hibernate-validator</h5><ol>
+<li>对于 @NotNull 的返回信息为：** 不能为 null<br> 在 resources 下创建对应的配置文件，更改默认信息即可。参考：<a href="https://github.com/hibernate/hibernate-validator/blob/main/engine/src/main/resources/org/hibernate/validator/ValidationMessages_zh_CN.properties">hibernate-validator</a></li>
+</ol>
+<h5 id="其他"><a href="# 其他" class="headerlink" title="其他"></a>其他</h5><ol>
+<li><p>项目前端请求的时候会弹出登录的弹框，接口响应 401，请求头中的 <code>Authorization</code> 的值是以 <code>Basic</code> 开头</p>
+<p> <img src="login.png" alt="alt text"></p>
+<p>项目使用 JWT 鉴权，在请求头中使用 <code>Authorization</code> 传递 Token，值应该以 <code>Bearer</code> 开头。想到 Swagger 的鉴权是使用 <code>Basic</code>，所以这块应该是携带了 Swagger 的请求头。所以需要清除 Swagger 的用户名和密码，在 Chrome 中，我们只要在 URL 前面加上<code>user@</code> 即可强制浏览器刷新它的缓存。</p>
+<p><a href="https://cjting.me/2018/03/31/how-http-basic-auth-work/">HTTP Basic Auth 是怎么样工作的</a></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/problems/" rel="tag"># problems</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/transactional/" rel="prev" title="事务配置 @Transactional">
+      <i class="fa fa-chevron-left"></i> 事务配置 @Transactional
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/nginx-config/" rel="next" title="Nginx 以及 Linux 配置">
+      Nginx 以及 Linux 配置 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Boot"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Cloud-Gateway"><span class="nav-number">2.</span> <span class="nav-text">Spring Cloud Gateway</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-MVC"><span class="nav-number">3.</span> <span class="nav-text">Spring MVC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Spring-Cloud"><span class="nav-number">4.</span> <span class="nav-text">Spring Cloud</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nginx"><span class="nav-number">5.</span> <span class="nav-text">Nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL"><span class="nav-number">7.</span> <span class="nav-text">MySQL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Redis"><span class="nav-number">8.</span> <span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Jackson"><span class="nav-number">9.</span> <span class="nav-text">Jackson</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hibernate-validator"><span class="nav-number">10.</span> <span class="nav-text">hibernate-validator</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">11.</span> <span class="nav-text">其他</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="三月柳絮四月雨"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">三月柳絮四月雨</p>
+  <div class="site-description" itemprop="description">我年华虚度，空有一身疲惫</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Lemon-cxh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Lemon-cxh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_34576655" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_34576655" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">三月柳絮四月雨</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">129k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:57</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '3m9US7M2rX3qHENaTlCUmrad-gzGzoHsz',
+      appKey     : 'Y32s7s17bsYNYTOuGmBxgqPf',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
