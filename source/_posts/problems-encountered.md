@@ -160,8 +160,27 @@ description: 开发过程中遇到的问题,以及处理方式
     # 检查节点状态
      SELECT * FROM performance_schema.replication_group_members;
     ```
+    ProxySQL输出如下：
+    | hostgroup_id | hostname     | port | gtid_port | status       | weight | compression | max_connections | max_replication_lag | use_ssl | max_latency_ms | comment |
+    | ------------ | ------------ | ---- | --------- | ------------ | ------ | ----------- | --------------- | ------------------- | ------- | ------------- | ------- |
+    | 40           | 192.168.0.3  | 3307 | 0         | ONLINE | 1      | 0           | 1000            | 0                   | 0       | 0              |         |
+    | 10           | 192.168.0.22 | 3307 | 0         | ONLINE | 1      | 0           | 1000            | 0                   | 0       | 0              |         |
+    | 40           | 192.168.0.9  | 3307 | 0         | ONLINE | 1      | 0           | 1000            | 0                   | 0       | 0              |         |
+    说明ProxySQL 的路由规则（mysql_query_rules）可能错误地将请求指向 hostgroup_id=30，而该 hostgroup 没有配置后端服务器，检查ProxySQL的配置文件，配置文件中的mysql_servers配置hostgroup_id也都是10，所以执行如下命令:
+    ```bash
+    -- 查询现有规则
+    SELECT * FROM mysql_query_rules;
+    -- 修改错误的规则， ​修复路由规则指向正确的 hostgroup
+    UPDATE mysql_query_rules 
+    SET destination_hostgroup=10 
+    WHERE rule_id=2;
 
-3. 组复制异常
+    -- 激活并生效
+    LOAD MYSQL QUERY RULES TO RUNTIME;
+    SAVE MYSQL QUERY RULES TO DISK;
+    ```
+
+1. 组复制异常
     1. `[ERROR] Slave SQL for channel 'group_replication_applier': Could not execute Delete_rows event on table ag_admin_v1.t_device_request; Can't find record in 't_device_request', Error_code: 1032; handler error HA_ERR_KEY_NOT_FOUND, Error_code: 1032`
     2. `[ERROR] Plugin group_replication reported: 'There was an error when connecting to the donor server. Please check that group_replication_recovery channel credentials and all MEMBER_HOST column values of performance_schema.replication_group_members table are correct and DNS resolvable.'`
     3. `[ERROR] Slave I/O for channel 'group_replication_recovery': Got fatal error 1236 from master when reading data from binary log: 'The slave is connecting using CHANGE MASTER TO MASTER_AUTO_POSITION = 1, but the master has purged binary logs containing GTIDs that the slave requires. Replicate the missing transactions from elsewhere, or provision a new slave from backup. Consider increasing the master's binary log expiration period. The GTID sets and the missing purged transactions are too long to print in this message. For more information, please see the master's error log or the manual for GTID_SUBTRACT.', Error_code: 1236`
@@ -202,9 +221,22 @@ description: 开发过程中遇到的问题,以及处理方式
     rm -f /var/lib/mysql/relay-log.*
     # 故障服务器启动 MySQL
     systemctl start mysqld.service
+    # 彻底重置组：
+    ​# ​所有节点执行​​
+    STOP GROUP_REPLICATION;
+    RESET MASTER;
+    RESET SLAVE ALL;
+    ​# ​引导节点初始化组​​：
+    SET GLOBAL group_replication_bootstrap_group=ON;
+    START GROUP_REPLICATION;
+    SET GLOBAL group_replication_bootstrap_group=OFF;
+    ​# ​其他节点加入​​：
+    CHANGE MASTER TO MASTER_USER = 'proxysql', MASTER_PASSWORD = '**' FOR CHANNEL 'group_replication_recovery';
+    START GROUP_REPLICATION;
     ```
 
-4. MySQL服务CPU占用高
+
+2. MySQL服务CPU占用高
    
    ```SQL
     # 显示所有正在运行的线程
