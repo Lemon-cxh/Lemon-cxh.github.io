@@ -6,6 +6,7 @@ comments: false
 ---
 
 ---
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&vCenter=true&multiline=true&width=435&lines=%E6%97%B6%E9%97%B4%E4%BB%8E%E6%9D%A5%E4%B8%8D%E8%AF%AD%EF%BC%8C%E5%8D%B4%E5%9B%9E%E7%AD%94%E4%BA%86%E6%89%80%E6%9C%89%E9%97%AE%E9%A2%98)](https://git.io/typing-svg)
 
 ### 👋 Hello, World!
 
@@ -23,7 +24,3 @@ comments: false
 - 🎵 听着歌单里循环了八百遍的歌，还自以为很有音乐品味
 - 🧳 旅游就是一个人逛了景点顺便拍点照
 - 🎮 打游戏时嘴上说"就赢一把"，结果天亮了还在"最后一把"
-
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&vCenter=true&multiline=true&width=435&lines=%E6%97%B6%E9%97%B4%E4%BB%8E%E6%9D%A5%E4%B8%8D%E8%AF%AD%EF%BC%8C%E5%8D%B4%E5%9B%9E%E7%AD%94%E4%BA%86%E6%89%80%E6%9C%89%E9%97%AE%E9%A2%98)](https://git.io/typing-svg)
-
-<img width="50%" align="left" src="https://github-readme-stats.vercel.app/api/?username=Lemon-cxh&show_icons=true&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515" />
